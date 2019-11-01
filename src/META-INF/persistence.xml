@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="movieswatchJSF"  transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>java:comp/env/jdbc/DBconnect</jta-data-source>
+		<class>com.movieswatch.entities.Codepostaux</class>
+		<class>com.movieswatch.entities.Commande</class>
+		<class>com.movieswatch.entities.CommandesFilm</class>
+		<class>com.movieswatch.entities.Csa</class>
+		<class>com.movieswatch.entities.Facture</class>
+		<class>com.movieswatch.entities.Film</class>
+		<class>com.movieswatch.entities.FilmsGenre</class>
+		<class>com.movieswatch.entities.FilmsPay</class>
+		<class>com.movieswatch.entities.FilmsPersonnage</class>
+		<class>com.movieswatch.entities.FilmsPersonne</class>
+		<class>com.movieswatch.entities.FilmsUtilisateur</class>
+		<class>com.movieswatch.entities.Genre</class>
+		<class>com.movieswatch.entities.Pay</class>
+		<class>com.movieswatch.entities.Personnage</class>
+		<class>com.movieswatch.entities.Personne</class>
+		<class>com.movieswatch.entities.PersonnesPersonnage</class>
+		<class>com.movieswatch.entities.Role</class>
+		<class>com.movieswatch.entities.Utilisateur</class>
+		
+		
+		<properties>
+			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
+			<property name="eclipselink.ddl-generation" value="create-tables"/>				
+		</properties>	
+	</persistence-unit>
+</persistence>
