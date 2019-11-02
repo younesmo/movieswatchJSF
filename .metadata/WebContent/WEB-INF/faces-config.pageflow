@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15726628259210" configfile="/movieswatchJSF/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" id="pf15726648327020" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15726648327021" path="/registration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15726648327022" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15726648327021" path="/login.xhtml"/>
+  <links id="pf15726648327021" target="pf15726648327022" source="pf15726648327020" outcome="login" redirect="true"/>
+</pageflow:Pageflow>

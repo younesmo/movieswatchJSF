@@ -2,6 +2,8 @@ package com.movieswatch.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +14,11 @@ import java.util.List;
  */
 @Entity
 @Table(name="utilisateurs")
-@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u")
+@NamedQueries({
+	@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u"),
+	@NamedQuery(name="Utilisateur.findById", query="SELECT u FROM Utilisateur u WHERE u.idUtilisateur = :id"),
+	@NamedQuery(name="Utilisateur.findByEmail", query="SELECT u FROM Utilisateur u WHERE u.email = :email"),
+	@NamedQuery(name="Utilisateur.connexion", query="SELECT u FROM Utilisateur u where u.email = :email and u.passwd = :password ")})
 public class Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +35,7 @@ public class Utilisateur implements Serializable {
 	private Date dateNaissance;
 
 	@Column(nullable=false, length=255)
+	@Pattern( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
 	private String email;
 
 	@Column(length=255)
