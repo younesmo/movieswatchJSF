@@ -44,7 +44,7 @@ public class RestrictionFilter implements Filter {
 		if(session.getAttribute("currentUser") !=null) {
 			chain.doFilter(request, response);
 		}else {
-			response.sendRedirect(request.getContextPath() + "/connexion");
+			response.sendRedirect(request.getContextPath() + "/login.xhtml");
 		}
 	}
 

@@ -6,4 +6,5 @@ public interface UserService {
 
 	void insertUser(Utilisateur user);
 	Utilisateur findByEmail(String email);
+	Utilisateur getByEmailAndPassword(Utilisateur user);
 }

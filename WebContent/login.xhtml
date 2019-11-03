@@ -3,11 +3,65 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
+    	<meta charset="utf-8" />
         <title>Login</title>
+        <ui:include src="/WEB-INF/cssLoader.xhtml" />
     </h:head>
     <h:body>
-       <p>Login</p> 
+    
+<div class="view" style="background-image: url('./resources/default/images/background/backgroundConnectionPage.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+ 	<div class="view">
+    <!-- Mask & flexbox options-->
+		<div class=" d-flex justify-content-center align-items-center">
+     	 <!-- Content -->
+			<div class="container px-md-3 px-sm-0">
+        	<!--Grid row-->
+        		<div class="row wow fadeIn">
+          		<!--Grid column-->
+          			<div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+						<!-- Full Page Intro -->
+						<h6 class="deepshd display-3 font-weight-bold white-text mt-5 pt-5  ">Bienvenue Sur MoviesWatch</h6>
+						<hr class="hr-light my-4 w-75"/>
+						<div class="signup-form">
+							<h:form>
+									<h2>Connexion</h2>
+									<p>Vous pouvez vous connecter via ce formulaire.</p>
+									<div class="form-group">
+									<h:inputText id="email" styleClass="form-control" value="#{loginBean.user.email}" a:placeholder="Email" size="20" maxlength="60" >
+    		  				       		   <f:ajax event="blur" render="emailMessage" />	
+	        		  				</h:inputText>
+	        		  	        	<h:message id="emailMessage" for="email" errorClass="text-danger"/>				
+									</div>
+									
+									<div class="form-group">
+										<h:inputSecret id="motdepasse" a:placeholder="Mot de passe" styleClass="form-control" value="#{loginBean.user.passwd}" 
+	        				size="20" maxlength="20" >
+	       								 </h:inputSecret>
+									</div>
+									
+								        <div class="form-group">
+								        	<h:commandButton value="Connexion" styleClass="btn btn-primary btn-lg" action="#{loginBean.connectUser}">
+								        	</h:commandButton>
+	       
+	       									<h:messages globalOnly="true" infoClass="text-danger" />
+										</div>
+									
+							</h:form>
+						</div>
+						<hr class="hr-light my-4 w-75"/>
+						<h4 class="subtext-header mt-2 mb-4">Un service de qualité jamais égaler</h4>
+       				</div>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+  <ui:include src="/WEB-INF/footer.xhtml" />
+
     </h:body>
 </html>

@@ -54,4 +54,13 @@ public class UserServiceImpl implements UserService {
 		return finder.findOneByNamedQuery("Utilisateur.findByEmail", new Utilisateur(), param);
 	}
 
+	@Override
+	public Utilisateur getByEmailAndPassword(Utilisateur user) {
+		Map<String, String> param= new HashMap<String, String>();
+		param.put("email", user.getEmail());
+		param.put("password", user.getPasswd());
+		return finder.findOneByNamedQuery("Utilisateur.connexion", new Utilisateur(), param);
+		
+	}
+
 }
