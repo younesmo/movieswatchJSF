@@ -30,8 +30,7 @@ public class LoginBean implements Serializable {
 
 	transient private UserService userService;
 	
-	public LoginBean() {
-	}
+	public LoginBean() {}
 	
 	@PostConstruct
 	public void init() {

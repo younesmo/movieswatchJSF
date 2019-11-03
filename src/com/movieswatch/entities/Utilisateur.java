@@ -2,6 +2,7 @@ package com.movieswatch.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import java.util.Date;
@@ -28,26 +29,33 @@ public class Utilisateur implements Serializable {
 	private int idUtilisateur;
 
 	@Column(length=255)
+	@NotNull (message = "Veuillez saisir une rue")
 	private String ADrue;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_naissance", nullable=false)
+	@NotNull(message = "Veuillez saisir une date de naissance")
 	private Date dateNaissance;
 
 	@Column(nullable=false, length=255)
 	@Pattern( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
+	@NotNull(message = "Veuillez saisir une adresse email")
 	private String email;
 
 	@Column(length=255)
+	@NotNull(message = "Veuillez saisir un nom")
 	private String nom;
 
 	@Column(name="num_mobile", length=45)
+	@NotNull(message = "Veuillez saisir un numero de telephone")
 	private String numMobile;
 
 	@Column(nullable=false, length=255)
+	@NotNull(message = "Veuillez saisir un mot de passe")
 	private String passwd;
 
 	@Column(length=255)
+	@NotNull
 	private String prenom;
 
 	//bi-directional many-to-one association to Commande
