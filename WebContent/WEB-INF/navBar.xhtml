@@ -1,0 +1,76 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+        <h:form>
+<nav class="op navbar navbar-expand-lg fixed-top navbar-dark elegant-color scrolling-navbar">
+
+    <div class="container">
+        <a class="navbar-brand" href="#">Movieswatch</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto smooth-scroll">
+                <c:if test="#{empty sessionScope.currentUser}">
+                    <li class="nav-item">
+               			<h:commandLink styleClass="nav-link" value="Se connecter" action="#{navBean.goToLogin}" >
+ 	                        <span class="sr-only">(current)</span>           			
+               			</h:commandLink>
+                    </li>
+                    
+                    <li class="nav-item">
+               			<h:commandLink styleClass="nav-link" value="Inscription" action="#{navBean.goToRegistration}" />                    	
+                    </li>
+                </c:if>
+
+                <c:if test="#{!empty sessionScope.currentUser}">
+                    <li class="nav-item">
+               			<h:commandLink styleClass="nav-link" value="Accueil" action="#{navBean.goToWelcome}" />                    	
+                    </li>
+                    <li class="nav-item">
+               			<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToFilms}" />                    	                    	
+                    </li>                      
+                    
+                    <li class="nav-item">
+               			<h:commandLink styleClass="nav-link" value="Profil" action="#{navBean.goToProfil}" />                    	                    	                    	
+                    </li>
+                  
+				</c:if>
+                <c:choose>
+                    <c:when test="#{sessionScope.currentUser.role.nomRole == 'Utilisateur' }">    
+                        <li class="nav-item">
+                   			<h:commandLink styleClass="nav-link" value="Panier" action="#{navBean.goToPanier}" />                    	                    	                    	                    	
+                        </li>
+                        
+                        <li class="nav-item">
+                   			<h:commandLink styleClass="nav-link" value="Vos commandes" action="#{navBean.goToCommand}" />                    	                    	                    	                    	                        
+                        </li>
+                    </c:when>
+
+                    <c:when test="#{sessionScope.currentUser.role.nomRole == 'Admin' }">
+                        <li class="nav-item">
+                   			<h:commandLink styleClass="nav-link" value="Membres" action="#{navBean.goToMembers}" />                    	                    	                    	                    	                                                
+                        </li>
+                    </c:when>
+                </c:choose>                           
+                </ul>
+	
+			  <c:if test="#{!empty sessionScope.currentUser}">
+                <ul class="navbar-nav nav-flex-icons">
+                    
+                    <li class="nav-item">
+                       	<h:commandLink styleClass="nav-link" value="Logout" action="#{loginBean.logout}">
+        	                   <i class="fa fa-sign-out light-green-text-2"></i>
+                       	</h:commandLink>                    	                    	                    	                    	                                                
+                    </li>
+            	</ul> 
+            </c:if>
+        </div>
+    </div>
+</nav>
+</h:form>
+
+
+</ui:composition>

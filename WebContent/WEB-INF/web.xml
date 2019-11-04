@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
+	<welcome-file-list>
+    	<welcome-file>login.xhtml</welcome-file>
+  	</welcome-file-list>
 	<listener>
 	<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
 	</listener>

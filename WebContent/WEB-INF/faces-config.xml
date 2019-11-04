@@ -30,6 +30,26 @@
 	</navigation-rule>
 	
 	<navigation-rule> 
+   		<from-view-id>/WEB-INF/navBar.xhtml</from-view-id> 
+   
+  		 <navigation-case> 
+    		 <from-outcome>login</from-outcome> 
+    	 	<to-view-id>/login.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>registration</from-outcome> 
+    	 	<to-view-id>/registration.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>welcome</from-outcome> 
+    	 	<to-view-id>/accesrestreint/welcome.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule> 
    		<from-view-id>/accesrestreint/welcome.xhtml</from-view-id> 
    
   		 <navigation-case> 
@@ -37,5 +57,5 @@
     	 	<to-view-id>/login.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
-	</navigation-rule>
+ 	  </navigation-rule>
 </faces-config>

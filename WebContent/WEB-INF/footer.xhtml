@@ -5,30 +5,14 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-	<c:choose>
-		<c:when test="#{empty sessionScope.currentUser}">
-			<footer class="op navbar-fixed-bottom"/>
-		</c:when>
-		
-		<c:when test="#{!empty sessionScope.currentUser}">
-			<footer class="op navbar-fixed-bottom"/>
-		</c:when>
-	</c:choose>
+<footer class="op navbar-fixed-bottom">
+ 	<div class="footer-copyright text-center py-3">2018 Copyright:
+			movieswatch.com
+	 </div>
+</footer>
+	
+	
 
-<!-- Footer -->
-
-
-  <!-- Footer Links -->
-  <div class="text-center text-md-left"/>
-
-
-  <!-- Footer Links -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">2018 Copyright:
-		movieswatch.com
-  </div>
-  <!-- Copyright -->
 
 
 </ui:composition>
