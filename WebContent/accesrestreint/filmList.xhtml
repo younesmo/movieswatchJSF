@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Catalogue</title>
+	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+</h:head>
+<h:body>
+	<c:if test="#{sessionScope.currentUser.role.nomRole == 'Admin' }">
+
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste
+			des films</h3>
+		<hr class="hr-light my-4 w-75" />
+		<h:form >
+		<h:inputText value="#{filmsBean.keyword}" a:placeholder="Search"
+			size="50">
+		</h:inputText>
+
+		<h:selectOneMenu value="#{filmsBean.type}">
+			<f:selectItem itemValue="all" itemLabel="Selection filtre" />
+			<f:selectItem itemValue="titre" itemLabel="Titre" />
+			<f:selectItem itemValue="genre" itemLabel="Genre" />
+			<f:selectItem itemValue="personne" itemLabel="Acteur/Realisateur" />
+			<f:selectItem itemValue="csa" itemLabel="CSA" />
+			<f:selectItem itemValue="annee" itemLabel="Année" />
+			<f:selectItem itemValue="personnage" itemLabel="Personnage" />
+			<f:selectItem itemValue="pays" itemLabel="Pays" />
+		</h:selectOneMenu>
+		<h:commandButton value="Search" styleClass="btn btn-primary btn-lg"
+			action="#{filmsBean.updateList}">
+		</h:commandButton>
+		</h:form>
+
+		<div class="container">
+			<div class="table-wrapper">
+
+
+				<div class="col-sm-5">
+					<h2>Long metrage</h2>
+				</div>
+				<h:dataTable value="#{filmsBean.films}" var="film"
+					styleClass="table table-striped table-hover" headerClass=""
+					rowClasses="">
+
+					<c:if test="#{film=='long'}">
+						<h:column>
+							<!-- column header -->
+							<f:facet name="header">#</f:facet>
+							<!-- row record -->
+    				#{film.idFilm}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Isan</f:facet>
+    				#{film.numIsan}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Titre</f:facet>
+    				#{film.titreOriginal}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Annee</f:facet>
+    				#{film.anneeProduction}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Action</f:facet>
+							<h:commandButton value="" styleClass="btn btn-sm btn-info"
+								action="#{filmsBean.goToFilmDetails(film.idFilm)}">
+								<i class="fa fa-info-circle"></i>
+							</h:commandButton>
+						</h:column>
+					</c:if>
+				</h:dataTable>
+
+				<div class="col-sm-7">
+					<h:commandButton value="Ajouter un film"
+						styleClass="btn btn-primary" action="#{filmsBean.goToAddFilm}">
+						<i class="material-icons">&#xE147;</i>
+					</h:commandButton>
+
+				</div>
+
+				<br />
+				<hr class="hr-light my-4 w-75"/>
+				<div class="col-sm-5">
+					<h2>Court metrage</h2>
+				</div>
+				<h:dataTable value="#{filmsBean.films}" var="film"
+					styleClass="table table-striped table-hover" headerClass=""
+					rowClasses="">
+
+					<c:if test="#{film=='court'}">
+						<h:column>
+							<!-- column header -->
+							<f:facet name="header">#</f:facet>
+							<!-- row record -->
+    				#{film.idFilm}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Isan</f:facet>
+    				#{film.numIsan}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Titre</f:facet>
+    				#{film.titreOriginal}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Annee</f:facet>
+    				#{film.anneeProduction}
+    			</h:column>
+
+						<h:column>
+							<f:facet name="header">Action</f:facet>
+							<h:commandButton value="" styleClass="btn btn-sm btn-info"
+								action="#{filmsBean.goToFilmDetails(film.idFilm)}">
+								<i class="fa fa-info-circle"></i>
+							</h:commandButton>
+						</h:column>
+					</c:if>
+				</h:dataTable>
+
+			</div>
+		</div>
+	</c:if>
+
+<div class="container">
+
+	<c:if test="#{sessionScope.currentUser.role.nomRole == 'Utilisateur' }">
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
+		<hr class="hr-light my-4 w-75" />
+
+		<h:form>
+		<h:inputText value="#{filmsBean.keyword}" a:placeholder="Search"
+			size="50">
+		</h:inputText>
+
+		<h:selectOneMenu value="#{filmsBean.type}">
+			<f:selectItem itemValue="all" itemLabel="Selection filtre" />
+			<f:selectItem itemValue="titre" itemLabel="Titre" />
+			<f:selectItem itemValue="genre" itemLabel="Genre" />
+			<f:selectItem itemValue="personne" itemLabel="Acteur/Realisateur" />
+			<f:selectItem itemValue="csa" itemLabel="CSA" />
+			<f:selectItem itemValue="annee" itemLabel="Année" />
+			<f:selectItem itemValue="personnage" itemLabel="Personnage" />
+			<f:selectItem itemValue="pays" itemLabel="Pays" />
+		</h:selectOneMenu>
+		<h:commandButton value="Search" styleClass="btn btn-primary btn-lg"
+			action="#{filmsBean.updateList}">
+		</h:commandButton>
+		</h:form>
+
+
+		<h2>Long metrage</h2>
+		<div class="card-columns col-lg-7">
+			<c:forEach items="#{filmsBean.films}" var="film" varStatus="status">
+				<c:if test="#{film.metrage=='long' }">
+					<div class="card card-cascade wider mt-2 mb-2">
+						<!-- Card image -->
+						<div class="view view-cascade overlay">
+							<h:graphicImage value="#{film.urlAffiche}"
+								style="min-height: 130px; max-height: 130px"
+								styleClass="card-img-top img-fluid" />
+							<div class="mask rgba-white-slight"></div>
+						</div>
+						<!-- Card content -->
+						<div class="card-body card-body-cascade text-center">
+							<!-- Title -->
+							<h4 class="card-title">
+								<strong>#{film.titreOriginal}</strong>
+							</h4>
+							<!-- Subtitle -->
+							<h5 class="blue-text pb-2">
+								<strong>Année : #{film.anneeProduction}</strong>
+							</h5>
+							<!-- Text -->
+							<div class="collapse-content">
+								<p class="card-text collapse" id="collapseContent">#{film.synopsis}</p>
+
+								<h:commandLink styleClass="nav-link"
+									action="#{filmsBean.goToFilmDetails(film.idFilm)}">
+									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
+										data-toggle="tooltip" data-placement="top" title="Panier"></i>
+								</h:commandLink>
+
+							</div>
+						</div>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
+		<!-- Card package -->
+		<hr class="hr-light my-4 w-75" />
+		<h2>Court metrage</h2>
+
+		<div class="card-columns col-lg-7 ">
+			<c:forEach items="#{filmsBean.films}" var="film" varStatus="status">
+				<c:if test="#{film.metrage=='court' }">
+					<div class="card card-cascade wider mt-2 mb-2">
+						<!-- Card image -->
+						<div class="view view-cascade overlay">
+							<h:graphicImage value="#{film.urlAffiche}"
+								style="min-height: 130px; max-height: 130px"
+								styleClass="card-img-top img-fluid" />
+							<div class="mask rgba-white-slight"></div>
+						</div>
+						<!-- Card content -->
+						<div class="card-body card-body-cascade text-center">
+							<!-- Title -->
+							<h4 class="card-title">
+								<strong>#{film.titreOriginal}</strong>
+							</h4>
+							<!-- Subtitle -->
+							<h5 class="blue-text pb-2">
+								<strong>Année : #{film.anneeProduction}</strong>
+							</h5>
+							<!-- Text -->
+							<div class="collapse-content">
+								<p class="card-text collapse" id="collapseContent">#{film.synopsis}</p>
+
+								<h:commandLink styleClass="nav-link"
+									action="#{filmsBean.goToFilmDetails(film.idFilm)}">
+									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
+										data-toggle="tooltip" data-placement="top" title="Panier"></i>
+								</h:commandLink>
+
+							</div>
+						</div>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
+
+	</c:if>
+
+</div>
+	<ui:include src="/WEB-INF/footer.xhtml" />
+
+</h:body>
+</html>

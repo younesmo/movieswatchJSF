@@ -47,6 +47,12 @@
     	 	<to-view-id>/accesrestreint/welcome.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>films</from-outcome> 
+    	 	<to-view-id>/accesrestreint/filmList.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	
 	</navigation-rule>
 	
 	<navigation-rule> 
@@ -55,6 +61,12 @@
   		 <navigation-case> 
     		 <from-outcome>login</from-outcome> 
     	 	<to-view-id>/login.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	
+ 	  	<navigation-case> 
+    		 <from-outcome>films</from-outcome> 
+    	 	<to-view-id>/accesrestreint/filmList.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
  	  </navigation-rule>
