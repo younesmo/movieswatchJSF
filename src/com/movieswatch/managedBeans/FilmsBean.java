@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
+
 import com.movieswatch.entities.Film;
 import com.movieswatch.entities.FilmsGenre;
 import com.movieswatch.entities.FilmsPay;
@@ -22,6 +24,8 @@ public class FilmsBean implements Serializable{
 	
 	private List<Film> films;
 	transient private FilmService filmService;
+	transient private static Logger logger = Logger.getLogger(FilmsBean.class);
+	private int idFilm;
 	private String type;
 	private String keyword;
 	
@@ -108,7 +112,9 @@ public class FilmsBean implements Serializable{
 		films= filmListToSend;
 	}
 	
-	public String goToFilmDetails(int idFilm) {
+	public String goToFilmDetails(String idFilm) {
+		logger.debug(idFilm);
+		this.idFilm= Integer.parseInt(idFilm);
 		return "filmDetails";
 	}
 	
@@ -147,6 +153,16 @@ public class FilmsBean implements Serializable{
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+
+	public int getIdFilm() {
+		return idFilm;
+	}
+
+	public void setIdFilm(int idFilm) {
+		this.idFilm = idFilm;
+	}
+	
+	
 	
 	
 	

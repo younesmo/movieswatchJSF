@@ -39,8 +39,8 @@ public class LoginBean implements Serializable {
 	
 	public String connectUser() {
 		if(userService==null) {
-			userService= new UserServiceImpl();
 			logger.debug("userService= null");
+			userService= new UserServiceImpl();
 		}
 		Utilisateur user2 = userService.getByEmailAndPassword(user);
 		if (user2 !=null) {

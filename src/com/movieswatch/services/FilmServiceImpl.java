@@ -20,4 +20,9 @@ public class FilmServiceImpl implements FilmService{
 		return filmFinder.findByNamedQuery("Film.findAll", new Film(), null);
 	}
 
+	@Override
+	public Film getByFilmId(int id) {
+		return filmFinder.findOne(new Film(), id);
+	}
+
 }

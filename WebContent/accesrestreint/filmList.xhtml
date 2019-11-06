@@ -82,11 +82,12 @@
 				</h:dataTable>
 
 				<div class="col-sm-7">
+				<h:form>
 					<h:commandButton value="Ajouter un film"
 						styleClass="btn btn-primary" action="#{filmsBean.goToAddFilm}">
 						<i class="material-icons">&#xE147;</i>
 					</h:commandButton>
-
+				</h:form>
 				</div>
 
 				<br />
@@ -123,10 +124,12 @@
 
 						<h:column>
 							<f:facet name="header">Action</f:facet>
+							<h:form>
 							<h:commandButton value="" styleClass="btn btn-sm btn-info"
 								action="#{filmsBean.goToFilmDetails(film.idFilm)}">
 								<i class="fa fa-info-circle"></i>
 							</h:commandButton>
+							</h:form>
 						</h:column>
 					</c:if>
 				</h:dataTable>
@@ -187,13 +190,13 @@
 							<!-- Text -->
 							<div class="collapse-content">
 								<p class="card-text collapse" id="collapseContent">#{film.synopsis}</p>
-
+								<h:form>
 								<h:commandLink styleClass="nav-link"
 									action="#{filmsBean.goToFilmDetails(film.idFilm)}">
 									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
 										data-toggle="tooltip" data-placement="top" title="Panier"></i>
 								</h:commandLink>
-
+							</h:form>
 							</div>
 						</div>
 					</div>
@@ -228,13 +231,12 @@
 							<!-- Text -->
 							<div class="collapse-content">
 								<p class="card-text collapse" id="collapseContent">#{film.synopsis}</p>
-
-								<h:commandLink styleClass="nav-link"
-									action="#{filmsBean.goToFilmDetails(film.idFilm)}">
+								<h:form>
+								<h:commandLink styleClass="nav-link" action="#{filmsBean.goToFilmDetails(film.idFilm)}">
 									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
 										data-toggle="tooltip" data-placement="top" title="Panier"></i>
 								</h:commandLink>
-
+								</h:form>
 							</div>
 						</div>
 					</div>

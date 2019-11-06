@@ -11,7 +11,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="commandes")
-@NamedQuery(name="Commande.findAll", query="SELECT c FROM Commande c")
+@NamedQueries({@NamedQuery(name="Commande.findAll", query="SELECT c FROM Commande c"),
+	@NamedQuery(name="Commande.getPanier", query="select c from Commande c where c.utilisateur.idUtilisateur = :id and c.status =:status")})
 public class Commande implements Serializable {
 	private static final long serialVersionUID = 1L;
 

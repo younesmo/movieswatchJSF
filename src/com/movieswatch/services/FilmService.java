@@ -7,4 +7,5 @@ import com.movieswatch.entities.Film;
 public interface FilmService {
 
 	List<Film> getFilms();
+	Film getByFilmId(int id);
 }

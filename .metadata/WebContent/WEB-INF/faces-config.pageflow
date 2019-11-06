@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15726628259210" configfile="/movieswatchJSF/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" id="pf15726648327020" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf15726648327021" inlinks="pf15728286394660" path="/registration.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15726648327022" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf15727422045514 pf15727422045515" inlinks="pf15726648327021 pf15727422045514 pf15728286394661 pf15728331764227" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/welcome.xhtml" id="pf15727422045516" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15728331764227" inlinks="pf15727422045515 pf15728286394662" path="/accesrestreint/welcome.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="WEB-INF/navBar.xhtml" id="pf15728286394663" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15728286394661 pf15728286394660 pf15728286394662" path="/WEB-INF/navBar.xhtml"/>
-  <links id="pf15726648327021" target="pf15726648327022" source="pf15726648327020" outcome="login" redirect="true"/>
-  <links id="pf15727422045514" target="pf15726648327022" source="pf15726648327022" outcome="login"/>
-  <links id="pf15727422045515" target="pf15727422045516" source="pf15726648327022" outcome="welcome" redirect="true"/>
-  <links id="pf15728286394661" target="pf15726648327022" source="pf15728286394663" outcome="login" redirect="true"/>
-  <links id="pf15728286394660" target="pf15726648327020" source="pf15728286394663" outcome="registration" redirect="true"/>
-  <links id="pf15728286394662" target="pf15727422045516" source="pf15728286394663" outcome="welcome" redirect="true"/>
-  <links id="pf15728331764227" target="pf15726648327022" source="pf15727422045516" outcome="login" redirect="true"/>
+  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" x="338" y="178" id="pf15726648327020" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15729944586437" path="/registration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="554" y="380" id="pf15726648327022" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15729944586438" inlinks="pf15729944586437" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/welcome.xhtml" x="338" y="583" id="pf15727422045516" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15729940027273 pf15729944586438" path="/accesrestreint/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmList.xhtml" x="554" y="785" id="pf15729940027274" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15729961081269" inlinks="pf15729940027275" path="/accesrestreint/filmList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf15729940027276" outlinks="pf15729940027273 pf15729940027275" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmDetails.xhtml" id="pf157299610812610" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15729961081269" path="/accesrestreint/filmDetails.xhtml"/>
+  <links id="pf15729940027273" target="pf15727422045516" source="pf15729940027276" outcome="welcome" redirect="true"/>
+  <links id="pf15729940027275" target="pf15729940027274" source="pf15729940027276" outcome="films" redirect="true"/>
+  <links id="pf15729944586437" target="pf15726648327022" source="pf15726648327020" outcome="login" redirect="true"/>
+  <links id="pf15729944586438" target="pf15727422045516" source="pf15726648327022" outcome="welcome" redirect="true"/>
+  <links id="pf15729961081269" target="pf157299610812610" source="pf15729940027274" outcome="filmDetails" redirect="true"/>
 </pageflow:Pageflow>
