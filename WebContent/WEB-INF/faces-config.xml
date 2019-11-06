@@ -45,4 +45,13 @@
     	 	<redirect/>
  	  	</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule> 
+   		<from-view-id>/accesrestreint/filmDetails.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>panier</from-outcome> 
+    	 	<to-view-id>/accesrestreint/panier.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+	</navigation-rule>
 </faces-config>

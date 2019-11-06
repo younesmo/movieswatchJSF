@@ -62,9 +62,11 @@
 
 
 								<c:if test="#{sessionScope.currentUser.role.nomRole == 'Utilisateur' }">
+								<h:form>
 								<h:commandButton value="Ajouter au panier" styleClass="btn btn-success"
 									action="#{filmBean.sendToPanier}">
 								</h:commandButton>
+								</h:form>
 								</c:if>
 								
 							</div>

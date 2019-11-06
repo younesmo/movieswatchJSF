@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Panier</title>
+	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+</h:head>
+<h:body>
+
+	<h1
+		class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">Panier</h1>
+	<div class="container mb-4">
+		<div class="row">
+			<div class="col-12">
+				<div class="table-responsive">
+
+					<h:dataTable value="#{panierBean.panier.commandesFilms}"
+						var="commandeFilm" styleClass="table table-striped "
+						headerClass="" rowClasses="text-right">
+
+						<h:column>
+							<f:facet name="header"></f:facet>
+							<h:graphicImage value="#{commandeFilm.film.urlAffiche}"
+								width="50" height="50" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Title</f:facet>
+							#{commandeFilm.film.titreOriginal}
+    					</h:column>
+
+						<h:column>
+							<f:facet name="header"></f:facet>
+							<h:form>
+								<h:commandButton styleClass="btn btn-sm btn-danger"
+									action="#{panierBean.delete(commandeFilm.film.idFilm)}">
+									<i class="fa fa-trash"></i>
+								</h:commandButton>
+							</h:form>
+						</h:column>
+					</h:dataTable>
+
+
+					<c:choose>
+						<c:when test="#{!empty panierBean.panier.commandesFilms}">
+							<div class="col mb-2">
+								<div class="col-sm-12 col-md-6 text-right">
+
+									<h:form>
+										<h:commandButton
+											styleClass="btn btn-lg btn-block btn-success text-uppercase"
+											value="Checkout" action="#{panierBean.pay}">
+										</h:commandButton>
+									</h:form>
+								</div>
+							</div>
+						</c:when>
+
+						<c:when test="#{empty panierBean.panier.commandesFilms}">
+							Votre panier est vide
+			
+						</c:when>
+					</c:choose>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<ui:include src="/WEB-INF/footer.xhtml" />
+
+</h:body>
+</html>

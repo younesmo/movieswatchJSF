@@ -1,5 +1,7 @@
 package com.movieswatch.services;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,12 +13,14 @@ import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Commande;
 import com.movieswatch.entities.CommandesFilm;
+import com.movieswatch.entities.Facture;
 import com.movieswatch.entities.Film;
 import com.movieswatch.entities.Utilisateur;
 
 public class CommandServiceImpl implements CommandService {
 
     private EntityFinder<Commande> commandFinder;
+    private EntityFinder<CommandesFilm> commandFilmFinder;
 	private EntityManager em;		
 
 
@@ -75,6 +79,57 @@ public class CommandServiceImpl implements CommandService {
 			}	
 		return filmAdded;
 		}
+	
+	
+	public boolean deleteFromPanier(int idMovieToRemove) {
+		boolean filmDeleted= false;
+		CommandesFilm itemToRemove= commandFilmFinder.findOne(new CommandesFilm(), idMovieToRemove);
+
+		EntityTransaction transac= em.getTransaction();
+		try {
+			transac.begin();
+			em.remove(em.merge(itemToRemove));
+			transac.commit();
+			filmDeleted= true;
+		}
+		finally {
+			if(transac.isActive()) {
+				transac.rollback();
+			}
+			em.clear();
+			em.close();
+		}
+		return filmDeleted;
+	}
+	@Override
+	public boolean payPanier(Utilisateur currentUser) {
+		boolean panierPaid= false;
+		Commande panier= getPanier(currentUser);
+		Facture f= new Facture();
+		EntityTransaction transac= em.getTransaction();
+		
+		try {
+			transac.begin();
+			
+			if(panier!=null) {
+
+				f.setDate(Date.valueOf(LocalDate.now()));
+				panier.setFacture(f);
+				panier.setStatus("paye");
+				em.merge(panier);
+			}
+			transac.commit();
+			panierPaid= true;
+		}
+		finally {
+			if(transac.isActive()) {
+				transac.rollback();
+			}
+			em.clear();
+			em.close();
+		}
+		return panierPaid;
+	}
 	
 	
 

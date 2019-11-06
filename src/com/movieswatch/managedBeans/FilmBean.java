@@ -46,8 +46,10 @@ public class FilmBean implements Serializable {
 		boolean isFilmAdded= commandService.addFilmInPanier(currentUser, film);
 		if(isFilmAdded)
 			return "panier";
-		else
+		else {
+			logger.debug("error");
 			return "error";
+		}
 	}
 
 	public Film getFilm() {
