@@ -17,55 +17,55 @@ public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_ROLE", unique=true, nullable=false)
-	private int idRole;
+	@Column(name="id", unique=true, nullable=false)
+	private int id;
 
-	@Column(name="nom_role", length=45)
-	private String nomRole;
+	@Column(name="name", length=45)
+	private String name;
 
-	//bi-directional many-to-one association to Utilisateur
+	//bi-directional many-to-one association to User
 	@OneToMany(mappedBy="role")
-	private List<Utilisateur> utilisateurs;
+	private List<User> users;
 
 	public Role() {
 	}
 
-	public int getIdRole() {
-		return this.idRole;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getNomRole() {
-		return this.nomRole;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setNomRole(String nomRole) {
-		this.nomRole = nomRole;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
+	public List<User> getUsers() {
+		return this.users;
 	}
 
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
-	public Utilisateur addUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().add(utilisateur);
-		utilisateur.setRole(this);
+	public User addUser(User user) {
+		getUsers().add(user);
+		user.setRole(this);
 
-		return utilisateur;
+		return user;
 	}
 
-	public Utilisateur removeUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().remove(utilisateur);
-		utilisateur.setRole(null);
+	public User removeUser(User user) {
+		getUsers().remove(user);
+		user.setRole(null);
 
-		return utilisateur;
+		return user;
 	}
 
 }

@@ -16,7 +16,7 @@ public class PasswordConfirmationValidator implements Validator {
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		
-		UIInput passwordComponent= (UIInput) component.getAttributes().get("composantMotDePasse");
+		UIInput passwordComponent= (UIInput) component.getAttributes().get("passwordComponent");
 		
 		String password= (String) passwordComponent.getValue();
 		String passwordConfirm= (String) value;

@@ -23,9 +23,9 @@ public class Csa implements Serializable {
 	@Column(name="age_min", length=1)
 	private String ageMin;
 
-	//bi-directional many-to-one association to Film
+	//bi-directional many-to-one association to Movie
 	@OneToMany(mappedBy="csa")
-	private List<Film> films;
+	private List<Movie> movies;
 
 	public Csa() {
 	}
@@ -46,26 +46,26 @@ public class Csa implements Serializable {
 		this.ageMin = ageMin;
 	}
 
-	public List<Film> getFilms() {
-		return this.films;
+	public List<Movie> getMovies() {
+		return this.movies;
 	}
 
-	public void setFilms(List<Film> films) {
-		this.films = films;
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
 	}
 
-	public Film addFilm(Film film) {
-		getFilms().add(film);
-		film.setCsa(this);
+	public Movie addMovie(Movie movie) {
+		getMovies().add(movie);
+		movie.setCsa(this);
 
-		return film;
+		return movie;
 	}
 
-	public Film removeFilm(Film film) {
-		getFilms().remove(film);
-		film.setCsa(null);
+	public Movie removeMovie(Movie movie) {
+		getMovies().remove(movie);
+		movie.setCsa(null);
 
-		return film;
+		return movie;
 	}
 
 }

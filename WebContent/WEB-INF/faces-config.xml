@@ -4,54 +4,49 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
-    
+  	
 	<navigation-rule> 
-   		<from-view-id>/registration.xhtml</from-view-id> 
-   
-  		 <navigation-case> 
+		<navigation-case> 
+    		 <from-outcome>registration</from-outcome> 
+    	 	<to-view-id>/registration.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>welcome</from-outcome> 
+    	 	<to-view-id>/restricted/welcome.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>movies</from-outcome> 
+    	 	<to-view-id>/restricted/movies.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>cart</from-outcome> 
+    	 	<to-view-id>/restricted/cart.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>login</from-outcome> 
+    	 	<to-view-id>/login.xhtml</to-view-id>
+    	 	<redirect/> 
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule> 
+   		<from-view-id>/restricted/movies.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>movieDetails</from-outcome> 
+    	 	<to-view-id>/restricted/movie.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	 <from-view-id>/login.xhtml</from-view-id>  
+	<navigation-case> 
     		 <from-outcome>login</from-outcome> 
     	 	<to-view-id>/login.xhtml</to-view-id> 
-    	 	<redirect/>
- 	  	</navigation-case>  
-	</navigation-rule>
-
-	<navigation-rule> 
-   		<from-view-id>/login.xhtml</from-view-id>  
- 	  	<navigation-case> 
-    		 <from-outcome>welcome</from-outcome> 
-    	 	<to-view-id>/accesrestreint/welcome.xhtml</to-view-id> 
-    	 	<redirect/>
  	  	</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule> 
- 	  	<navigation-case> 
-    		 <from-outcome>welcome</from-outcome> 
-    	 	<to-view-id>/accesrestreint/welcome.xhtml</to-view-id> 
-    	 	<redirect/>
- 	  	</navigation-case>
- 	  	<navigation-case> 
-    		 <from-outcome>films</from-outcome> 
-    	 	<to-view-id>/accesrestreint/filmList.xhtml</to-view-id> 
-    	 	<redirect/>
- 	  	</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule> 
-   		<from-view-id>/accesrestreint/filmList.xhtml</from-view-id>  
- 	  	<navigation-case> 
-    		 <from-outcome>filmDetails</from-outcome> 
-    	 	<to-view-id>/accesrestreint/filmDetails.xhtml</to-view-id> 
-    	 	<redirect/>
- 	  	</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule> 
-   		<from-view-id>/accesrestreint/filmDetails.xhtml</from-view-id>  
- 	  	<navigation-case> 
-    		 <from-outcome>panier</from-outcome> 
-    	 	<to-view-id>/accesrestreint/panier.xhtml</to-view-id> 
-    	 	<redirect/>
- 	  	</navigation-case>
-	</navigation-rule>
+ 	  </navigation-rule>
 </faces-config>

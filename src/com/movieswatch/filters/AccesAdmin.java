@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.movieswatch.entities.Utilisateur;
+import com.movieswatch.entities.User;
 
 
 /**
@@ -49,14 +49,14 @@ public class AccesAdmin implements Filter {
 		HttpSession session= req.getSession();
 
 
-		Utilisateur user = new Utilisateur();
+		User user = new User();
 
 
-		if((user= (Utilisateur) session.getAttribute("currentUser")) !=null) {
-			if(user.getRole().getNomRole().equals("Admin")) {
+		if((user= (User) session.getAttribute("currentUser")) !=null) {
+			if(user.getRole().getName().equals("Admin")) {
 				chain.doFilter(req, resp);
 			}else {
-				log.debug(user.getRole().getNomRole());
+				log.debug(user.getRole().getName());
 				session.getServletContext().getRequestDispatcher("/WEB-INF/accesRefuser.jsp").forward(req, resp);
 			}
 		}else {

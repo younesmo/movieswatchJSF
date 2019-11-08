@@ -11,52 +11,52 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import com.movieswatch.dao.EMF;
-import com.movieswatch.entities.Codepostaux;
+import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.Role;
-import com.movieswatch.entities.Utilisateur;
+import com.movieswatch.entities.User;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 
-@Named
+@Named("registrationBean")
 @ViewScoped
-public class registrationBean implements Serializable {
+public class RegistrationBean implements Serializable {
 
-	private Utilisateur user;
-	private Codepostaux cp;
+	private User user;
+	private Postalcode cp;
 	
 	//@Inject
 	transient private UserService userService;
 	
-	public Utilisateur getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Utilisateur user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public registrationBean() {
-		user= new Utilisateur();
-		this.cp= new Codepostaux();
+	public RegistrationBean() {
+		user= new User();
+		this.cp= new Postalcode();
 		this.userService= new UserServiceImpl();
 	}
 	
 	public String registrateUser() {
 		Role role= new Role();
-		role.setIdRole(1);
+		role.setId(1);
 		user.setRole(role);
-		user.setCodepostaux(cp);
+		user.setPostalcode(cp);
 		userService.insertUser(user);
 		 FacesMessage message= new FacesMessage("Succés de l'inscription");
 		 FacesContext.getCurrentInstance().addMessage(null, message);
 		 return "login";
 	}
 	
-	public Codepostaux getCp() {
+	public Postalcode getCp() {
 		return cp;
 	}
 
-	public void setCp(Codepostaux cp) {
+	public void setCp(Postalcode cp) {
 		this.cp = cp;
 	}
 

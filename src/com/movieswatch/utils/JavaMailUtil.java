@@ -15,11 +15,11 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import com.movieswatch.entities.Commande;
+import com.movieswatch.entities.Order;
 
 
 public class JavaMailUtil {
-	public static void sendMail(String recipient, Commande commande, String path) throws MessagingException {
+	public static void sendMail(String recipient, Order order, String path) throws MessagingException {
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
@@ -35,14 +35,14 @@ public class JavaMailUtil {
 				return new PasswordAuthentication(mailAccount,password);
 			}
 		});
-		Message message = prepareMessage(session, mailAccount, recipient, commande, path);
+		Message message = prepareMessage(session, mailAccount, recipient, order, path);
 		Transport.send(message);
 		
 		
 		
 	}
 
-	private static Message prepareMessage(Session session, String mailAccount, String recipient, Commande commande, String path) {
+	private static Message prepareMessage(Session session, String mailAccount, String recipient, Order order, String path) {
 		try
 		{
 		Message message = new MimeMessage(session);
@@ -53,7 +53,7 @@ public class JavaMailUtil {
 		Multipart emailContent = new MimeMultipart();
 		MimeBodyPart textBodyPart = new MimeBodyPart();
 		
-		textBodyPart.setText("Monsieur "+commande.getUtilisateur().getNom()+",\r\n" + 
+		textBodyPart.setText("Monsieur "+order.getUser().getLastname()+",\r\n" + 
 				"\r\n" + 
 				"merci pour votre achat chez MoviesWatch du " + LocalDate.now() +".\r\n" + 
 				"\r\n" + 

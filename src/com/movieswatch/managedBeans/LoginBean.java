@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.movieswatch.entities.Utilisateur;
+import com.movieswatch.entities.User;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 import com.movieswatch.utils.SessionUtils;
@@ -21,7 +21,7 @@ import com.movieswatch.utils.SessionUtils;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-	private Utilisateur user;
+	private User user;
 	transient private static Logger logger = Logger.getLogger(LoginBean.class);
 
 	
@@ -30,7 +30,7 @@ public class LoginBean implements Serializable {
 	
 	public LoginBean() {
 		this.userService= new UserServiceImpl();
-		this.user= new Utilisateur();
+		this.user= new User();
 	}
 	
 	@PostConstruct
@@ -42,7 +42,7 @@ public class LoginBean implements Serializable {
 			logger.debug("userService= null");
 			userService= new UserServiceImpl();
 		}
-		Utilisateur user2 = userService.getByEmailAndPassword(user);
+		User user2 = userService.getByEmailAndPassword(user);
 		if (user2 !=null) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("currentUser", user2);
@@ -61,11 +61,11 @@ public class LoginBean implements Serializable {
 		return "login";
 	}
 	
-	public Utilisateur getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Utilisateur user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	

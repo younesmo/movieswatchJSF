@@ -8,8 +8,8 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
-import com.movieswatch.services.CodePostauxService;
-import com.movieswatch.services.CodePostauxServiceImpl;
+import com.movieswatch.services.PostalCodeService;
+import com.movieswatch.services.PostalCodeServiceImpl;
 
 @FacesValidator(value="cpExistValidator")
 public class CPExistValidator implements Validator{
@@ -17,10 +17,10 @@ public class CPExistValidator implements Validator{
 	private final String CP_DOESNT_EXIST= "Le code postal introduit n'existe pas";
 	
 	//@Inject
-	private CodePostauxService cpService;
+	private PostalCodeService cpService;
 	
 	public CPExistValidator() {
-		this.cpService= new CodePostauxServiceImpl();
+		this.cpService= new PostalCodeServiceImpl();
 	}
 	
 	@Override

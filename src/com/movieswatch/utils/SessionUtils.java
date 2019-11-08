@@ -3,7 +3,7 @@ package com.movieswatch.utils;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.movieswatch.entities.Utilisateur;
+import com.movieswatch.entities.User;
 
 public class SessionUtils {
 
@@ -13,9 +13,9 @@ public class SessionUtils {
 	}
 
 
-	public static Utilisateur getCurrentUser() {
+	public static User getCurrentUser() {
 		HttpSession session = getSession();
-		return (Utilisateur) session.getAttribute("currentUser");
+		return (User) session.getAttribute("currentUser");
 	}
 
 	

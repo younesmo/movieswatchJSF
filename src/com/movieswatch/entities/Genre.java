@@ -17,55 +17,55 @@ public class Genre implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_GENRE", unique=true, nullable=false)
-	private int idGenre;
+	@Column(name="id", unique=true, nullable=false)
+	private int id;
 
 	@Column(length=45)
-	private String nom;
+	private String name;
 
-	//bi-directional many-to-one association to FilmsGenre
+	//bi-directional many-to-one association to MovieGenre
 	@OneToMany(mappedBy="genre")
-	private List<FilmsGenre> filmsGenres;
+	private List<MovieGenre> movieGenres;
 
 	public Genre() {
 	}
 
-	public int getIdGenre() {
-		return this.idGenre;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setIdGenre(int idGenre) {
-		this.idGenre = idGenre;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getNom() {
-		return this.nom;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<FilmsGenre> getFilmsGenres() {
-		return this.filmsGenres;
+	public List<MovieGenre> getMovieGenres() {
+		return this.movieGenres;
 	}
 
-	public void setFilmsGenres(List<FilmsGenre> filmsGenres) {
-		this.filmsGenres = filmsGenres;
+	public void setMovieGenres(List<MovieGenre> movieGenres) {
+		this.movieGenres = movieGenres;
 	}
 
-	public FilmsGenre addFilmsGenre(FilmsGenre filmsGenre) {
-		getFilmsGenres().add(filmsGenre);
-		filmsGenre.setGenre(this);
+	public MovieGenre addMovieGenre(MovieGenre movieGenre) {
+		getMovieGenres().add(movieGenre);
+		movieGenre.setGenre(this);
 
-		return filmsGenre;
+		return movieGenre;
 	}
 
-	public FilmsGenre removeFilmsGenre(FilmsGenre filmsGenre) {
-		getFilmsGenres().remove(filmsGenre);
-		filmsGenre.setGenre(null);
+	public MovieGenre removeMovieGenre(MovieGenre movieGenre) {
+		getMovieGenres().remove(movieGenre);
+		movieGenre.setGenre(null);
 
-		return filmsGenre;
+		return movieGenre;
 	}
 
 }

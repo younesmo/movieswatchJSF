@@ -1,10 +1,10 @@
 package com.movieswatch.services;
 
-import com.movieswatch.entities.Utilisateur;
+import com.movieswatch.entities.User;
 
 public interface UserService {
 
-	void insertUser(Utilisateur user);
-	Utilisateur findByEmail(String email);
-	Utilisateur getByEmailAndPassword(Utilisateur user);
+	void insertUser(User user);
+	User findByEmail(String email);
+	User getByEmailAndPassword(User user);
 }

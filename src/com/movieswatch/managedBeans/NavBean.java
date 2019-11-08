@@ -25,20 +25,20 @@ public class NavBean implements Serializable {
 		return "welcome";
 	}
 	
-	public String goToFilms() {
-		return "films";
+	public String goToMovies() {
+		return "movies";
 	}
 	
 	public String goToProfil() {
 		return "profil";
 	}
 	
-	public String goToPanier() {
-		return "panier";
+	public String goToCart() {
+		return "cart";
 	}
 	
-	public String goToCommand() {
-		return "command";
+	public String goToOrders() {
+		return "orders";
 	}
 	
 	

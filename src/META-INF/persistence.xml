@@ -3,24 +3,24 @@
 	<persistence-unit name="movieswatchJSF"  transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>java:comp/env/jdbc/DBconnect</jta-data-source>
-		<class>com.movieswatch.entities.Codepostaux</class>
-		<class>com.movieswatch.entities.Commande</class>
-		<class>com.movieswatch.entities.CommandesFilm</class>
+		<class>com.movieswatch.entities.Postalcode</class>
+		<class>com.movieswatch.entities.Order</class>
+		<class>com.movieswatch.entities.OrderMovie</class>
 		<class>com.movieswatch.entities.Csa</class>
-		<class>com.movieswatch.entities.Facture</class>
-		<class>com.movieswatch.entities.Film</class>
-		<class>com.movieswatch.entities.FilmsGenre</class>
-		<class>com.movieswatch.entities.FilmsPay</class>
-		<class>com.movieswatch.entities.FilmsPersonnage</class>
-		<class>com.movieswatch.entities.FilmsPersonne</class>
-		<class>com.movieswatch.entities.FilmsUtilisateur</class>
+		<class>com.movieswatch.entities.Bill</class>
+		<class>com.movieswatch.entities.Movie</class>
+		<class>com.movieswatch.entities.MovieGenre</class>
+		<class>com.movieswatch.entities.MovieCountry</class>
+		<class>com.movieswatch.entities.MovieCharacter</class>
+		<class>com.movieswatch.entities.MoviePerson</class>
+		<class>com.movieswatch.entities.MovieUser</class>
 		<class>com.movieswatch.entities.Genre</class>
-		<class>com.movieswatch.entities.Pay</class>
-		<class>com.movieswatch.entities.Personnage</class>
-		<class>com.movieswatch.entities.Personne</class>
-		<class>com.movieswatch.entities.PersonnesPersonnage</class>
+		<class>com.movieswatch.entities.Country</class>
+		<class>com.movieswatch.entities.Character</class>
+		<class>com.movieswatch.entities.Person</class>
+		<class>com.movieswatch.entities.PersonCharacter</class>
 		<class>com.movieswatch.entities.Role</class>
-		<class>com.movieswatch.entities.Utilisateur</class>
+		<class>com.movieswatch.entities.User</class>
 		
 		
 		<properties>

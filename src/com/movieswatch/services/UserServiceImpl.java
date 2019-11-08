@@ -10,29 +10,29 @@ import javax.persistence.EntityTransaction;
 import com.movieswatch.dao.EMF;
 import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
-import com.movieswatch.entities.Codepostaux;
-import com.movieswatch.entities.Utilisateur;
+import com.movieswatch.entities.Postalcode;
+import com.movieswatch.entities.User;
 
 public class UserServiceImpl implements UserService {
 
 	private EntityManager manager;
 	
 	//@Inject
-	private EntityFinder<Utilisateur> finder;
+	private EntityFinder<User> finder;
 	
 	//@Inject
-	private CodePostauxService cpService;
+	private PostalCodeService cpService;
 	
 	public UserServiceImpl() {
 		this.manager= EMF.getEM();
-		this.finder= new EntityFinderImpl<Utilisateur>();
-		this.cpService= new CodePostauxServiceImpl();
+		this.finder= new EntityFinderImpl<User>();
+		this.cpService= new PostalCodeServiceImpl();
 	}
 	
 	@Override
-	public void insertUser(Utilisateur user) {
-		Codepostaux cp= cpService.getByNumber(user.getCodepostaux().getNumero());
-		user.setCodepostaux(cp);
+	public void insertUser(User user) {
+		Postalcode cp= cpService.getByNumber(user.getPostalcode().getNumber());
+		user.setPostalcode(cp);
 		EntityTransaction transac= manager.getTransaction();
 		 try {
 			 transac.begin();
@@ -48,18 +48,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Utilisateur findByEmail(String email) {
+	public User findByEmail(String email) {
 		Map<String, String> param= new HashMap<String, String>();
 		param.put("email", email);
-		return finder.findOneByNamedQuery("Utilisateur.findByEmail", new Utilisateur(), param);
+		return finder.findOneByNamedQuery("User.findByEmail", new User(), param);
 	}
 
 	@Override
-	public Utilisateur getByEmailAndPassword(Utilisateur user) {
+	public User getByEmailAndPassword(User user) {
 		Map<String, String> param= new HashMap<String, String>();
 		param.put("email", user.getEmail());
-		param.put("password", user.getPasswd());
-		return finder.findOneByNamedQuery("Utilisateur.connexion", new Utilisateur(), param);
+		param.put("password", user.getPassword());
+		return finder.findOneByNamedQuery("User.connexion", new User(), param);
 		
 	}
 
