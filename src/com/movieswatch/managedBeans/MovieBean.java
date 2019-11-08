@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.ManagedProperty;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,25 +20,21 @@ import com.movieswatch.services.MovieServiceImpl;
 import com.movieswatch.utils.SessionUtils;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class MovieBean implements Serializable {
 
 	private Movie movie;
 	transient private MovieService movieService;
 	transient private OrderService orderService;
 	transient private static Logger logger = Logger.getLogger(MovieBean.class);
-	
-	private int idMovie;
-	
+		
 	public MovieBean() {
-		logger.debug(idMovie);
 		this.movieService= new MovieServiceImpl();
 		this.orderService= new OrderServiceImpl();
 	}
 	
 	@PostConstruct
 	public void init() {
-		this.movie= movieService.getMovieById(idMovie);
 	}
 	
 	public String addInCart() {
@@ -51,6 +48,12 @@ public class MovieBean implements Serializable {
 		}
 	}
 
+	public String goToMovieDetails(String id) {
+		logger.debug(id);
+		this.movie= movieService.getMovieById(Integer.valueOf(id));
+		return "movieDetails";
+	}
+	
 	public Movie getMovie() {
 		return movie;
 	}
@@ -58,13 +61,5 @@ public class MovieBean implements Serializable {
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-
-	public int getIdMovie() {
-		return idMovie;
-	}
-
-	public void setIdMovie(int idMovie) {
-		this.idMovie = idMovie;
-	}	
 	
 }

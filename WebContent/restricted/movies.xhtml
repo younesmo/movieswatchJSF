@@ -73,8 +73,8 @@
 
 						<h:column>
 							<f:facet name="header">Action</f:facet>
-							<h:commandButton value="" styleClass="btn btn-sm btn-info" action="#{moviesBean.goToMovieDetails}">
-							 <f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />								
+							<h:commandButton value="" styleClass="btn btn-sm btn-info" 
+							action="#{movieBean.goToMovieDetails(movie.id)}">
 								<i class="fa fa-info-circle"></i>
 							</h:commandButton>
 						</h:column>
@@ -126,8 +126,7 @@
 							<f:facet name="header">Action</f:facet>
 							<h:form>
 							<h:commandButton value="" styleClass="btn btn-sm btn-info"
-								action="#{moviesBean.goToMovieDetails}">
-								 <f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />
+								action="#{movieBean.goToMovieDetails(movie.id)}">
 								<i class="fa fa-info-circle"></i>
 							</h:commandButton>
 							</h:form>
@@ -193,8 +192,7 @@
 								<p class="card-text collapse" id="collapseContent">#{movie.synopsis}</p>
 								<h:form>
 								<h:commandLink styleClass="nav-link"
-									action="#{moviesBean.goToMovieDetails}">
-									 <f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />									
+									action="#{movieBean.goToMovieDetails(movie.id)}">
 									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
 										data-toggle="tooltip" data-placement="top" title="Panier"></i>
 								</h:commandLink>
@@ -234,8 +232,7 @@
 							<div class="collapse-content">
 								<p class="card-text collapse" id="collapseContent">#{movie.synopsis}</p>
 								<h:form>
-								<h:commandLink styleClass="nav-link" action="#{moviesBean.goToMovieDetails}">
-									 <f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />								
+								<h:commandLink styleClass="nav-link" action="#{movieBean.goToMovieDetails(movie.id)}">
 									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
 										data-toggle="tooltip" data-placement="top" title="Panier"></i>
 								</h:commandLink>

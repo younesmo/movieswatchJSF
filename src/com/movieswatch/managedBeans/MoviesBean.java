@@ -113,10 +113,6 @@ public class MoviesBean implements Serializable{
 		movies= moviesToSend;
 	}
 	
-	public String goToMovieDetails() {
-		return "movieDetails";
-	}
-	
 	public String goToAddMovie() {
 		return "addMovie";
 	}
