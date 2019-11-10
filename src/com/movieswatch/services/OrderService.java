@@ -8,6 +8,6 @@ import com.movieswatch.entities.User;
 public interface OrderService {
 	Order getCart(User currentUser);
 	boolean addMovieInCart(User currentUser, Movie movie);
-	boolean deleteFromCart(int idMovieToRemove);
+	boolean deleteFromCart(int idMovieToRemove, User currentUser);
 	boolean payCart(User currentUser);
 }

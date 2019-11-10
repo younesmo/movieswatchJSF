@@ -25,15 +25,16 @@ public class OrderServiceImpl implements OrderService {
 
 
     public OrderServiceImpl() {
-    	this.em= EMF.getEM();
     	this.orderFinder= new EntityFinderImpl<Order>();
+    	this.orderMovieFinder= new EntityFinderImpl<OrderMovie>();
     }
 	@Override
 	public Order getCart(User currentUser) {
+    	this.em= EMF.getEM();
 		Map param= new HashMap();
 		param.put("id", currentUser.getId());
 		param.put("status","non-paye");
-		Order cart= orderFinder.findOneByNamedQuery("Order.getPanier", new Order(), param);
+		Order cart= orderFinder.findOneByNamedQuery("Order.getCart", new Order(), param);
 		
 		if(cart==null) {
 			cart= new Order();
@@ -57,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 	@Override
 	public boolean addMovieInCart(User currentUser, Movie movie) {
+    	this.em= EMF.getEM();
 		boolean movieAdded= false;
 		OrderMovie om= new OrderMovie();
 		Order cart= getCart(currentUser);
@@ -81,14 +83,25 @@ public class OrderServiceImpl implements OrderService {
 		}
 	
 	
-	public boolean deleteFromCart(int idMovieToRemove) {
+	public boolean deleteFromCart(int idMovieToRemove, User currentUser) {
+    	this.em= EMF.getEM();
 		boolean movieDeleted= false;
-		OrderMovie itemToRemove= orderMovieFinder.findOne(new OrderMovie(), idMovieToRemove);
-
+		Order cart= getCart(currentUser);
+		OrderMovie itemToRemove= null;
+		
+		for(OrderMovie cf : cart.getOrderMovies()) {
+			if(cf.getMovie().getId()== idMovieToRemove) {
+				itemToRemove = cf;
+				break;
+			}
+		}
+		
 		EntityTransaction transac= em.getTransaction();
 		try {
 			transac.begin();
 			em.remove(em.merge(itemToRemove));
+			cart.removeOrderMovie(itemToRemove);
+			em.merge(cart);
 			transac.commit();
 			movieDeleted= true;
 		}
@@ -101,8 +114,10 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return movieDeleted;
 	}
+	
 	@Override
 	public boolean payCart(User currentUser) {
+    	this.em= EMF.getEM();
 		boolean cartPaid= false;
 		Order cart= getCart(currentUser);
 		Bill b= new Bill();

@@ -1,19 +1,21 @@
 package com.movieswatch.managedBeans;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.mail.MessagingException;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
 import com.movieswatch.entities.Order;
-import com.movieswatch.entities.OrderMovie;
 import com.movieswatch.entities.User;
 import com.movieswatch.services.OrderService;
 import com.movieswatch.services.OrderServiceImpl;
@@ -21,8 +23,8 @@ import com.movieswatch.utils.FactureGeneratorUtils;
 import com.movieswatch.utils.JavaMailUtil;
 import com.movieswatch.utils.SessionUtils;
 
-@ManagedBean
 @Named
+@RequestScoped
 public class CartBean implements Serializable{
 	
 	private Order cart;
@@ -40,20 +42,12 @@ public class CartBean implements Serializable{
 		this.cart= cartService.getCart(currentUser);
 	}
 	
-	public void delete(String id) {
-		int idMovie= Integer.valueOf(id);
-		OrderMovie movieToRemove = null;
-
-		for(OrderMovie cf : cart.getOrderMovies()) {
-			if(cf.getMovie().getId()== idMovie) {
-				movieToRemove = cf;
-				break;
-			}
+	public void delete(String id) throws IOException {
+		boolean isMovieDeleted= cartService.deleteFromCart(Integer.valueOf(id), SessionUtils.getCurrentUser());
+		if(isMovieDeleted) {
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		    ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
 		}
-		
-		boolean isMovieDeleted= cartService.deleteFromCart(movieToRemove.getId());
-		if(isMovieDeleted)
-			cart.removeOrderMovie(movieToRemove);
 		else
 			logger.debug("error");
 			

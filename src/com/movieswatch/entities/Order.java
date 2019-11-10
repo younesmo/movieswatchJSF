@@ -10,9 +10,9 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="order")
+@Table(name="orders")
 @NamedQueries({@NamedQuery(name="Order.findAll", query="SELECT c FROM Order c"),
-	@NamedQuery(name="Order.getPanier", query="select c from Order c where c.user.id = :id and c.status =:status")})
+	@NamedQuery(name="Order.getCart", query="select c from Order c where c.user.id = :id and c.status =:status")})
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 
