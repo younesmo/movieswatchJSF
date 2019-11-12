@@ -19,15 +19,18 @@ public class FactureGeneratorUtils {
 	public static void generateFacture(User user, Order order, ServletContext servletContext) throws FileNotFoundException {
 		try {
 			Document document = new Document();
-			PdfWriter.getInstance(document,new FileOutputStream(servletContext.getRealPath("/")+"/facture/" +order.getId()+".pdf"));
+			PdfWriter.getInstance(document,new FileOutputStream(servletContext.getRealPath("/")+"/bills/" +order.getId()+".pdf"));
 			document.open();
-			document.add(new Paragraph(user.getLastname() + user.getFirstname()));
-				document.add(new Paragraph(user.getEmail()));
-				document.add(new Paragraph(order.getId()));
-				document.add(new Paragraph(order.getBill().getDate().toString()));
+			document.add(new Paragraph("Nom: " + user.getLastname() + " Prenom :" + user.getFirstname()));
+				document.add(new Paragraph("Adresse mail: " + user.getEmail()));
+				document.add(new Paragraph("Adresse: " + user.getStreetName() +" "+ user.getPostalcode().getNumber() + " " + user.getPostalcode().getCity_name()));
+				document.add(new Paragraph("Commandes: "));
 				for(OrderMovie c: order.getOrderMovies()) {
 					document.add(new Paragraph(c.getMovie().getTitle()));
 				}
+				document.add(new Paragraph("Date de commande : "+ order.getBill().getDate().toString()));
+				
+
 				document.close();
 			} catch (DocumentException e) {
 				// TODO Auto-generated catch block

@@ -53,21 +53,21 @@ public class CartBean implements Serializable{
 			
 	}
 
-	public String pay() throws FileNotFoundException {
+	public String pay() throws IOException {
 		ServletContext servletContext = (ServletContext) FacesContext
 			    .getCurrentInstance().getExternalContext().getContext();
 		User currentUser= SessionUtils.getCurrentUser();
 		
-		boolean isCartPaid= cartService.payCart(currentUser);
-		FactureGeneratorUtils.generateFacture(currentUser, cart, servletContext);
-		try {
-			JavaMailUtil.sendMail(currentUser.getEmail(), cart, servletContext.getRealPath("/")+"/bills/" +cart.getId()+".pdf");
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(isCartPaid)
+		cart = cartService.payCart(currentUser);
+		if(cart!=null) {
+			FactureGeneratorUtils.generateFacture(currentUser, cart, servletContext);
+			try {
+				JavaMailUtil.sendMail(currentUser.getEmail(), cart, servletContext.getRealPath("/")+"/bills/" +cart.getId()+".pdf");
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
 			return "orders";
+		}
 		else {
 			logger.debug("error");
 			return "";

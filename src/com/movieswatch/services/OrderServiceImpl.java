@@ -3,6 +3,7 @@ package com.movieswatch.services;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -20,13 +21,11 @@ import com.movieswatch.entities.User;
 public class OrderServiceImpl implements OrderService {
 
     private EntityFinder<Order> orderFinder;
-    private EntityFinder<OrderMovie> orderMovieFinder;
-	private EntityManager em;		
+    private EntityManager em;		
 
 
     public OrderServiceImpl() {
     	this.orderFinder= new EntityFinderImpl<Order>();
-    	this.orderMovieFinder= new EntityFinderImpl<OrderMovie>();
     }
 	@Override
 	public Order getCart(User currentUser) {
@@ -116,7 +115,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public boolean payCart(User currentUser) {
+	public Order payCart(User currentUser) {
     	this.em= EMF.getEM();
 		boolean cartPaid= false;
 		Order cart= getCart(currentUser);
@@ -143,7 +142,24 @@ public class OrderServiceImpl implements OrderService {
 			em.clear();
 			em.close();
 		}
-		return cartPaid;
+		if(cartPaid)
+			return cart;
+		else
+			return null;
+	}
+	
+	@Override
+	public List<Order> getOrders(User currentUser) {
+		Map param= new HashMap();
+		param.put("id", currentUser.getId());
+		param.put("status","paye");
+		
+		return orderFinder.findByNamedQuery("Order.getCart", new Order(), param);
+	}
+	
+	@Override
+	public Order getById(int id) {
+		return orderFinder.findOne(new Order(), id);
 	}
 	
 	

@@ -27,7 +27,7 @@ public class JavaMailUtil {
 		properties.put("mail.smtp.port", "587");
 		
 		String mailAccount = "movieswatchproject@gmail.com";
-		String password = "balaise1234";
+		String password = "javaprojet";
 		
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
@@ -57,7 +57,7 @@ public class JavaMailUtil {
 				"\r\n" + 
 				"merci pour votre achat chez MoviesWatch du " + LocalDate.now() +".\r\n" + 
 				"\r\n" + 
-				"Ce courriel est pour vous confirmer que votre commande a �t� re�u.\r\n");
+				"Ce courriel est pour vous confirmer que votre commande a été reçu.\r\n");
 		
 		MimeBodyPart pdfAttachment = new MimeBodyPart();
 		pdfAttachment.attachFile(path);

@@ -31,6 +31,11 @@
     	 	<to-view-id>/login.xhtml</to-view-id>
     	 	<redirect/> 
  	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>orders</from-outcome> 
+    	 	<to-view-id>/restricted/orders.xhtml</to-view-id>
+    	 	<redirect/> 
+ 	  	</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule> 
@@ -38,6 +43,24 @@
  	  	<navigation-case> 
     		 <from-outcome>movieDetails</from-outcome> 
     	 	<to-view-id>/restricted/movie.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule> 
+   		<from-view-id>/restricted/cart.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>orders</from-outcome> 
+    	 	<to-view-id>/restricted/orders.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule> 
+   		<from-view-id>/restricted/orders.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>order</from-outcome> 
+    	 	<to-view-id>/restricted/order.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
 	</navigation-rule>
