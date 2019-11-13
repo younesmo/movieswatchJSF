@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
+
 import com.movieswatch.entities.Order;
 import com.movieswatch.services.OrderService;
 import com.movieswatch.services.OrderServiceImpl;
@@ -15,6 +17,8 @@ public class OrderBean implements Serializable {
 
 	private Order order;
 	transient private OrderService orderService;
+	transient private static Logger logger = Logger.getLogger(OrderBean.class);
+
 	
 	public OrderBean() {
 		this.orderService= new OrderServiceImpl();

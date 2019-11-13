@@ -5,19 +5,15 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 
-import com.movieswatch.dao.EMF;
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.Role;
 import com.movieswatch.entities.User;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 
-@Named("RegistrationBean")
+@Named("registrationBean")
 @ViewScoped
 public class RegistrationBean implements Serializable {
 

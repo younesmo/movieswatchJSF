@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta charset="utf-8" />
+	<title>Details commande</title>
+	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+</h:head>
+<h:body>
+	<h2 class="h1-responsive font-weight-bold text-center mt-5 pt-5text-dark">Vos Achats</h2>
+
+	<c:forEach var="orderMovie" items="#{orderBean.order.orderMovies}">
+
+		<section class="my-5">
+			<!-- Grid row -->
+			<div class="row">
+
+				<!-- Grid column -->
+				<div class="col-lg-5 col-xl-4">
+
+					<!-- Featured image -->
+					<div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+						<h:graphicImage value="#{orderMovie.movie.posterUrl}" alt="#{orderMovie.movie.title}" styleClass="img-fluid" />							
+							<div class="mask rgba-white-slight"></div>
+					</div>
+
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-lg-7 col-xl-8">
+
+					<!-- Post title -->
+					<h3 class="font-weight-bold mb-3">
+						<strong>#{orderMovie.movie.title}</strong>
+					</h3>
+					<!-- Excerpt -->
+					<p class="dark-grey-text">#{orderMovie.movie.synopsis}</p>
+					<!-- Post data -->
+					<p>
+						by <a class="font-weight-bold">Jessica Clark</a>,
+						#{orderMovie.movie.productionYear}
+					</p>
+
+
+				</div>
+				<!-- Grid column -->
+
+			</div>
+			<!-- Grid row -->
+
+			<hr class="my-5"/>
+		</section>
+
+	</c:forEach>
+
+	<ui:include src="/WEB-INF/footer.xhtml" />
+
+</h:body>
+</html>
