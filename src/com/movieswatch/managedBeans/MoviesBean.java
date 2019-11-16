@@ -101,7 +101,7 @@ public class MoviesBean implements Serializable{
 		
 		case "personnage":
 			for(Movie movie: movies) {
-				for(MovieCharacter fp : movie.getMovieCharacter()) {
+				for(MovieCharacter fp : movie.getMovieCharacters()) {
 					if(fp.getCharacter().getLastname().toLowerCase().contains(keyword.toLowerCase()) 
 							|| fp.getCharacter().getFirstname().toLowerCase().contains(keyword.toLowerCase()))
 						moviesToSend.add(movie);

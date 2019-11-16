@@ -6,6 +6,7 @@
     version="2.3">
   	
 	<navigation-rule> 
+	   		<from-view-id>/*</from-view-id>  
 		<navigation-case> 
     		 <from-outcome>registration</from-outcome> 
     	 	<to-view-id>/registration.xhtml</to-view-id> 
@@ -14,6 +15,11 @@
  	  	<navigation-case> 
     		 <from-outcome>welcome</from-outcome> 
     	 	<to-view-id>/restricted/welcome.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>profil</from-outcome> 
+    	 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
  	  	<navigation-case> 
@@ -72,4 +78,33 @@
     	 	<to-view-id>/login.xhtml</to-view-id> 
  	  	</navigation-case>
  	  </navigation-rule>
+ 	  
+ 	 <navigation-rule>
+		 <from-view-id>/restricted/profile.xhtml</from-view-id>  
+		<navigation-case> 
+    			 <from-outcome>editProfil</from-outcome> 
+    		 	<to-view-id>/restricted/editProfil.xhtml</to-view-id> 
+    		 	<redirect/>
+ 	 	</navigation-case>
+ 	 	<navigation-case> 
+    			 <from-outcome>editPassword</from-outcome> 
+    		 	<to-view-id>/restricted/editPassword.xhtml</to-view-id> 
+ 	 	</navigation-case>
+ 	 </navigation-rule>
+ 	 
+ 	 <navigation-rule>
+		 <from-view-id>/restricted/editProfil.xhtml</from-view-id>  
+		<navigation-case> 
+    			 <from-outcome>profil</from-outcome> 
+    		 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
+ 	 	</navigation-case>
+ 	 </navigation-rule>
+ 	 
+ 	 <navigation-rule>
+		 <from-view-id>/restricted/editPassword.xhtml</from-view-id>  
+		<navigation-case> 
+    			 <from-outcome>profil</from-outcome> 
+    		 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
+ 	 	</navigation-case>
+ 	 </navigation-rule>
 </faces-config>

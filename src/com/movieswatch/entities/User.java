@@ -62,10 +62,6 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Order> order;
 
-	//bi-directional many-to-one association to MovieUser
-	@OneToMany(mappedBy="user")
-	private List<MovieUser> movieUsers;
-
 	//bi-directional many-to-one association to Role
 	@ManyToOne
 	@JoinColumn(name="ID_ROLE", nullable=false)
@@ -172,28 +168,6 @@ public class User implements Serializable {
 		order.setUser(null);
 
 		return order;
-	}
-
-	public List<MovieUser> getMovieUsers() {
-		return this.movieUsers;
-	}
-
-	public void setMovieUsers(List<MovieUser> movieUsers) {
-		this.movieUsers = movieUsers;
-	}
-
-	public MovieUser addMovieUser(MovieUser movieUser) {
-		getMovieUsers().add(movieUser);
-		movieUser.setUser(this);
-
-		return movieUser;
-	}
-
-	public MovieUser removeMovieUser(MovieUser movieUser) {
-		getMovieUsers().remove(movieUser);
-		movieUser.setUser(null);
-
-		return movieUser;
 	}
 
 	public Role getRole() {

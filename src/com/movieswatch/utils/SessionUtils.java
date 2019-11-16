@@ -18,5 +18,8 @@ public class SessionUtils {
 		return (User) session.getAttribute("currentUser");
 	}
 
-	
+	public static void setCurrentUser(User currentUser) {
+		HttpSession session = getSession();
+		session.setAttribute("currentUser", currentUser);
+	}
 }

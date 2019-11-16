@@ -12,6 +12,7 @@ import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.User;
+import com.movieswatch.utils.SessionUtils;
 
 public class UserServiceImpl implements UserService {
 
@@ -24,13 +25,13 @@ public class UserServiceImpl implements UserService {
 	private PostalCodeService cpService;
 	
 	public UserServiceImpl() {
-		this.manager= EMF.getEM();
 		this.finder= new EntityFinderImpl<User>();
 		this.cpService= new PostalCodeServiceImpl();
 	}
 	
 	@Override
 	public void insertUser(User user) {
+		this.manager= EMF.getEM();
 		Postalcode cp= cpService.getByNumber(user.getPostalcode().getNumber());
 		user.setPostalcode(cp);
 		EntityTransaction transac= manager.getTransaction();
@@ -61,6 +62,27 @@ public class UserServiceImpl implements UserService {
 		param.put("password", user.getPassword());
 		return finder.findOneByNamedQuery("User.connexion", new User(), param);
 		
+	}
+
+	@Override
+	public boolean updateUser(User updatedUser) {
+		boolean isUpdateDone=false;
+		manager = EMF.getEM();
+		EntityTransaction transac= manager.getTransaction();
+
+		try {
+			transac.begin();
+			manager.merge(updatedUser);			
+			transac.commit();
+			isUpdateDone= true;
+		}
+		finally {
+			if(transac.isActive())
+				transac.rollback();
+			manager.clear();
+			manager.close();
+		}
+		return isUpdateDone;
 	}
 
 }

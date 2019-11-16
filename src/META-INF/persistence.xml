@@ -7,13 +7,10 @@
 		<class>com.movieswatch.entities.Order</class>
 		<class>com.movieswatch.entities.OrderMovie</class>
 		<class>com.movieswatch.entities.Csa</class>
-		<class>com.movieswatch.entities.Bill</class>
-		<class>com.movieswatch.entities.Movie</class>
 		<class>com.movieswatch.entities.MovieGenre</class>
 		<class>com.movieswatch.entities.MovieCountry</class>
 		<class>com.movieswatch.entities.MovieCharacter</class>
 		<class>com.movieswatch.entities.MoviePerson</class>
-		<class>com.movieswatch.entities.MovieUser</class>
 		<class>com.movieswatch.entities.Genre</class>
 		<class>com.movieswatch.entities.Country</class>
 		<class>com.movieswatch.entities.Character</class>
@@ -21,6 +18,9 @@
 		<class>com.movieswatch.entities.PersonCharacter</class>
 		<class>com.movieswatch.entities.Role</class>
 		<class>com.movieswatch.entities.User</class>
+		<class>com.movieswatch.entities.Format</class>
+		<class>com.movieswatch.entities.Movie</class>
+		<class>com.movieswatch.entities.MoviesFormat</class>
 		
 		
 		<properties>

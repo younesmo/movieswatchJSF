@@ -19,9 +19,6 @@ public class OrderMovie implements Serializable {
 	@Column(name="id", unique=true, nullable=false)
 	private int id;
 
-	@Column(name="order_type", length=1)
-	private String orderType;
-
 	//bi-directional many-to-one association to Order
 	@ManyToOne
 	@JoinColumn(name="id_order", nullable=false)
@@ -41,14 +38,6 @@ public class OrderMovie implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getOrderType() {
-		return this.orderType;
-	}
-
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
 	}
 
 	public Order getOrder() {

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15726628259210" configfile="/movieswatchJSF/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/welcome.xhtml" x="338" y="754" id="pf15727422045516" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15731522074400" path="/restricted/welcome.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="WEB-INF/navBar.xhtml" x="122" y="562" id="pf15728286394663" referenceLink="//@navigationRule.2/@fromViewId|" path="/WEB-INF/navBar.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmList.xhtml" x="338" y="370" id="pf15730786989512" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15731522074401" inlinks="pf15731522074402" path="/restricted/movies.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="946" id="pf15731522074403" outlinks="pf15731522074400 pf15731522074402 pf15731522074404 pf15732205264202 pf15732209177856 pf15735185416634" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmDetails.xhtml" x="554" y="370" id="pf15731522074405" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15731522074401" path="/restricted/movie.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/panier.xhtml" x="338" y="1138" id="pf15731522074407" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15735184726050" inlinks="pf15731522074404" path="/restricted/cart.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" x="338" y="1522" id="pf15732205264203" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15732205264202" path="/registration.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15732207511214" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" outlinks="pf15732207511215" inlinks="pf15732207511215 pf15732209177856" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="restricted/orders.xhtml" id="pf15735184726051" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" outlinks="pf15735185055582" inlinks="pf15735184726050 pf15735185416634" path="/restricted/orders.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="restricted/order.xhtml" id="pf15735185055583" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf15735185055582" path="/restricted/order.xhtml"/>
-  <links id="pf15731522074400" target="pf15727422045516" source="pf15731522074403" outcome="welcome" redirect="true"/>
-  <links id="pf15731522074402" target="pf15730786989512" source="pf15731522074403" outcome="movies" redirect="true"/>
+  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmList.xhtml" x="338" y="370" id="pf15730786989512" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15731522074401" inlinks="pf15736714447800" path="/restricted/movies.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmDetails.xhtml" x="554" y="370" id="pf15731522074405" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15731522074401" path="/restricted/movie.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accesrestreint/panier.xhtml" x="338" y="1138" id="pf15731522074407" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15735184726050" inlinks="pf15736714447801" path="/restricted/cart.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15732207511214" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf15732207511215" inlinks="pf15732207511215 pf15736714447812" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/orders.xhtml" id="pf15735184726051" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15735185055582" inlinks="pf15735184726050 pf15736714447813" path="/restricted/orders.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/order.xhtml" id="pf15735185055583" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15735185055582" path="/restricted/order.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/movies.xhtm" id="pf15736714447814" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15736714447815 pf15736714447816 pf15736714447800 pf15736714447801 pf15736714447812 pf15736714447813 pf15737771269090" path="/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" id="pf15736714447817" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15736714447815" path="/registration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/welcome.xhtml" id="pf15736714447818" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15736714447816" path="/restricted/welcome.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/editProfil.xhtml" id="pf15737771269091" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15737771269090" path="/restricted/profile.xhtml"/>
   <links id="pf15731522074401" target="pf15731522074405" source="pf15730786989512" outcome="movieDetails" redirect="true"/>
-  <links id="pf15731522074404" target="pf15731522074407" source="pf15731522074403" outcome="cart" redirect="true"/>
-  <links id="pf15732205264202" target="pf15732205264203" source="pf15731522074403" outcome="registration" redirect="true"/>
   <links id="pf15732207511215" target="pf15732207511214" source="pf15732207511214" outcome="login"/>
-  <links id="pf15732209177856" target="pf15732207511214" source="pf15731522074403" outcome="login" redirect="true"/>
   <links id="pf15735184726050" target="pf15735184726051" source="pf15731522074407" outcome="orders" redirect="true"/>
   <links id="pf15735185055582" target="pf15735185055583" source="pf15735184726051" outcome="order" redirect="true"/>
-  <links id="pf15735185416634" target="pf15735184726051" source="pf15731522074403" outcome="orders" redirect="true"/>
+  <links id="pf15736714447815" target="pf15736714447817" source="pf15736714447814" outcome="registration" redirect="true"/>
+  <links id="pf15736714447816" target="pf15736714447818" source="pf15736714447814" outcome="welcome" redirect="true"/>
+  <links id="pf15736714447800" target="pf15730786989512" source="pf15736714447814" outcome="movies" redirect="true"/>
+  <links id="pf15736714447801" target="pf15731522074407" source="pf15736714447814" outcome="cart" redirect="true"/>
+  <links id="pf15736714447812" target="pf15732207511214" source="pf15736714447814" outcome="login" redirect="true"/>
+  <links id="pf15736714447813" target="pf15735184726051" source="pf15736714447814" outcome="orders" redirect="true"/>
+  <links id="pf15737771269090" target="pf15737771269091" source="pf15736714447814" outcome="profil" redirect="true"/>
 </pageflow:Pageflow>

@@ -2,6 +2,8 @@ package com.movieswatch.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,11 +31,13 @@ public class Order implements Serializable {
 	@JoinColumn(name="id_user", nullable=false)
 	private User user;
 
-	//bi-directional many-to-one association to Bill
-	@ManyToOne
-	@JoinColumn(name="id_bill")
-	private Bill bill;
+	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
+	private Date date;
 
+	@Column(name="payment_mode", length=1)
+	private String paymentMode;
+	
 	//bi-directional many-to-one association to OrderMovie
 	@OneToMany(mappedBy="order")
 	private List<OrderMovie> orderMovies;
@@ -65,14 +69,6 @@ public class Order implements Serializable {
 		this.user = user;
 	}
 
-	public Bill getBill() {
-		return this.bill;
-	}
-
-	public void setBill(Bill bill) {
-		this.bill = bill;
-	}
-
 	public List<OrderMovie> getOrderMovies() {
 		return this.orderMovies;
 	}
@@ -94,5 +90,23 @@ public class Order implements Serializable {
 
 		return orderMovie;
 	}
+	
+	public Date getDate() {
+		return this.date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+	
+	
 
 }

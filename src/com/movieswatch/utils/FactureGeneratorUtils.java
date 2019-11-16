@@ -28,7 +28,7 @@ public class FactureGeneratorUtils {
 				for(OrderMovie c: order.getOrderMovies()) {
 					document.add(new Paragraph(c.getMovie().getTitle()));
 				}
-				document.add(new Paragraph("Date de commande : "+ order.getBill().getDate().toString()));
+				document.add(new Paragraph("Date de commande : "+ order.getDate().toString()));
 				
 
 				document.close();

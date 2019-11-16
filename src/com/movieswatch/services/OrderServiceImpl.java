@@ -9,12 +9,13 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.apache.log4j.Logger;
+
 import com.movieswatch.dao.EMF;
 import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Order;
 import com.movieswatch.entities.OrderMovie;
-import com.movieswatch.entities.Bill;
 import com.movieswatch.entities.Movie;
 import com.movieswatch.entities.User;
 
@@ -22,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
 
     private EntityFinder<Order> orderFinder;
     private EntityManager em;		
-
+    private Logger log= Logger.getLogger(OrderServiceImpl.class);
 
     public OrderServiceImpl() {
     	this.orderFinder= new EntityFinderImpl<Order>();
@@ -38,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
 		if(cart==null) {
 			cart= new Order();
 			cart.setUser(currentUser);
-			cart.setBill(null);
+			cart.setDate(null);
 			cart.setStatus("non-paye");
 			EntityTransaction transac= em.getTransaction();
 			try {
@@ -75,7 +76,6 @@ public class OrderServiceImpl implements OrderService {
 		finally {
 			if(transac.isActive())
 				transac.rollback();
-			em.clear();
 			em.close();
 			}	
 		return movieAdded;
@@ -119,7 +119,6 @@ public class OrderServiceImpl implements OrderService {
     	this.em= EMF.getEM();
 		boolean cartPaid= false;
 		Order cart= getCart(currentUser);
-		Bill b= new Bill();
 		EntityTransaction transac= em.getTransaction();
 		
 		try {
@@ -127,8 +126,7 @@ public class OrderServiceImpl implements OrderService {
 			
 			if(cart!=null) {
 
-				b.setDate(Date.valueOf(LocalDate.now()));
-				cart.setBill(b);
+				cart.setDate(Date.valueOf(LocalDate.now()));;
 				cart.setStatus("paye");
 				em.merge(cart);
 			}

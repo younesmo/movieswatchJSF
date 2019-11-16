@@ -62,7 +62,7 @@
 					<h:inputText id="cp" styleClass="form-control"
 						value="#{registrationBean.cp.number}" a:placeholder="Code Postal"
 						size="20" maxlength="60">
-						<f:ajax event="blur" render="cpMessage" />
+						<f:ajax event="blur" render="cpMesssage" />
 						<f:validator validatorId="cpExistValidator" />
 					</h:inputText>
 					<h:message id="cpMessage" for="cp" errorClass="text-danger" />
@@ -113,7 +113,7 @@
 				</div>
 
 
-				<h:messages globalOnly="true" infoClass="info" />
+				<h:messages globalOnly="true" infoClass="text-danger" />
 
 				<div class="form-group">
 					<h:commandButton value="Inscription"

@@ -28,6 +28,9 @@ public class MoviePerson implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_person", nullable=false)
 	private Person person;
+	
+	@Column(name="role", length=1)
+	private String ageMin;
 
 	public MoviePerson() {
 	}
@@ -55,5 +58,15 @@ public class MoviePerson implements Serializable {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
+
+	public String getAgeMin() {
+		return ageMin;
+	}
+
+	public void setAgeMin(String ageMin) {
+		this.ageMin = ageMin;
+	}
+	
+	
 
 }
