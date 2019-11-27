@@ -14,8 +14,7 @@
 <h:body>
 	<c:if test="#{sessionScope.currentUser.role.name == 'Admin' }">
 
-		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste
-			des films</h3>
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
 		<hr class="hr-light my-4 w-75" />
 		<h:form >
 		<h:inputText value="#{moviesBean.keyword}" a:placeholder="Search"

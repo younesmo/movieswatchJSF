@@ -41,5 +41,8 @@ public class NavBean implements Serializable {
 		return "orders";
 	}
 	
+	public String goToAllOrders() {
+		return "allOrders";
+	}
 	
 }

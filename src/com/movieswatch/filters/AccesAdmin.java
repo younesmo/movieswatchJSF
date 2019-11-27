@@ -57,10 +57,10 @@ public class AccesAdmin implements Filter {
 				chain.doFilter(req, resp);
 			}else {
 				log.debug(user.getRole().getName());
-				session.getServletContext().getRequestDispatcher("/WEB-INF/accesRefuser.jsp").forward(req, resp);
+				resp.sendRedirect(req.getContextPath() + "/accesDenied.xhtml");
 			}
 		}else {
-			session.getServletContext().getRequestDispatcher("/WEB-INF/accesRefuser.jsp").forward(req, resp);
+			resp.sendRedirect(req.getContextPath() + "/accesDenied.xhtml");
 		}
 	}
 

@@ -42,6 +42,11 @@
     	 	<to-view-id>/restricted/orders.xhtml</to-view-id>
     	 	<redirect/> 
  	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>allOrders</from-outcome> 
+    	 	<to-view-id>/admin/allOrders.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule> 

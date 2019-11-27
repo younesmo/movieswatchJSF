@@ -22,7 +22,7 @@
 
 					<h:dataTable value="#{cartBean.cart.orderMovies}"
 						var="orderMovie" styleClass="table table-striped "
-						headerClass="" rowClasses="text-right">
+						headerClass="" rowClasses="">
 
 						<h:column>
 							<f:facet name="header"></f:facet>
@@ -35,14 +35,14 @@
 							#{orderMovie.movie.title}
     					</h:column>
 
-						<h:column>
+						<h:column styleClass="text-right">
 							<f:facet name="header"></f:facet>
-							<h:form>
-								<h:commandButton styleClass="btn btn-sm btn-danger"
+								<h:form>
+								<h:commandLink styleClass="btn btn-sm btn-danger"
 									action="#{cartBean.delete(orderMovie.movie.id)}">
-									<i class="fa fa-trash"></i>
-								</h:commandButton>
-							</h:form>
+									 <i class='fa fa-trash'></i>	
+								</h:commandLink>
+								</h:form>
 						</h:column>
 					</h:dataTable>
 

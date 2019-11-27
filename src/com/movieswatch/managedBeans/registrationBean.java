@@ -17,6 +17,12 @@ import com.movieswatch.services.UserServiceImpl;
 @ViewScoped
 public class RegistrationBean implements Serializable {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8314158609120964813L;
+	
 	private User user;
 	private Postalcode cp;
 	

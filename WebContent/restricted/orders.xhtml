@@ -19,7 +19,7 @@
 				<div class="table-responsive">
 				<h:dataTable value="#{ordersBean.orders}"
 						var="order" styleClass="table table-striped "
-						headerClass="" rowClasses="text-rightt">
+						headerClass="" rowClasses="">
 
 						<h:column>
 							<f:facet name="header">Numéro de commande</f:facet>
@@ -33,14 +33,14 @@
         					</h:outputText>
     					</h:column>
 
-						<h:column>
+						<h:column styleClass="text-right">
 							<f:facet name="header"></f:facet>
 							<h:form>
-								<h:commandButton styleClass="btn btn-sm btn-info"
+								<h:commandLink styleClass="btn btn-sm btn-info"
 									action="#{orderBean.getDetails(order.id)}">
 										<i class="fa fa-info-circle"></i>
-								</h:commandButton>
-							</h:form>
+								</h:commandLink>
+								</h:form>
 						</h:column>
 					</h:dataTable>
 				</div>

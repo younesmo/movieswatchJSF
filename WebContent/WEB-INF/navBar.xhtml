@@ -30,12 +30,11 @@
                			<h:commandLink styleClass="nav-link" value="Accueil" action="#{navBean.goToWelcome}" />                    	
                     </li>
                     <li class="nav-item">
-               			<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
-                    </li>                      
-                    
-                    <li class="nav-item">
                			<h:commandLink styleClass="nav-link" value="Profil" action="#{navBean.goToProfil}" />                    	                    	                    	
                     </li>
+                    <li class="nav-item">
+               			<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
+                    </li>                      
                   
 				</c:if>
                 <c:choose>
@@ -53,6 +52,10 @@
                         <li class="nav-item">
                    			<h:commandLink styleClass="nav-link" value="Membres" action="#{navBean.goToMembers}" />                    	                    	                    	                    	                                                
                         </li>
+                        <li class="nav-item">
+                   			<h:commandLink styleClass="nav-link" value="Commandes" action="#{navBean.goToAllOrders}" />                    	                    	                    	                    	                                                
+                        </li>
+                        
                     </c:when>
                 </c:choose>                           
                 </ul>
