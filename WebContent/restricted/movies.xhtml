@@ -14,8 +14,11 @@
 <h:body>
 	<c:if test="#{sessionScope.currentUser.role.name == 'Admin' }">
 
+		
+		<div class="container">
 		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
 		<hr class="hr-light my-4 w-75" />
+		
 		<h:form >
 		<h:inputText value="#{moviesBean.keyword}" a:placeholder="Search"
 			size="50">
@@ -35,23 +38,19 @@
 			action="#{moviesBean.updateList}">
 		</h:commandButton>
 		</h:form>
-
-		<div class="container">
+		
 			<div class="table-wrapper">
 
 
 				<div class="col-sm-5">
 					<h2>Long metrage</h2>
 				</div>
-				<h:dataTable value="#{moviesBean.movies}" var="movie"
+				<h:dataTable value="#{moviesBean.longMovies}" var="movie"
 					styleClass="table table-striped table-hover" headerClass=""
 					rowClasses="">
 
-					<c:if test="#{movie.metrage=='long'}">
 						<h:column>
-							<!-- column header -->
 							<f:facet name="header">#</f:facet>
-							<!-- row record -->
     						#{movie.id}
     					</h:column>
 
@@ -72,20 +71,20 @@
 
 						<h:column>
 							<f:facet name="header">Action</f:facet>
-							<h:commandButton value="" styleClass="btn btn-sm btn-info" 
+							<h:form>
+							<h:commandLink value="" styleClass="btn btn-sm btn-info" 
 							action="#{movieBean.goToMovieDetails(movie.id)}">
 								<i class="fa fa-info-circle"></i>
-							</h:commandButton>
+							</h:commandLink>
+							</h:form>
 						</h:column>
-					</c:if>
 				</h:dataTable>
 
 				<div class="col-sm-7">
 				<h:form>
-					<h:commandButton value="Ajouter un film"
+					<h:commandLink value="Ajouter un film"
 						styleClass="btn btn-primary" action="#{moviesBean.goToAddMovie}">
-						<i class="material-icons">&#xE147;</i>
-					</h:commandButton>
+					</h:commandLink>
 				</h:form>
 				</div>
 
@@ -94,11 +93,10 @@
 				<div class="col-sm-5">
 					<h2>Court metrage</h2>
 				</div>
-				<h:dataTable value="#{moviesBean.movies}" var="movie"
+				<h:dataTable value="#{moviesBean.shortMovies}" var="movie"
 					styleClass="table table-striped table-hover" headerClass=""
 					rowClasses="">
 
-					<c:if test="#{movie.metrage=='court'}">
 						<h:column>
 							<!-- column header -->
 							<f:facet name="header">#</f:facet>
@@ -124,13 +122,12 @@
 						<h:column>
 							<f:facet name="header">Action</f:facet>
 							<h:form>
-							<h:commandButton value="" styleClass="btn btn-sm btn-info"
+							<h:commandLink value="" styleClass="btn btn-sm btn-info"
 								action="#{movieBean.goToMovieDetails(movie.id)}">
 								<i class="fa fa-info-circle"></i>
-							</h:commandButton>
+							</h:commandLink>
 							</h:form>
 						</h:column>
-					</c:if>
 				</h:dataTable>
 
 			</div>
@@ -166,8 +163,8 @@
 
 		<h2>Long metrage</h2>
 		<div class="card-columns col-lg-7">
-			<c:forEach items="#{moviesBean.movies}" var="movie" varStatus="status">
-				<c:if test="#{movie.metrage=='long' }">
+			<c:forEach items="#{moviesBean.longMovies}" var="movie" varStatus="status">
+
 					<div class="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
 						<div class="view view-cascade overlay">
@@ -199,7 +196,6 @@
 							</div>
 						</div>
 					</div>
-				</c:if>
 			</c:forEach>
 		</div>
 		<!-- Card package -->
@@ -207,8 +203,7 @@
 		<h2>Court metrage</h2>
 
 		<div class="card-columns col-lg-7 ">
-			<c:forEach items="#{moviesBean.movies}" var="movie" varStatus="status">
-				<c:if test="#{movie.metrage=='court' }">
+			<c:forEach items="#{moviesBean.shortMovies}" var="movie" varStatus="status">
 					<div class="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
 						<div class="view view-cascade overlay">
@@ -239,7 +234,6 @@
 							</div>
 						</div>
 					</div>
-				</c:if>
 			</c:forEach>
 		</div>
 
