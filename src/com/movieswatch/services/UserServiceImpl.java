@@ -1,9 +1,9 @@
 package com.movieswatch.services;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -12,16 +12,13 @@ import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.User;
-import com.movieswatch.utils.SessionUtils;
 
 public class UserServiceImpl implements UserService {
 
 	private EntityManager manager;
 	
-	//@Inject
 	private EntityFinder<User> finder;
 	
-	//@Inject
 	private PostalCodeService cpService;
 	
 	public UserServiceImpl() {
@@ -40,7 +37,7 @@ public class UserServiceImpl implements UserService {
 			 manager.persist(user);
 			 transac.commit();
 			 
-		 }catch(Exception e) {
+		 }finally {
 			 if(transac.isActive())
 				 transac.rollback();
 			 manager.clear();
@@ -66,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean updateUser(User updatedUser) {
-		boolean isUpdateDone=false;
+		boolean isUpdated=false;
 		manager = EMF.getEM();
 		EntityTransaction transac= manager.getTransaction();
 
@@ -74,7 +71,7 @@ public class UserServiceImpl implements UserService {
 			transac.begin();
 			manager.merge(updatedUser);			
 			transac.commit();
-			isUpdateDone= true;
+			isUpdated= true;
 		}
 		finally {
 			if(transac.isActive())
@@ -82,7 +79,32 @@ public class UserServiceImpl implements UserService {
 			manager.clear();
 			manager.close();
 		}
-		return isUpdateDone;
+		return isUpdated;
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return finder.findByNamedQuery("User.findAll", new User(), null);
+	}
+
+	@Override
+	public boolean deleteUser(int id) {
+		boolean isDeleted= false;
+		manager= EMF.getEM();
+		EntityTransaction transac= manager.getTransaction();
+		try {
+			 transac.begin();
+			 User userToDel= manager.find(User.class, id);
+			 manager.remove(userToDel);
+			 transac.commit();
+			 isDeleted= true;
+		 }finally{
+			 if(transac.isActive())
+				 transac.rollback();
+			 manager.clear();
+			 manager.close();
+		 }
+		return isDeleted;
 	}
 
 }

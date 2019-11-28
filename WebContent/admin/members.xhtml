@@ -13,5 +13,142 @@
 </h:head>
 <h:body>
 
+	<div class="container">
+	<h3 class="display-3 font-weight-bold  mt-5 pt-5 text-dark">Liste des membres</h3>
+	<hr class="hr-light my-4 w-75"/>
+	
+		<div class="table-wrapper">
+
+			<div class="col-sm-5">
+				<h2>Administrateur</h2>
+			</div>
+			<h:dataTable value="#{usersBean.admins}"
+						var="user" styleClass="table table-striped table-hover"
+						headerClass="" rowClasses="">
+
+						<h:column>
+							<f:facet name="header">#</f:facet>
+							#{user.id}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nom</f:facet>
+							#{user.lastname} #{user.firstname}
+    					</h:column>
+
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							#{user.email}		
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Role</f:facet>
+							#{user.role.name}		
+						</h:column>
+						
+						<h:column styleClass="text-right">
+							<f:facet name="header">Action</f:facet>
+							<h:form>
+								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
+									 <i class='fa fa-trash'></i>	
+								</h:commandLink>
+							</h:form>
+						</h:column>
+						
+					</h:dataTable>
+
+
+			<div class="col-sm-7">
+							<h:form>
+								<h:commandLink value="Ajouter un utilisateur" action="#{usersBean.addUser}"
+								 styleClass="btn btn-info">
+								</h:commandLink>
+							</h:form>
+			</div>
+			
+			
+			<br/>
+			<hr class="hr-light my-4 w-75"/>
+			<div class="col-sm-5">
+				<h2>Comptables</h2>
+			</div>
+			<h:dataTable value="#{usersBean.accounters}"
+						var="user" styleClass="table table-striped table-hover"
+						headerClass="" rowClasses="">
+
+						<h:column>
+							<f:facet name="header">#</f:facet>
+							#{user.id}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nom</f:facet>
+							#{user.lastname} #{user.firstname}
+    					</h:column>
+
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							#{user.email}		
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Role</f:facet>
+							#{user.role.name}		
+						</h:column>
+						
+						<h:column styleClass="text-right">
+							<f:facet name="header">Action</f:facet>
+							<h:form>
+								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
+									 <i class='fa fa-trash'></i>	
+								</h:commandLink>
+							</h:form>
+						</h:column>
+					</h:dataTable>
+			
+			
+			<br/>
+			<hr class="hr-light my-4 w-75"/>
+			<div class="col-sm-5">
+				<h2>Utilisateur</h2>
+			</div>
+			<h:dataTable value="#{usersBean.members}"
+						var="user" styleClass="table table-striped table-hover"
+						headerClass="" rowClasses="">
+
+						<h:column>
+							<f:facet name="header">#</f:facet>
+							#{user.id}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nom</f:facet>
+							#{user.lastname} #{user.firstname}
+    					</h:column>
+
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							#{user.email}		
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Role</f:facet>
+							#{user.role.name}		
+						</h:column>
+						
+						<h:column styleClass="text-right">
+							<f:facet name="header">Action</f:facet>
+							<h:form>
+								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
+									 <i class='fa fa-trash'></i>	
+								</h:commandLink>
+							</h:form>
+						</h:column>
+					</h:dataTable>
+					
+				<ui:include src="/WEB-INF/footer.xhtml" />
+					
+		</div>
+	</div>
 </h:body>
 </html>
