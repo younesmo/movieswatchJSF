@@ -61,8 +61,8 @@ public class UsersBean implements Serializable{
 		}
 	}
 	
-	public String addUser() {
-		return "addUser";
+	public String addMember() {
+		return "addMember";
 	}
 
 	public List<User> getUsers() {

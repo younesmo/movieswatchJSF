@@ -60,7 +60,7 @@
 
 			<div class="col-sm-7">
 							<h:form>
-								<h:commandLink value="Ajouter un utilisateur" action="#{usersBean.addUser}"
+								<h:commandLink value="Ajouter un utilisateur" action="#{usersBean.addMember}"
 								 styleClass="btn btn-info">
 								</h:commandLink>
 							</h:form>
@@ -146,6 +146,7 @@
 						</h:column>
 					</h:dataTable>
 					
+				<h:messages globalOnly="true" infoClass="text-success" />				
 				<ui:include src="/WEB-INF/footer.xhtml" />
 					
 		</div>

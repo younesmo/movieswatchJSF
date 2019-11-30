@@ -2,6 +2,8 @@ package com.movieswatch.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.util.List;
 
 
@@ -24,7 +26,8 @@ public class Postalcode implements Serializable {
 	@Column(name="city_name", length=255)
 	private String city_name;
 
-	@Column(length=5)
+	@Column(length=5)	
+	@NotNull(message = "Veuillez saisir un code postal")
 	private String number;
 
 	//bi-directional many-to-one association to Country

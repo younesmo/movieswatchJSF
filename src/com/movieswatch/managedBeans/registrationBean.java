@@ -25,6 +25,7 @@ public class RegistrationBean implements Serializable {
 	
 	private User user;
 	private Postalcode cp;
+	private int idRole;
 	
 	//@Inject
 	transient private UserService userService;
@@ -54,6 +55,17 @@ public class RegistrationBean implements Serializable {
 		 return "login";
 	}
 	
+	public String insertUser() {
+		Role role= new Role();
+		role.setId(idRole);
+		user.setRole(role);
+		user.setPostalcode(cp);
+		userService.insertUser(user);
+		 FacesMessage message= new FacesMessage("Membres ajoutés");
+		 FacesContext.getCurrentInstance().addMessage(null, message);
+		 return "members";
+	}
+	
 	public Postalcode getCp() {
 		return cp;
 	}
@@ -61,5 +73,15 @@ public class RegistrationBean implements Serializable {
 	public void setCp(Postalcode cp) {
 		this.cp = cp;
 	}
+
+	public int getIdRole() {
+		return idRole;
+	}
+
+	public void setIdRole(int role) {
+		this.idRole = role;
+	}
+	
+	
 
 }

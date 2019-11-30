@@ -94,7 +94,6 @@
 		<navigation-case> 
     			 <from-outcome>editProfil</from-outcome> 
     		 	<to-view-id>/restricted/editProfil.xhtml</to-view-id> 
-    		 	<redirect/>
  	 	</navigation-case>
  	 	<navigation-case> 
     			 <from-outcome>editPassword</from-outcome> 
@@ -117,4 +116,20 @@
     		 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
  	 	</navigation-case>
  	 </navigation-rule>
+ 	 
+ 	 	<navigation-rule> 
+   		<from-view-id>/admin/members.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>addMember</from-outcome> 
+    	 	<to-view-id>/admin/addMember.xhtml</to-view-id> 
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	 	 	<navigation-rule> 
+   		<from-view-id>/admin/addMember.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>members</from-outcome> 
+    	 	<to-view-id>/admin/members.xhtml</to-view-id> 
+ 	  	</navigation-case>
+	</navigation-rule>
 </faces-config>

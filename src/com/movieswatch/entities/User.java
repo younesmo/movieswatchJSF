@@ -29,7 +29,7 @@ public class User implements Serializable {
 	private int id;
 
 	@Column(name="street_name",length=255)
-	@NotNull (message = "Veuillez saisir une rue")
+	@NotNull(message = "Veuillez saisir une rue")
 	private String streetName;
 
 	@Temporal(TemporalType.DATE)
