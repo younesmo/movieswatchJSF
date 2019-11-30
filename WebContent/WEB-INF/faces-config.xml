@@ -77,7 +77,6 @@
  	  	<navigation-case> 
     		 <from-outcome>order</from-outcome> 
     	 	<to-view-id>/restricted/order.xhtml</to-view-id> 
-    	 	<redirect/>
  	  	</navigation-case>
 	</navigation-rule>
 	
@@ -125,11 +124,20 @@
  	  	</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule> 
+   		<from-view-id>/admin/members.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>updateMember</from-outcome> 
+    	 	<to-view-id>/admin/updateMember.xhtml</to-view-id> 
+ 	  	</navigation-case>
+	</navigation-rule>
+	
 	 	 	<navigation-rule> 
    		<from-view-id>/admin/addMember.xhtml</from-view-id>  
  	  	<navigation-case> 
     		 <from-outcome>members</from-outcome> 
     	 	<to-view-id>/admin/members.xhtml</to-view-id> 
+    	 	<redirect/>
  	  	</navigation-case>
 	</navigation-rule>
 </faces-config>

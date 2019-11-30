@@ -107,4 +107,9 @@ public class UserServiceImpl implements UserService {
 		return isDeleted;
 	}
 
+	@Override
+	public User getById(int id) {
+		return finder.findOne(new User(), id);
+	}
+
 }

@@ -2,6 +2,7 @@ package com.movieswatch.managedBeans;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -11,7 +12,7 @@ import com.movieswatch.entities.Order;
 import com.movieswatch.services.OrderService;
 import com.movieswatch.services.OrderServiceImpl;
 
-@SessionScoped
+@RequestScoped
 @Named
 public class OrderBean implements Serializable {
 

@@ -49,6 +49,10 @@
 						<h:column styleClass="text-right">
 							<f:facet name="header">Action</f:facet>
 							<h:form>
+								<h:commandLink action="#{updateMemberBean.goToUpdate(user.id)}">
+									 <i class='fa fa-edit'></i>	
+								</h:commandLink>
+								
 								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>
@@ -99,6 +103,10 @@
 						<h:column styleClass="text-right">
 							<f:facet name="header">Action</f:facet>
 							<h:form>
+							<h:commandLink action="#{updateMemberBean.goToUpdate(user.id)}">
+									 <i class='fa fa-edit'></i>	
+								</h:commandLink>
+								
 								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>
@@ -139,6 +147,10 @@
 						<h:column styleClass="text-right">
 							<f:facet name="header">Action</f:facet>
 							<h:form>
+								<h:commandLink action="#{updateMemberBean.goToUpdate(user.id)}">
+									 <i class='fa fa-edit'></i>	
+								</h:commandLink>
+								
 								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>

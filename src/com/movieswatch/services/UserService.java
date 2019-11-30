@@ -6,6 +6,7 @@ import com.movieswatch.entities.User;
 
 public interface UserService {
 
+	User getById(int id);
 	List<User> getAllUsers();
 	void insertUser(User user);
 	User findByEmail(String email);

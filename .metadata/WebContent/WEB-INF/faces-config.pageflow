@@ -14,11 +14,12 @@
   <nodes xsi:type="pageflow:PFPage" name="restricted/editProfil.xhtml" x="122" y="2311" id="pf15748780950384" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15748780950382" inlinks="pf15748780950380" path="/restricted/editProfil.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="restricted/editPassword.xhtml" x="122" y="2695" id="pf15748780950385" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf15748780950383" inlinks="pf15748780950381" path="/restricted/editPassword.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="admin/allOrders.xhtml" x="338" y="2119" id="pf15749795563942" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf15749795563940" path="/admin/allOrders.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin/members.xhtml" id="pf15749795563943" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf15751149668524" inlinks="pf15749795563941 pf15751157737356" path="/admin/members.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin/addMember.xhtml" id="pf15751149668525" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf15751157737356" inlinks="pf15751149668524" path="/admin/addMember.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/members.xhtml" id="pf15749795563943" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf15751149668524 pf15751519444907" inlinks="pf15749795563941 pf15751157737356" path="/admin/members.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/addMember.xhtml" id="pf15751149668525" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf15751157737356" inlinks="pf15751149668524" path="/admin/addMember.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/updateMember.xhtml" id="pf15751519444908" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf15751519444907" path="/admin/updateMember.xhtml"/>
   <links id="pf15731522074401" target="pf15731522074405" source="pf15730786989512" outcome="movieDetails" redirect="true"/>
   <links id="pf15735184726050" target="pf15735184726051" source="pf15731522074407" outcome="orders" redirect="true"/>
-  <links id="pf15735185055582" target="pf15735185055583" source="pf15735184726051" outcome="order" redirect="true"/>
+  <links id="pf15735185055582" target="pf15735185055583" source="pf15735184726051" outcome="order"/>
   <links id="pf15736714447815" target="pf15736714447817" source="pf15736714447814" outcome="registration" redirect="true"/>
   <links id="pf15736714447816" target="pf15736714447818" source="pf15736714447814" outcome="welcome" redirect="true"/>
   <links id="pf15736714447800" target="pf15730786989512" source="pf15736714447814" outcome="movies" redirect="true"/>
@@ -38,5 +39,6 @@
   </links>
   <links id="pf15749795563941" target="pf15749795563943" source="pf15736714447814" outcome="members" redirect="true"/>
   <links id="pf15751149668524" target="pf15751149668525" source="pf15749795563943" outcome="addMember"/>
-  <links id="pf15751157737356" target="pf15749795563943" source="pf15751149668525" outcome="members"/>
+  <links id="pf15751157737356" target="pf15749795563943" source="pf15751149668525" outcome="members" redirect="true"/>
+  <links id="pf15751519444907" target="pf15751519444908" source="pf15749795563943" outcome="updateMember"/>
 </pageflow:Pageflow>

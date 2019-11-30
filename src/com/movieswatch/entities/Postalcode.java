@@ -27,7 +27,7 @@ public class Postalcode implements Serializable {
 	private String city_name;
 
 	@Column(length=5)	
-	@NotNull(message = "Veuillez saisir un code postal")
+	@NotNull(message="Veuillez saisir un code postal")
 	private String number;
 
 	//bi-directional many-to-one association to Country
