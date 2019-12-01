@@ -9,6 +9,7 @@ import com.movieswatch.entities.Movie;
 import com.movieswatch.entities.User;
 
 public interface OrderService {
+	List<Order> getAllOrders();
 	List<Order> getOrders(User currentUser);
 	Order getById(int id);
 	Order getCart(User currentUser);

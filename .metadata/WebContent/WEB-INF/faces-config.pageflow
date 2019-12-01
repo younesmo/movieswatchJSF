@@ -5,18 +5,18 @@
   <nodes xsi:type="pageflow:PFPage" name="accesrestreint/filmDetails.xhtml" x="554" y="178" id="pf15731522074405" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15731522074401" path="/restricted/movie.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="accesrestreint/panier.xhtml" x="338" y="1330" id="pf15731522074407" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15735184726050" inlinks="pf15736714447801" path="/restricted/cart.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="562" id="pf15732207511214" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf15732207511215" inlinks="pf15732207511215 pf15736714447812" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="restricted/orders.xhtml" x="554" y="1532" id="pf15735184726051" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf15735185055582" inlinks="pf15735184726050 pf15736714447813" path="/restricted/orders.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="restricted/order.xhtml" x="770" y="1532" id="pf15735185055583" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" inlinks="pf15735185055582" path="/restricted/order.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="restricted/movies.xhtm" x="122" y="1532" id="pf15736714447814" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15736714447815 pf15736714447816 pf15736714447800 pf15736714447801 pf15736714447812 pf15736714447813 pf15737771269090 pf15749795563940 pf15749795563941" path="/*"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/orders.xhtml" x="554" y="1532" id="pf15735184726051" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15735185055582" inlinks="pf15735184726050 pf15736714447813" path="/restricted/orders.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/order.xhtml" x="770" y="1532" id="pf15735185055583" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15735185055582" path="/restricted/order.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="restricted/movies.xhtm" x="122" y="1532" id="pf15736714447814" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15736714447815 pf15736714447816 pf15736714447800 pf15736714447801 pf15736714447812 pf15736714447813 pf15737771269090 pf15749795563941 pf15752083414459" path="/*"/>
   <nodes xsi:type="pageflow:PFPage" name="registration.xhtml" x="338" y="946" id="pf15736714447817" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15736714447815" path="/registration.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="restricted/welcome.xhtml" x="338" y="1735" id="pf15736714447818" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15736714447816" path="/restricted/welcome.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="restricted/editProfil.xhtml" x="338" y="2503" id="pf15737771269091" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf15748780950380 pf15748780950381" inlinks="pf15737771269090 pf15748780950382 pf15748780950383" path="/restricted/profile.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="restricted/editProfil.xhtml" x="122" y="2311" id="pf15748780950384" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15748780950382" inlinks="pf15748780950380" path="/restricted/editProfil.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="restricted/editPassword.xhtml" x="122" y="2695" id="pf15748780950385" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf15748780950383" inlinks="pf15748780950381" path="/restricted/editPassword.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin/allOrders.xhtml" x="338" y="2119" id="pf15749795563942" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf15749795563940" path="/admin/allOrders.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin/members.xhtml" id="pf15749795563943" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf15751149668524 pf15751519444907" inlinks="pf15749795563941 pf15751157737356" path="/admin/members.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin/addMember.xhtml" id="pf15751149668525" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf15751157737356" inlinks="pf15751149668524" path="/admin/addMember.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/members.xhtml" id="pf15749795563943" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" outlinks="pf15751149668524 pf15751519444907" inlinks="pf15749795563941 pf15751157737356" path="/admin/members.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin/addMember.xhtml" id="pf15751149668525" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf15751157737356" inlinks="pf15751149668524" path="/admin/addMember.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="admin/updateMember.xhtml" id="pf15751519444908" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf15751519444907" path="/admin/updateMember.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accounting/allOrders.xhtml" id="pf157520834144510" referenceLink="//@navigationRule.0/@navigationCase.7/@toViewId|" inlinks="pf15752083414459" path="/accounting/allOrders.xhtml"/>
   <links id="pf15731522074401" target="pf15731522074405" source="pf15730786989512" outcome="movieDetails" redirect="true"/>
   <links id="pf15735184726050" target="pf15735184726051" source="pf15731522074407" outcome="orders" redirect="true"/>
   <links id="pf15735185055582" target="pf15735185055583" source="pf15735184726051" outcome="order"/>
@@ -31,7 +31,6 @@
   <links id="pf15748780950381" target="pf15748780950385" source="pf15737771269091" outcome="editPassword"/>
   <links id="pf15748780950382" target="pf15737771269091" source="pf15748780950384" outcome="profil"/>
   <links id="pf15748780950383" target="pf15737771269091" source="pf15748780950385" outcome="profil"/>
-  <links id="pf15749795563940" target="pf15749795563942" source="pf15736714447814" outcome="allOrders" redirect="true"/>
   <links id="pf15732207511215" target="pf15732207511214" source="pf15732207511214" outcome="login">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -41,4 +40,5 @@
   <links id="pf15751149668524" target="pf15751149668525" source="pf15749795563943" outcome="addMember"/>
   <links id="pf15751157737356" target="pf15749795563943" source="pf15751149668525" outcome="members" redirect="true"/>
   <links id="pf15751519444907" target="pf15751519444908" source="pf15749795563943" outcome="updateMember"/>
+  <links id="pf15752083414459" target="pf157520834144510" source="pf15736714447814" outcome="allOrders" redirect="true"/>
 </pageflow:Pageflow>

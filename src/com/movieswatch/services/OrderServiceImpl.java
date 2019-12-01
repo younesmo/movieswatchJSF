@@ -159,6 +159,10 @@ public class OrderServiceImpl implements OrderService {
 	public Order getById(int id) {
 		return orderFinder.findOne(new Order(), id);
 	}
+	@Override
+	public List<Order> getAllOrders() {
+		return orderFinder.findByNamedQuery("Order.getPaidOrders", new Order(), null);
+	}
 	
 	
 

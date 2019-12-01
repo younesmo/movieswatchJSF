@@ -31,14 +31,15 @@
                     </li>
                     <li class="nav-item">
                			<h:commandLink styleClass="nav-link" value="Profil" action="#{navBean.goToProfil}" />                    	                    	                    	
-                    </li>
-                    <li class="nav-item">
-               			<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
-                    </li>                      
+                    </li>       
                   
 				</c:if>
                 <c:choose>
-                    <c:when test="#{sessionScope.currentUser.role.name == 'User' }">    
+                    <c:when test="#{sessionScope.currentUser.role.name == 'User' }">
+                    
+                    	<li class="nav-item">
+               				<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
+                	    </li>                   
                         <li class="nav-item">
                    			<h:commandLink styleClass="nav-link" value="Panier" action="#{navBean.goToCart}" />                    	                    	                    	                    	
                         </li>
@@ -49,6 +50,9 @@
                     </c:when>
 
                     <c:when test="#{sessionScope.currentUser.role.name == 'Admin' }">
+                 	   <li class="nav-item">
+               				<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
+                 	   </li>               
                         <li class="nav-item">
                    			<h:commandLink styleClass="nav-link" value="Membres" action="#{navBean.goToMembers}" />                    	                    	                    	                    	                                                
                         </li>
@@ -56,6 +60,12 @@
                    			<h:commandLink styleClass="nav-link" value="Commandes" action="#{navBean.goToAllOrders}" />                    	                    	                    	                    	                                                
                         </li>
                         
+                    </c:when>
+                    
+                    <c:when test="#{sessionScope.currentUser.role.name == 'Accounting' }">
+                        <li class="nav-item">
+                   			<h:commandLink styleClass="nav-link" value="Commandes" action="#{navBean.goToAllOrders}" />                    	                    	                    	                    	                                                
+                        </li>                        
                     </c:when>
                 </c:choose>                           
                 </ul>
