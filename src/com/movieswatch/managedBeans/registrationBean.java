@@ -82,6 +82,4 @@ public class RegistrationBean implements Serializable {
 		this.idRole = role;
 	}
 	
-	
-
 }

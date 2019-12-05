@@ -83,6 +83,7 @@
 						a:placeholder="Date de naissance">
 						<f:convertDateTime pattern="yyyy-MM-dd" />
 						<f:ajax event="blur" render="birthMessage" />
+						<f:validator validatorId="ageValidator" />
 					</h:inputText>
 					<h:message id="birthMessage" for="birth" errorClass="text-danger" />
 				</div>
