@@ -65,9 +65,6 @@ public class Movie implements Serializable {
 	@OneToMany(mappedBy="movie")
 	private List<MoviePerson> moviePersons;
 		
-	//bi-directional many-to-one association to OrderMovie
-	@OneToMany(mappedBy="movie")
-	private List<OrderMovie> orderMovies;
 
 	public Movie() {
 	}
@@ -254,29 +251,5 @@ public class Movie implements Serializable {
 
 		return moviesFormat;
 	}
-
-	public List<OrderMovie> getOrderMovies() {
-		return this.orderMovies;
-	}
-
-	public void setOrderMovies(List<OrderMovie> orderMovies) {
-		this.orderMovies = orderMovies;
-	}
-
-	public OrderMovie addOrderMovie(OrderMovie orderMovie) {
-		getOrderMovies().add(orderMovie);
-		orderMovie.setMovie(this);
-
-		return orderMovie;
-	}
-
-	public OrderMovie removeOrderMovie(OrderMovie orderMovie) {
-		getOrderMovies().remove(orderMovie);
-		
-		orderMovie.setMovie(null);
-
-		return orderMovie;
-	}
-
 	
 }

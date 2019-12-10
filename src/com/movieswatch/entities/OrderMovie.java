@@ -27,7 +27,7 @@ public class OrderMovie implements Serializable {
 	//bi-directional many-to-one association to Movie
 	@ManyToOne
 	@JoinColumn(name="id_movie", nullable=false)
-	private Movie movie;
+	private MoviesFormat movie;
 
 	public OrderMovie() {
 	}
@@ -48,11 +48,11 @@ public class OrderMovie implements Serializable {
 		this.order = order;
 	}
 
-	public Movie getMovie() {
+	public MoviesFormat getMovie() {
 		return this.movie;
 	}
 
-	public void setMovie(Movie movie) {
+	public void setMovie(MoviesFormat movie) {
 		this.movie = movie;
 	}
 

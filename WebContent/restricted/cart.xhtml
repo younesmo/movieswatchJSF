@@ -26,15 +26,20 @@
 
 						<h:column>
 							<f:facet name="header"></f:facet>
-							<h:graphicImage value="#{orderMovie.movie.posterUrl}"
+							<h:graphicImage value="#{orderMovie.movie.movie.posterUrl}"
 								width="50" height="50" />
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Title</f:facet>
-							#{orderMovie.movie.title}
+							<f:facet name="header">Titre</f:facet>
+							#{orderMovie.movie.movie.title}
     					</h:column>
 
+						<h:column>
+							<f:facet name="header">Prix</f:facet>
+							#{orderMovie.movie.price} €
+    					</h:column>
+						
 						<h:column styleClass="text-right">
 							<f:facet name="header"></f:facet>
 								<h:form>
@@ -45,21 +50,33 @@
 								</h:form>
 						</h:column>
 					</h:dataTable>
-
-
+					
 					<c:choose>
 						<c:when test="#{!empty cartBean.cart.orderMovies}">
+						<hr/>
+					<div>Prix total: <h:outputText value="#{cartBean.totalPrice} €"/></div>
+					<hr/>
+						<h:form>
+						<div class="form-group">
+						<h:outputLabel for="payment" value="Selectionner un moyen de paiement"/>
+						<h:selectOneRadio id="payment" styleClass="col-sm-6 col-md-4" value="#{cartBean.cart.paymentMode}" required="true" requiredMessage="Vous devez choisir un moyen de payement">
+   							<f:selectItem  itemValue="Paypal" itemLabel="Paypal" />
+   							<f:selectItem itemValue="Visa" itemLabel="Visa" />
+   							<f:selectItem itemValue="Mastercard" itemLabel="MasterCard" />
+   					   		<f:selectItem  itemValue="Bancontact" itemLabel=" Bancontact" />  							
+   						</h:selectOneRadio>
+   						<h:message for="payment" styleClass="text-danger"/>
+   						</div>
+   						<br/>
 							<div class="col mb-2">
 								<div class="col-sm-12 col-md-6 text-right">
-
-									<h:form>
 										<h:commandButton
 											styleClass="btn btn-lg btn-block btn-success text-uppercase"
 											value="Checkout" action="#{cartBean.pay}">
 										</h:commandButton>
-									</h:form>
 								</div>
 							</div>
+							</h:form>							
 						</c:when>
 
 						<c:when test="#{empty cartBean.cart.orderMovies}">

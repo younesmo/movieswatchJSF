@@ -14,15 +14,17 @@
 <h:body>
 
 	<div class="container">
-		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Détails du film</h3>
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Détails
+			du film</h3>
 		<div class="row justify-content-md-center">
 			<div class="row">
 				<div class="col">
 					<div class="card-deck">
 						<div class="card mb-4">
 							<div class="view overlay">
-							<h:graphicImage value="#{movieBean.movie.posterUrl}" styleClass="card-img-top " />
-									<div class="mask rgba-white-slight"></div>
+								<h:graphicImage value="#{movieBean.movie.posterUrl}"
+									styleClass="card-img-top " />
+								<div class="mask rgba-white-slight"></div>
 							</div>
 							<div class="card-body">
 								<h4 class="card-title">#{movieBean.movie.title}</h4>
@@ -30,8 +32,7 @@
 							</div>
 						</div>
 					</div>
-					<br/>
-					<br/>
+					<br /> <br />
 				</div>
 				<div class="card bg-light mb-3 " style="max-width: 23rem;">
 					<h2>Infos Film</h2>
@@ -62,13 +63,26 @@
 
 
 								<c:if test="#{sessionScope.currentUser.role.name == 'User' }">
-								<h:form>
-								<h:commandButton value="Ajouter au panier" styleClass="btn btn-success"
-									action="#{movieBean.addInCart}">
-								</h:commandButton>
-								</h:form>
+									<h:form>
+									<hr/>
+									<h:outputLabel for="format" value="Format"/>
+										<h:selectOneRadio id="format" styleClass="col-sm-6 col-md-5"
+											value="#{movieBean.movieFormat.id}" required="true"
+											requiredMessage="Vous devez choisir un format">
+											<f:selectItems value="#{movieBean.moviesFormat}" var="mf"
+											itemValue="#{mf.id}" itemLabel="#{mf.format.name}"/>	
+																					
+											<f:ajax listener="#{movieBean.initMovieFormat}" event="change" render="priceMessage" />																						
+										</h:selectOneRadio>
+				   						<h:message for="format" styleClass="text-danger"/>
+										<h:outputText id="priceMessage" value="#{movieBean.movieFormat.price} €"/>
+										<hr/>
+										<h:commandButton value="Ajouter au panier"
+											styleClass="btn btn-success" action="#{movieBean.addInCart}">
+										</h:commandButton>
+									</h:form>
 								</c:if>
-								
+
 							</div>
 						</div>
 					</div>

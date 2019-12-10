@@ -6,6 +6,7 @@ import com.movieswatch.entities.OrderMovie;
 import java.util.List;
 
 import com.movieswatch.entities.Movie;
+import com.movieswatch.entities.MoviesFormat;
 import com.movieswatch.entities.User;
 
 public interface OrderService {
@@ -13,7 +14,7 @@ public interface OrderService {
 	List<Order> getOrders(User currentUser);
 	Order getById(int id);
 	Order getCart(User currentUser);
-	boolean addMovieInCart(User currentUser, Movie movie);
+	boolean addMovieInCart(User currentUser, MoviesFormat movie);
 	boolean deleteFromCart(int idMovieToRemove, User currentUser);
-	Order payCart(User currentUser);
+	Order payCart(Order cart);
 }

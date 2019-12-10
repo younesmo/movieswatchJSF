@@ -12,6 +12,8 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
+<div class="container">
+	
 	<h2 class="h1-responsive font-weight-bold text-center mt-5 pt-5text-dark">Vos Achats</h2>
 
 	<c:forEach var="orderMovie" items="#{orderBean.order.orderMovies}">
@@ -25,28 +27,28 @@
 
 					<!-- Featured image -->
 					<div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-						<h:graphicImage value="#{orderMovie.movie.posterUrl}" alt="#{orderMovie.movie.title}" styleClass="img-fluid" />							
+						<h:graphicImage value="#{orderMovie.movie.movie.posterUrl}" alt="#{orderMovie.movie.movie.title}" styleClass="img-fluid" />							
 							<div class="mask rgba-white-slight"></div>
 					</div>
 
 				</div>
-				<!-- Grid column -->
 
 				<!-- Grid column -->
 				<div class="col-lg-7 col-xl-8">
 
 					<!-- Post title -->
 					<h3 class="font-weight-bold mb-3">
-						<strong>#{orderMovie.movie.title}</strong>
+						<strong>#{orderMovie.movie.movie.title}</strong>
 					</h3>
 					<!-- Excerpt -->
-					<p class="dark-grey-text">#{orderMovie.movie.synopsis}</p>
+					<p class="dark-grey-text">#{orderMovie.movie.movie.synopsis}</p>
 					<!-- Post data -->
 					<p>
 						by <a class="font-weight-bold">Jessica Clark</a>,
-						#{orderMovie.movie.productionYear}
+						#{orderMovie.movie.movie.productionYear}
 					</p>
-
+					
+					<p> <h:outputText value="Prix: #{orderMovie.movie.price} €"/> </p>
 
 				</div>
 				<!-- Grid column -->
@@ -58,7 +60,13 @@
 		</section>
 
 	</c:forEach>
-
+	
+	<div>
+	<h:outputText value="Prix total: #{orderBean.totalPrice} €" />
+	<br/>
+	<h:outputText value="Moyen de paiement: #{orderBean.order.paymentMode}" />
+	</div>
+	</div>
 	<ui:include src="/WEB-INF/footer.xhtml" />
 
 </h:body>

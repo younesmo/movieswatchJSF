@@ -1,6 +1,7 @@
 package com.movieswatch.managedBeans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -11,6 +12,7 @@ import javax.inject.Named;
 import org.apache.log4j.Logger;
 
 import com.movieswatch.entities.Movie;
+import com.movieswatch.entities.MoviesFormat;
 import com.movieswatch.entities.User;
 import com.movieswatch.services.OrderService;
 import com.movieswatch.services.OrderServiceImpl;
@@ -23,6 +25,8 @@ import com.movieswatch.utils.SessionUtils;
 public class MovieBean implements Serializable {
 
 	private Movie movie;
+	private MoviesFormat movieFormat= new MoviesFormat();
+	private List<MoviesFormat> moviesFormat;
 	transient private MovieService movieService;
 	transient private OrderService orderService;
 	transient private static Logger logger = Logger.getLogger(MovieBean.class);
@@ -38,7 +42,7 @@ public class MovieBean implements Serializable {
 	
 	public String addInCart() {
 		User currentUser= SessionUtils.getCurrentUser();
-		boolean isMovieAdded= orderService.addMovieInCart(currentUser, movie);
+		boolean isMovieAdded= orderService.addMovieInCart(currentUser, movieFormat);
 		if(isMovieAdded)
 			return "cart";
 		else {
@@ -50,7 +54,13 @@ public class MovieBean implements Serializable {
 	public String goToMovieDetails(String id) {
 		logger.debug(id);
 		this.movie= movieService.getMovieById(Integer.valueOf(id));
+		this.moviesFormat= movieService.getMoviesFormat(Integer.valueOf(id));
 		return "movieDetails";
+	}
+	
+	public void initMovieFormat() {
+		logger.debug("entered");
+		movieFormat= movieService.getMovieFormat(movieFormat.getId());
 	}
 	
 	public Movie getMovie() {
@@ -60,5 +70,24 @@ public class MovieBean implements Serializable {
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
+
+	public MoviesFormat getMovieFormat() {
+		return movieFormat;
+	}
+
+	public void setMovieFormat(MoviesFormat movieFormat) {
+		this.movieFormat = movieFormat;
+	}
+
+	public List<MoviesFormat> getMoviesFormat() {
+		return moviesFormat;
+	}
+
+	public void setMoviesFormat(List<MoviesFormat> moviesformat) {
+		this.moviesFormat = moviesformat;
+	}
+	
+	
+	
 	
 }

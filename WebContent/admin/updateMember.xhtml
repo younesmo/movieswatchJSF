@@ -115,7 +115,7 @@
 							<h:inputText id="birth" styleClass="form-control datepicker"
 								value="#{updateMemberBean.user.birthdate}">
 								<f:convertDateTime pattern="yyyy-MM-dd" />
-								<f:ajax event="blur" render="birthMessage" />
+								<f:ajax event="blur" render="birthMessage"/>
 							</h:inputText>
 						</div>
 						<h:message id="birthMessage" for="birth" errorClass="text-danger" />

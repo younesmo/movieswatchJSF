@@ -65,7 +65,6 @@
 					<div class="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">Code postal:</h:outputLabel>
 						<div class="col-lg-8">
-
 							<h:inputText id="cp" styleClass="form-control"
 								value="#{editProfilBean.cp.number}" size="20" maxlength="60">
 								<f:ajax event="blur" render="cpMessage" />
@@ -106,6 +105,7 @@
 								value="#{editProfilBean.user.birthdate}">
 								<f:convertDateTime pattern="yyyy-MM-dd" />
 								<f:ajax event="blur" render="birthMessage" />
+								<f:validator validatorId="ageValidator" />
 							</h:inputText>
 						</div>
 						<h:message id="birthMessage" for="birth" errorClass="text-danger" />

@@ -17,12 +17,12 @@ import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Order;
 import com.movieswatch.entities.OrderMovie;
 import com.movieswatch.entities.Movie;
+import com.movieswatch.entities.MoviesFormat;
 import com.movieswatch.entities.User;
 
 public class OrderServiceImpl implements OrderService {
 
     private EntityFinder<Order> orderFinder;
-    private EntityManager em;		
     private Logger log= Logger.getLogger(OrderServiceImpl.class);
 
     public OrderServiceImpl() {
@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
     }
 	@Override
 	public Order getCart(User currentUser) {
-    	this.em= EMF.getEM();
+		EntityManager em= EMF.getEM();
 		Map param= new HashMap();
 		param.put("id", currentUser.getId());
 		param.put("status","non-paye");
@@ -57,8 +57,8 @@ public class OrderServiceImpl implements OrderService {
 		return cart;
 	}
 	@Override
-	public boolean addMovieInCart(User currentUser, Movie movie) {
-    	this.em= EMF.getEM();
+	public boolean addMovieInCart(User currentUser, MoviesFormat movie) {
+		EntityManager em= EMF.getEM();
 		boolean movieAdded= false;
 		OrderMovie om= new OrderMovie();
 		Order cart= getCart(currentUser);
@@ -83,7 +83,7 @@ public class OrderServiceImpl implements OrderService {
 	
 	
 	public boolean deleteFromCart(int idMovieToRemove, User currentUser) {
-    	this.em= EMF.getEM();
+		EntityManager em= EMF.getEM();
 		boolean movieDeleted= false;
 		Order cart= getCart(currentUser);
 		OrderMovie itemToRemove= null;
@@ -115,10 +115,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public Order payCart(User currentUser) {
-    	this.em= EMF.getEM();
+	public Order payCart(Order cart) {
+		EntityManager em= EMF.getEM();
 		boolean cartPaid= false;
-		Order cart= getCart(currentUser);
 		EntityTransaction transac= em.getTransaction();
 		
 		try {

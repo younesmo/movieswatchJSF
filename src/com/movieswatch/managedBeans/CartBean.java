@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 
 import com.movieswatch.entities.Order;
+import com.movieswatch.entities.OrderMovie;
 import com.movieswatch.entities.User;
 import com.movieswatch.services.OrderService;
 import com.movieswatch.services.OrderServiceImpl;
@@ -28,6 +29,7 @@ import com.movieswatch.utils.SessionUtils;
 public class CartBean implements Serializable{
 	
 	private Order cart;
+	private int totalPrice;
 	transient private OrderService cartService;
 	transient private static Logger logger = Logger.getLogger(CartBean.class);
 
@@ -40,6 +42,7 @@ public class CartBean implements Serializable{
 	public void init() {
 		User currentUser= SessionUtils.getCurrentUser();
 		this.cart= cartService.getCart(currentUser);
+		initTotalPrice();
 	}
 	
 	public void delete(String id) throws IOException {
@@ -53,12 +56,18 @@ public class CartBean implements Serializable{
 			
 	}
 
+	public void initTotalPrice() {
+		for(OrderMovie orderMovies: cart.getOrderMovies() ) {
+			totalPrice += Integer.valueOf(orderMovies.getMovie().getPrice());
+		}		
+	}
+	
 	public String pay() throws IOException {
 		ServletContext servletContext = (ServletContext) FacesContext
 			    .getCurrentInstance().getExternalContext().getContext();
 		User currentUser= SessionUtils.getCurrentUser();
 		
-		cart = cartService.payCart(currentUser);
+		cart = cartService.payCart(cart);
 		if(cart!=null) {
 			FactureGeneratorUtils.generateFacture(currentUser, cart, servletContext);
 			try {
@@ -81,8 +90,13 @@ public class CartBean implements Serializable{
 	public void setCart(Order cart) {
 		this.cart = cart;
 	}
-	
-	
-	
-	
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+				
 }

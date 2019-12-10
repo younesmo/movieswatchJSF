@@ -10,44 +10,46 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<div class="container mt-5 pt-5" >
+	<div class="container mt-5 pt-5">
 		<h3 class="display-3 font-weight-bold">Votre profile</h3>
 		<hr />
-		<div class="card  col-12">
-			<div class="card-body">
-				<h4>#{editProfilBean.user.lastname} #{editProfilBean.user.firstname}</h4>
-				<i class="fa fa-map-marker"></i> #{editProfilBean.user.streetName}, #{editProfilBean.cp.number} #{editProfilBean.cp.city_name} 
+		<div class="card  col-10">
+			<div class="card-body ">
+				<h4>#{editProfilBean.user.lastname}
+					#{editProfilBean.user.firstname}</h4>
+				<i class="fa fa-map-marker"></i> #{editProfilBean.user.streetName},
+				#{editProfilBean.cp.number} #{editProfilBean.cp.city_name}
 				<p>
 					<i class="fa fa-envelope"></i> #{editProfilBean.user.email}<br />
 					<i class="fa fa-birthday-cake"></i> Date de naissance:
 					<h:outputText value="#{editProfilBean.user.birthdate}">
 						<f:convertDateTime pattern="yyyy-MM-dd" />
-					</h:outputText><br />
-					<i class="fa fa-phone"> </i> #{editProfilBean.user.mobileNumber}
+					</h:outputText>
+					<br /> <i class="fa fa-phone"> </i>
+					#{editProfilBean.user.mobileNumber}
 				</p>
-				</div>
-				</div>
-
-			<h:messages globalOnly="true" infoClass="text-success" />			
-			<div class="row mt-3">
-			<div class="col-2">
-			
-						<h:form>
-								<h:commandButton value="Mettre à jour vos données"
-									styleClass="btn btn-primary"
-									action="#{editProfilBean.goToEdit}">
-								</h:commandButton>
-							</h:form>
-							</div>
-							<h:form styleClass="col-2">
-								<h:commandButton value="Mettre à jour le mot de passe"
-									styleClass="btn btn-primary"
-									action="#{editProfilBean.goToEditPassword}">
-								</h:commandButton>
-						</h:form>
-						</div>
 			</div>
+		</div>
 
-		<ui:include src="/WEB-INF/footer.xhtml" />
+		<h:messages globalOnly="true" infoClass="text-success" />
+		<div class="row mt-3">
+			<div class="col-2">
+
+				<h:form>
+					<h:commandButton value="Mettre à jour vos données"
+						styleClass="btn btn-primary" action="#{editProfilBean.goToEdit}">
+					</h:commandButton>
+				</h:form>
+			</div>
+			<h:form styleClass="col-2">
+				<h:commandButton value="Mettre à jour le mot de passe"
+					styleClass="btn btn-primary"
+					action="#{editProfilBean.goToEditPassword}">
+				</h:commandButton>
+			</h:form>
+		</div>
+	</div>
+
+	<ui:include src="/WEB-INF/footer.xhtml" />
 </h:body>
 </html>

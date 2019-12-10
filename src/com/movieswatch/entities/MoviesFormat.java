@@ -1,6 +1,8 @@
 package com.movieswatch.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -10,7 +12,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="movies_format")
-@NamedQuery(name="MoviesFormat.findAll", query="SELECT m FROM MoviesFormat m")
+@NamedQueries({
+	@NamedQuery(name="MoviesFormat.findAll", query="SELECT m FROM MoviesFormat m"),
+	@NamedQuery(name="MoviesFormat.getByMovieId", query="select m from MoviesFormat m where m.movie.id = :id"),
+})
 public class MoviesFormat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +37,10 @@ public class MoviesFormat implements Serializable {
 	@JoinColumn(name="id_movie", nullable=false)
 	private Movie movie;
 
+	//bi-directional many-to-one association to OrderMovie
+	@OneToMany(mappedBy="movie")
+	private List<OrderMovie> orderMovies;
+		
 	public MoviesFormat() {
 	}
 
@@ -65,6 +74,29 @@ public class MoviesFormat implements Serializable {
 
 	public void setMovie(Movie movie) {
 		this.movie = movie;
+	}
+	
+	public List<OrderMovie> getOrderMovies() {
+		return this.orderMovies;
+	}
+
+	public void setOrderMovies(List<OrderMovie> orderMovies) {
+		this.orderMovies = orderMovies;
+	}
+
+	public OrderMovie addOrderMovie(OrderMovie orderMovie) {
+		getOrderMovies().add(orderMovie);
+		orderMovie.setMovie(this);
+
+		return orderMovie;
+	}
+
+	public OrderMovie removeOrderMovie(OrderMovie orderMovie) {
+		getOrderMovies().remove(orderMovie);
+		
+		orderMovie.setMovie(null);
+
+		return orderMovie;
 	}
 
 }

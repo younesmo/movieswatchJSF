@@ -26,8 +26,10 @@ public class FactureGeneratorUtils {
 				document.add(new Paragraph("Adresse: " + user.getStreetName() +" "+ user.getPostalcode().getNumber() + " " + user.getPostalcode().getCity_name()));
 				document.add(new Paragraph("Commandes: "));
 				for(OrderMovie c: order.getOrderMovies()) {
-					document.add(new Paragraph(c.getMovie().getTitle()));
+					document.add(new Paragraph(c.getMovie().getMovie().getTitle()));
+					document.add(new Paragraph(c.getMovie().getPrice() + "€") );
 				}
+				document.add(new Paragraph("Moyen de paiement: "+ order.getPaymentMode()));
 				document.add(new Paragraph("Date de commande : "+ order.getDate().toString()));
 				
 
