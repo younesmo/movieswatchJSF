@@ -16,7 +16,7 @@ import com.movieswatch.services.UserServiceImpl;
 @Named("registrationBean")
 @ViewScoped
 public class RegistrationBean implements Serializable {
-
+//edit name
 	
 	/**
 	 * 
