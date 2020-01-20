@@ -35,7 +35,7 @@ public class Character implements Serializable {
 	private List<PersonCharacter> personCharacters;
 
 	public Character() {
-	}
+	} 
 
 	public int getId() {
 		return this.id;
