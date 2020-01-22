@@ -15,10 +15,10 @@
 
 	<h1
 		class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">Panier</h1>
-	<div class="container mb-4">
-		<div class="row">
-			<div class="col-12">
-				<div class="table-responsive">
+	<h:panelGroup layout="block" styleClass="container mb-4">
+		<h:panelGroup layout="block" styleClass="row">
+			<h:panelGroup layout="block" styleClass="col-12">
+				<h:panelGroup layout="block" styleClass="table-responsive">
 
 					<h:dataTable value="#{cartBean.cart.orderMovies}"
 						var="orderMovie" styleClass="table table-striped "
@@ -54,10 +54,10 @@
 					<c:choose>
 						<c:when test="#{!empty cartBean.cart.orderMovies}">
 						<hr/>
-					<div>Prix total: <h:outputText value="#{cartBean.totalPrice} €"/></div>
+					<h:panelGroup layout="block">Prix total: <h:outputText value="#{cartBean.totalPrice} €"/></h:panelGroup>
 					<hr/>
 						<h:form>
-						<div class="form-group">
+						<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel for="payment" value="Selectionner un moyen de paiement"/>
 						<h:selectOneRadio id="payment" styleClass="col-sm-6 col-md-4" value="#{cartBean.cart.paymentMode}" required="true" requiredMessage="Vous devez choisir un moyen de payement">
    							<f:selectItem  itemValue="Paypal" itemLabel="Paypal" />
@@ -66,16 +66,16 @@
    					   		<f:selectItem  itemValue="Bancontact" itemLabel=" Bancontact" />  							
    						</h:selectOneRadio>
    						<h:message for="payment" styleClass="text-danger"/>
-   						</div>
+   						</h:panelGroup>
    						<br/>
-							<div class="col mb-2">
-								<div class="col-sm-12 col-md-6 text-right">
+							<h:panelGroup layout="block" styleClass="col mb-2">
+								<h:panelGroup layout="block" styleClass="col-sm-12 col-md-6 text-right">
 										<h:commandButton
 											styleClass="btn btn-lg btn-block btn-success text-uppercase"
 											value="Checkout" action="#{cartBean.pay}">
 										</h:commandButton>
-								</div>
-							</div>
+								</h:panelGroup>
+							</h:panelGroup>
 							</h:form>							
 						</c:when>
 
@@ -85,11 +85,11 @@
 						</c:when>
 					</c:choose>
 
-				</div>
-			</div>
+				</h:panelGroup>
+			</h:panelGroup>
 
-		</div>
-	</div>
+		</h:panelGroup>
+	</h:panelGroup>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
 

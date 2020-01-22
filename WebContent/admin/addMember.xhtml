@@ -12,14 +12,14 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<div class="container">
+	<h:panelGroup layout="block" styleClass="container">
 		<h6 class=" display-3 font-weight-bold white-text mt-5 pt-5"></h6>
 
-		<div class="signup-form">
+		<h:panelGroup layout="block" styleClass="signup-form">
 			<h:form id="form">
 				<h2>Inscription</h2>
-
-				<div class="form-group">
+				
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="email" styleClass="form-control"
 						value="#{registrationBean.user.email}" a:placeholder="Email"
 						size="20" maxlength="60">
@@ -27,9 +27,9 @@
 						<f:validator validatorId="emailExistValidator" />
 					</h:inputText>
 					<h:message id="emailMessage" for="email" errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="lastname" a:placeholder="Nom"
 						styleClass="form-control"
 						value="#{registrationBean.user.lastname}" size="20" maxlength="20">
@@ -37,10 +37,10 @@
 					</h:inputText>
 					<h:message id="lastnameMessage" for="lastname"
 						errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="firstname" a:placeholder="Prenom"
 						styleClass="form-control"
 						value="#{registrationBean.user.firstname}" size="20"
@@ -49,18 +49,18 @@
 					</h:inputText>
 					<h:message id="firstnameMessage" for="firstname"
 						errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="street" a:placeholder="Rue"
 						styleClass="form-control"
 						value="#{registrationBean.user.streetName}">
 						<f:ajax event="blur" render="streetMessage" />
 					</h:inputText>
 					<h:message id="streetMessage" for="street" errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="cp" styleClass="form-control"
 						value="#{registrationBean.cp.number}" a:placeholder="Code Postal"
 						size="20" maxlength="60">
@@ -68,18 +68,18 @@
 						<f:validator validatorId="cpExistValidator" />
 					</h:inputText>
 					<h:message id="cpMessage" for="cp" errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="num" styleClass="form-control"
 						value="#{registrationBean.user.mobileNumber}"
 						a:placeholder="Telephone">
 					</h:inputText>
 					<h:message id="numMessage" for="num" errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="birth" styleClass="form-control datepicker"
 						value="#{registrationBean.user.birthdate}"
 						a:placeholder="Date de naissance">
@@ -87,16 +87,16 @@
 						<f:ajax event="blur" render="birthMessage" />
 					</h:inputText>
 					<h:message id="birthMessage" for="birth" errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
-			<div class="form-group">				
+			<h:panelGroup layout="block" styleClass="form-group">				
 				<h:selectOneMenu styleClass="form-control" value="#{registrationBean.idRole}">
 					<f:selectItem itemValue="1" itemLabel="Utilisateur" />
 					<f:selectItem itemValue="2" itemLabel="Administrateur" />
 					<f:selectItem itemValue="3" itemLabel="Comptable" />
 				</h:selectOneMenu>
-			</div>
-				<div class="form-group">
+			</h:panelGroup>
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputSecret id="password" a:placeholder="Mot de passe"
 						styleClass="form-control"
 						value="#{registrationBean.user.password}"
@@ -106,9 +106,9 @@
 					</h:inputSecret>
 					<h:message id="passwordMessage" for="password"
 						errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputSecret id="confirmation" styleClass="form-control"
 						a:placeholder="Confirmation mot de passe"
 						value="#{registrationBean.user.password}" size="20" maxlength="20">
@@ -119,21 +119,21 @@
 					</h:inputSecret>
 					<h:message id="confirmationMessage" for="confirmation"
 						errorClass="text-danger" />
-				</div>
+				</h:panelGroup>
 
 
 				<h:messages globalOnly="true" infoClass="text-danger" />
 
-				<div class="form-group">
+				<h:panelGroup layout="block" styleClass="form-group">
 					<h:commandButton value="Inscription"
 						styleClass="btn btn-primary btn-lg"
 						action="#{registrationBean.insertUser}">
 					</h:commandButton>
-				</div>
+				</h:panelGroup>
 
 			</h:form>
-		</div>
-	</div>
+		</h:panelGroup>
+	</h:panelGroup>
 	<hr class="hr-light my-4 w-75"></hr>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />

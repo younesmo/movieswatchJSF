@@ -14,27 +14,27 @@
 </h:head>
 <h:body>
 
-	<div class="view"
+	<h:panelGroup layout="block" styleClass="view"
 		style="background-image: url('./resources/default/images/background/backgroundConnectionPage.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-		<div class="view">
+		<h:panelGroup layout="block" styleClass="view">
 			<!-- Mask & flexbox options-->
-			<div class=" d-flex justify-content-center align-items-center">
+			<h:panelGroup layout="block" styleClass=" d-flex justify-content-center align-items-center">
 				<!-- Content -->
-				<div class="container px-md-3 px-sm-0">
+				<h:panelGroup layout="block" styleClass="container px-md-3 px-sm-0">
 					<!--Grid row-->
-					<div class="row wow fadeIn">
+					<h:panelGroup layout="block" styleClass="row wow fadeIn">
 						<!--Grid column-->
-						<div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+						<h:panelGroup layout="block" styleClass="col-md-12 mb-4 white-text text-center wow fadeIn">
 							<!-- Full Page Intro -->
 							<h6
 								class="deepshd display-3 font-weight-bold white-text mt-5 pt-5  ">Bienvenue
 								Sur MoviesWatch</h6>
 							<hr class="hr-light my-4 w-75" />
-							<div class="signup-form">
+							<h:panelGroup layout="block" styleClass="signup-form">
 								<h:form>
 									<h2>Connexion</h2>
 									<p>Vous pouvez vous connecter via ce formulaire.</p>
-									<div class="form-group">
+									<h:panelGroup layout="block" styleClass="form-group">
 										<h:inputText id="email" styleClass="form-control"
 											value="#{loginBean.user.email}" a:placeholder="Email"
 											size="20" maxlength="60">
@@ -42,9 +42,9 @@
 										</h:inputText>
 										<h:message id="emailMessage" for="email"
 											errorClass="text-danger" />
-									</div>
+									</h:panelGroup>
 
-									<div class="form-group">
+									<h:panelGroup layout="block" styleClass="form-group">
 										<h:inputSecret id="password" a:required="true" a:placeholder="Mot de passe"
 											styleClass="form-control" value="#{loginBean.user.password}"
 											size="20" maxlength="20">
@@ -52,28 +52,28 @@
 										<h:message id="passwordMessage" for="password"
 											errorClass="text-danger" />
 
-									</div>
+									</h:panelGroup>
 
-									<div class="form-group">
+									<h:panelGroup layout="block" styleClass="form-group">
 										<h:commandButton value="Connexion"
 											styleClass="btn btn-primary btn-lg"
 											action="#{loginBean.connectUser}">
 										</h:commandButton>
 
 										<h:messages globalOnly="true" infoClass="text-danger" />
-									</div>
+									</h:panelGroup>
 
 								</h:form>
-							</div>
+							</h:panelGroup>
 							<hr class="hr-light my-4 w-75" />
 							<h4 class="subtext-header mt-2 mb-4">Un service de qualité
 								jamais égaler</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+						</h:panelGroup>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
 

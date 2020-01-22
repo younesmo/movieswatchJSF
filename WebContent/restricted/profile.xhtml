@@ -10,11 +10,11 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<div class="container mt-5 pt-5">
+	<h:panelGroup layout="block" styleClass="container mt-5 pt-5">
 		<h3 class="display-3 font-weight-bold">Votre profile</h3>
 		<hr />
-		<div class="card  col-10">
-			<div class="card-body ">
+		<h:panelGroup layout="block" styleClass="card  col-10">
+			<h:panelGroup layout="block" styleClass="card-body ">
 				<h4>#{editProfilBean.user.lastname}
 					#{editProfilBean.user.firstname}</h4>
 				<i class="fa fa-map-marker"></i> #{editProfilBean.user.streetName},
@@ -28,27 +28,27 @@
 					<br /> <i class="fa fa-phone"> </i>
 					#{editProfilBean.user.mobileNumber}
 				</p>
-			</div>
-		</div>
+			</h:panelGroup>
+		</h:panelGroup>
 
 		<h:messages globalOnly="true" infoClass="text-success" />
-		<div class="row mt-3">
-			<div class="col-2">
+		<h:panelGroup layout="block" styleClass="row mt-3">
+			<h:panelGroup layout="block" styleClass="col-2">
 
 				<h:form>
 					<h:commandButton value="Mettre à jour vos données"
 						styleClass="btn btn-primary" action="#{editProfilBean.goToEdit}">
 					</h:commandButton>
 				</h:form>
-			</div>
+			</h:panelGroup>
 			<h:form styleClass="col-2">
 				<h:commandButton value="Mettre à jour le mot de passe"
 					styleClass="btn btn-primary"
 					action="#{editProfilBean.goToEditPassword}">
 				</h:commandButton>
 			</h:form>
-		</div>
-	</div>
+		</h:panelGroup>
+	</h:panelGroup>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
 </h:body>

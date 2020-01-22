@@ -12,7 +12,7 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-<div class="container">
+<h:panelGroup layout="block" styleClass="container">
 	
 	<h2 class="h1-responsive font-weight-bold text-center mt-5 pt-5text-dark">Vos Achats</h2>
 
@@ -20,21 +20,21 @@
 
 		<section class="my-5">
 			<!-- Grid row -->
-			<div class="row">
+			<h:panelGroup layout="block" styleClass="row">
 
 				<!-- Grid column -->
-				<div class="col-lg-5 col-xl-4">
+				<h:panelGroup layout="block" styleClass="col-lg-5 col-xl-4">
 
 					<!-- Featured image -->
-					<div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+					<h:panelGroup layout="block" styleClass="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
 						<h:graphicImage value="#{orderMovie.movie.movie.posterUrl}" alt="#{orderMovie.movie.movie.title}" styleClass="img-fluid" />							
-							<div class="mask rgba-white-slight"></div>
-					</div>
+							<h:panelGroup layout="block" styleClass="mask rgba-white-slight"></h:panelGroup>
+					</h:panelGroup>
 
-				</div>
+				</h:panelGroup>
 
 				<!-- Grid column -->
-				<div class="col-lg-7 col-xl-8">
+				<h:panelGroup layout="block" styleClass="col-lg-7 col-xl-8">
 
 					<!-- Post title -->
 					<h3 class="font-weight-bold mb-3">
@@ -50,10 +50,10 @@
 					
 					<p> <h:outputText value="Prix: #{orderMovie.movie.price} €"/> </p>
 
-				</div>
+				</h:panelGroup>
 				<!-- Grid column -->
 
-			</div>
+			</h:panelGroup>
 			<!-- Grid row -->
 
 			<hr class="my-5"/>
@@ -61,12 +61,12 @@
 
 	</c:forEach>
 	
-	<div>
+	<h:panelGroup>
 	<h:outputText value="Prix total: #{orderBean.totalPrice} €" />
 	<br/>
 	<h:outputText value="Moyen de paiement: #{orderBean.order.paymentMode}" />
-	</div>
-	</div>
+	</h:panelGroup>
+	</h:panelGroup>
 	<ui:include src="/WEB-INF/footer.xhtml" />
 
 </h:body>
