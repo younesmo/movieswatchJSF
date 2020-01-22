@@ -44,7 +44,8 @@
 							<f:facet name="header"></f:facet>
 								<h:form>
 								<h:commandLink styleClass="btn btn-sm btn-danger"
-									action="#{cartBean.delete(orderMovie.movie.id)}">
+									action="#{cartBean.delete}">
+									<f:setPropertyActionListener target="#{cartBean.idMovie}" value="#{orderMovie.movie.id}"/>																	
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>
 								</h:form>

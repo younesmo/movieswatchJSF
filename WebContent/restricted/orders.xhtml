@@ -37,7 +37,9 @@
 							<f:facet name="header"></f:facet>
 							<h:form>
 								<h:commandLink styleClass="btn btn-sm btn-info"
-									action="#{orderBean.getDetails(order.id)}">
+									action="#{orderBean.getDetails}">
+									<f:setPropertyActionListener target="#{orderBean.idOrder}" value="#{order.id}" />																	
+									
 										<i class="fa fa-info-circle"></i>
 								</h:commandLink>
 								</h:form>

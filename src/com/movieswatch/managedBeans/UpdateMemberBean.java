@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
+import org.apache.log4j.Logger;
 
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.Role;
@@ -15,13 +18,15 @@ import com.movieswatch.entities.User;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 
-@ViewScoped
+@SessionScoped
 @Named
 public class UpdateMemberBean implements Serializable {
 	private User user;
 	private Postalcode cp;
 	private int idRole;
+	private int idMember;
 	transient private UserService userService;
+	transient private Logger log= Logger.getLogger(UpdateMemberBean.class);
 	
 	public UpdateMemberBean() {
 		this.userService= new UserServiceImpl();
@@ -32,8 +37,9 @@ public class UpdateMemberBean implements Serializable {
 		
 	}
 	
-	public String goToUpdate(String id) {
-		user= userService.getById(Integer.valueOf(id));
+	public String goToUpdate() {
+		log.debug("id:" + idMember);
+		user= userService.getById(idMember);
 		cp= user.getPostalcode();
 		return "updateMember";
 	}
@@ -61,6 +67,15 @@ public class UpdateMemberBean implements Serializable {
 
 	public void setIdRole(int role) {
 		this.idRole = role;
+	}
+	
+
+	public int getIdMember() {
+		return idMember;
+	}
+
+	public void setIdMember(int idMember) {
+		this.idMember = idMember;
 	}
 
 	public String saveUser() throws IOException {

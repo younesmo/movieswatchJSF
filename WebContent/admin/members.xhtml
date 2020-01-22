@@ -49,11 +49,13 @@
 						<h:column styleClass="text-right">
 							<f:facet name="header">Action</f:facet>
 							<h:form>
-								<h:commandLink action="#{updateMemberBean.goToUpdate(user.id)}">
+								<h:commandLink action="#{updateMemberBean.goToUpdate}">
+								    <f:setPropertyActionListener target="#{updateMemberBean.idMember}" value="#{user.id}" />
 									 <i class='fa fa-edit'></i>	
 								</h:commandLink>
 								
-								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
+								<h:commandLink action="#{usersBean.deleteUser}">
+								<f:setPropertyActionListener target="#{usersBean.idMember}" value="#{user.id}" />								
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>
 							</h:form>
@@ -103,11 +105,15 @@
 						<h:column styleClass="text-right">
 							<f:facet name="header">Action</f:facet>
 							<h:form>
-							<h:commandLink action="#{updateMemberBean.goToUpdate(user.id)}">
-									 <i class='fa fa-edit'></i>	
-								</h:commandLink>
+							<h:commandLink action="#{updateMemberBean.goToUpdate}">
+							<f:setPropertyActionListener target="#{updateMemberBean.idMember}" value="#{user.id}" />
+							
+								<i class='fa fa-edit'></i>	
+							</h:commandLink>
 								
-								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
+								<h:commandLink action="#{usersBean.deleteUser}">
+								<f:setPropertyActionListener target="#{usersBean.idMember}" value="#{user.id}" />								
+								
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>
 							</h:form>
@@ -147,11 +153,15 @@
 						<h:column styleClass="text-right">
 							<f:facet name="header">Action</f:facet>
 							<h:form>
-								<h:commandLink action="#{updateMemberBean.goToUpdate(user.id)}">
+								<h:commandLink action="#{updateMemberBean.goToUpdate}">
+								<f:setPropertyActionListener target="#{updateMemberBean.idMember}" value="#{user.id}" />
+								
 									 <i class='fa fa-edit'></i>	
 								</h:commandLink>
 								
-								<h:commandLink action="#{usersBean.deleteUser(user.id)}">
+								<h:commandLink action="#{usersBean.deleteUser}">
+								<f:setPropertyActionListener target="#{usersBean.idMember}" value="#{user.id}" />								
+								
 									 <i class='fa fa-trash'></i>	
 								</h:commandLink>
 							</h:form>
