@@ -12,7 +12,7 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<c:if test="#{sessionScope.currentUser.role.name == 'Admin' }">
+	<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
 
 		
 		<h:panelGroup layout="block" styleClass="container">
@@ -132,11 +132,11 @@
 
 			</h:panelGroup>
 		</h:panelGroup>
-	</c:if>
+	</h:panelGroup>
 
 <h:panelGroup layout="block" styleClass="container">
 
-	<c:if test="#{sessionScope.currentUser.role.name == 'User' }">
+	<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
 		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
 		<hr class="hr-light my-4 w-75" />
 
@@ -163,7 +163,7 @@
 
 		<h2>Long metrage</h2>
 		<h:panelGroup layout="block" styleClass="card-columns col-lg-7">
-			<c:forEach items="#{moviesBean.longMovies}" var="movie" varStatus="status">
+			<ui:repeat value="#{moviesBean.longMovies}" var="movie" varStatus="status">
 
 					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
@@ -196,14 +196,14 @@
 							</h:panelGroup>
 						</h:panelGroup>
 					</h:panelGroup>
-			</c:forEach>
+			</ui:repeat>
 		</h:panelGroup>
 		<!-- Card package -->
 		<hr class="hr-light my-4 w-75" />
 		<h2>Court metrage</h2>
 
 		<h:panelGroup layout="block" styleClass="card-columns col-lg-7 ">
-			<c:forEach items="#{moviesBean.shortMovies}" var="movie" varStatus="status">
+			<ui:repeat value="#{moviesBean.shortMovies}" var="movie" varStatus="status">
 					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
 						<h:panelGroup layout="block" styleClass="view view-cascade overlay">
@@ -234,10 +234,10 @@
 							</h:panelGroup>
 						</h:panelGroup>
 					</h:panelGroup>
-			</c:forEach>
+			</ui:repeat>
 		</h:panelGroup>
 
-	</c:if>
+	</h:panelGroup>
 
 </h:panelGroup>
 	<ui:include src="/WEB-INF/footer.xhtml" />

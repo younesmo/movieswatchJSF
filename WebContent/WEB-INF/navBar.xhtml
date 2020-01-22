@@ -1,89 +1,81 @@
-<ui:composition 
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-    xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-        <h:form>
-<nav class="op navbar navbar-expand-lg fixed-top navbar-dark elegant-color scrolling-navbar">
+	<h:form>
+		<nav
+			class="op navbar navbar-expand-lg fixed-top navbar-dark elegant-color scrolling-navbar">
 
-    <div class="container">
-        <a class="navbar-brand" href="#">Movieswatch</a>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto smooth-scroll">
-                <c:if test="#{empty sessionScope.currentUser}">
-                    <li class="nav-item">
-               			<h:commandLink styleClass="nav-link" value="Se connecter" action="#{navBean.goToLogin}" >
- 	                        <span class="sr-only">(current)</span>           			
-               			</h:commandLink>
-                    </li>
-                    
-                    <li class="nav-item">
-               			<h:commandLink styleClass="nav-link" value="Inscription" action="#{navBean.goToRegistration}" />                    	
-                    </li>
-                </c:if>
+			<h:panelGroup layout="block" styleClass="container">
+				<h:commandLink class="navbar-brand" action="welcome">Movieswatch</h:commandLink>
+				<h:panelGroup layout="block" styleClass="collapse navbar-collapse"
+					id="navbarTogglerDemo02">
+					<ul class="navbar-nav mr-auto smooth-scroll">
+						<h:panelGroup rendered="#{empty sessionScope.currentUser}">
+							<li class="nav-item">
+								<h:commandLink styleClass="nav-link"
+									value="Se connecter" action="#{navBean.goToLogin}">
+									<h:outputText styleClass="sr-only">(current)</h:outputText>
+								</h:commandLink>
+							</li>
 
-                <c:if test="#{!empty sessionScope.currentUser}">
-                    <li class="nav-item">
-               			<h:commandLink styleClass="nav-link" value="Accueil" action="#{navBean.goToWelcome}" />                    	
-                    </li>
-                    <li class="nav-item">
-               			<h:commandLink styleClass="nav-link" value="Profil" action="#{navBean.goToProfil}" />                    	                    	                    	
-                    </li>       
-                  
-				</c:if>
-                <c:choose>
-                    <c:when test="#{sessionScope.currentUser.role.name == 'User' }">
-                    
-                    	<li class="nav-item">
-               				<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
-                	    </li>                   
-                        <li class="nav-item">
-                   			<h:commandLink styleClass="nav-link" value="Panier" action="#{navBean.goToCart}" />                    	                    	                    	                    	
-                        </li>
-                        
-                        <li class="nav-item">
-                   			<h:commandLink styleClass="nav-link" value="Vos commandes" action="#{navBean.goToOrders}" />                    	                    	                    	                    	                        
-                        </li>
-                    </c:when>
+							<li class="nav-item"><h:commandLink styleClass="nav-link"
+									value="Inscription" action="#{navBean.goToRegistration}" /></li>
+						</h:panelGroup>
 
-                    <c:when test="#{sessionScope.currentUser.role.name == 'Admin' }">
-                 	   <li class="nav-item">
-               				<h:commandLink styleClass="nav-link" value="Films" action="#{navBean.goToMovies}" />                    	                    	
-                 	   </li>               
-                        <li class="nav-item">
-                   			<h:commandLink styleClass="nav-link" value="Membres" action="#{navBean.goToMembers}" />                    	                    	                    	                    	                                                
-                        </li>
-                        <li class="nav-item">
-                   			<h:commandLink styleClass="nav-link" value="Commandes" action="#{navBean.goToAllOrders}" />                    	                    	                    	                    	                                                
-                        </li>
-                        
-                    </c:when>
-                    
-                    <c:when test="#{sessionScope.currentUser.role.name == 'Accounting' }">
-                        <li class="nav-item">
-                   			<h:commandLink styleClass="nav-link" value="Commandes" action="#{navBean.goToAllOrders}" />                    	                    	                    	                    	                                                
-                        </li>                        
-                    </c:when>
-                </c:choose>                           
-                </ul>
-	
-			  <c:if test="#{!empty sessionScope.currentUser}">
-                <ul class="navbar-nav nav-flex-icons">
-                    
-                    <li class="nav-item">
-                       	<h:commandLink styleClass="nav-link" value="Logout" action="#{loginBean.logout}">
-        	                   <i class="fa fa-sign-out light-green-text-2"></i>
-                       	</h:commandLink>                    	                    	                    	                    	                                                
-                    </li>
-            	</ul> 
-            </c:if>
-        </div>
-    </div>
-</nav>
-</h:form>
+						<h:panelGroup rendered="#{!empty sessionScope.currentUser}">
+							<li class="nav-item"><h:commandLink styleClass="nav-link"
+									value="Accueil" action="#{navBean.goToWelcome}" /></li>
+							<li class="nav-item"><h:commandLink styleClass="nav-link"
+									value="Profil" action="#{navBean.goToProfil}" /></li>
+
+						</h:panelGroup>
+						<c:choose>
+							<c:when test="#{sessionScope.currentUser.role.name == 'User' }">
+
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Films" action="#{navBean.goToMovies}" /></li>
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Panier" action="#{navBean.goToCart}" /></li>
+
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Vos commandes" action="#{navBean.goToOrders}" /></li>
+							</c:when>
+
+							<c:when test="#{sessionScope.currentUser.role.name == 'Admin' }">
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Films" action="#{navBean.goToMovies}" /></li>
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Membres" action="#{navBean.goToMembers}" /></li>
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Commandes" action="#{navBean.goToAllOrders}" /></li>
+
+							</c:when>
+
+							<c:when
+								test="#{sessionScope.currentUser.role.name == 'Accounting' }">
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="Commandes" action="#{navBean.goToAllOrders}" /></li>
+							</c:when>
+						</c:choose>
+					</ul>
+
+					<h:panelGroup rendered="#{!empty sessionScope.currentUser}">
+						<ul class="navbar-nav nav-flex-icons">
+
+							<li class="nav-item"><h:commandLink styleClass="nav-link"
+									value="Logout" action="#{loginBean.logout}">
+									<i class="fa fa-sign-out light-green-text-2"></i>
+								</h:commandLink></li>
+						</ul>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>
+		</nav>
+	</h:form>
 
 
 </ui:composition>

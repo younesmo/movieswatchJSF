@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	>
 <h:head>
 	<meta charset="utf-8" />
 	<title>Panier</title>
@@ -51,8 +51,7 @@
 						</h:column>
 					</h:dataTable>
 					
-					<c:choose>
-						<c:when test="#{!empty cartBean.cart.orderMovies}">
+						<h:panelGroup rendered="#{!empty cartBean.cart.orderMovies}">
 						<hr/>
 					<h:panelGroup layout="block">Prix total: <h:outputText value="#{cartBean.totalPrice} €"/></h:panelGroup>
 					<hr/>
@@ -77,13 +76,12 @@
 								</h:panelGroup>
 							</h:panelGroup>
 							</h:form>							
-						</c:when>
+						</h:panelGroup>
 
-						<c:when test="#{empty cartBean.cart.orderMovies}">
+						<h:panelGroup rendered="#{empty cartBean.cart.orderMovies}">
 							Votre panier est vide
 			
-						</c:when>
-					</c:choose>
+						</h:panelGroup>
 
 				</h:panelGroup>
 			</h:panelGroup>

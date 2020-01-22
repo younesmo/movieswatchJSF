@@ -62,7 +62,7 @@
 							<h:panelGroup layout="block" styleClass="text-right blanc visible-lg">
 
 
-								<c:if test="#{sessionScope.currentUser.role.name == 'User' }">
+								<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
 									<h:form>
 									<hr/>
 									<h:outputLabel for="format" value="Format"/>
@@ -81,7 +81,7 @@
 											styleClass="btn btn-success" action="#{movieBean.addInCart}">
 										</h:commandButton>
 									</h:form>
-								</c:if>
+								</h:panelGroup>
 
 							</h:panelGroup> 
 						</h:panelGroup> 
