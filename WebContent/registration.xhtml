@@ -60,9 +60,9 @@
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="cp" styleClass="form-control"
-						value="#{registrationBean.cp.number}" a:placeholder="Code Postal"
+						value="#{registrationBean.cp.number}" required="true" requiredMessage="Veuillez introduire un code postal" a:placeholder="Code Postal"
 						size="20" maxlength="60">
-						<f:ajax event="blur" render="cpMesssage" />
+						<f:ajax event="blur" render="cpMessage" />
 						<f:validator validatorId="cpExistValidator" />
 					</h:inputText>
 					<h:message id="cpMessage" for="cp" errorClass="text-danger" />
@@ -73,16 +73,18 @@
 					<h:inputText id="num" styleClass="form-control"
 						value="#{registrationBean.user.mobileNumber}"
 						a:placeholder="Telephone">
+						<f:ajax event="blur" render="numMessage" />						
 					</h:inputText>
 					<h:message id="numMessage" for="num" errorClass="text-danger" />
 				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="birth" styleClass="form-control datepicker"
+					<h:inputText id="birth" required="true" requiredMessage="Veuillez indiquer une date de naissance" styleClass="form-control datepicker"
 						value="#{registrationBean.user.birthdate}"
 						a:placeholder="Date de naissance">
 						<f:convertDateTime pattern="yyyy-MM-dd" />
 						<f:ajax event="change" render="birthMessage" />
+						<f:ajax event="blur" render="birthMessage" />						
 						<f:validator validatorId="ageValidator" />
 					</h:inputText>
 					<h:message id="birthMessage" for="birth" errorClass="text-danger" />

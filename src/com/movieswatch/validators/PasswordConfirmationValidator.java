@@ -20,9 +20,14 @@ public class PasswordConfirmationValidator implements Validator {
 		
 		String password= (String) passwordComponent.getValue();
 		String passwordConfirm= (String) value;
-		
+		try {
 		if(passwordConfirm !=null && !password.equals(passwordConfirm)) {
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, PASSWORD_DIFFERENT, null));
+		}
+		}catch(Exception e) {
+			 FacesMessage message = new FacesMessage( FacesMessage.SEVERITY_ERROR, e.getMessage(), null );
+	         FacesContext facesContext = FacesContext.getCurrentInstance();
+	         facesContext.addMessage( component.getClientId( facesContext ), message );
 		}
 		
 	}
