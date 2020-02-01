@@ -10,10 +10,14 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<h:panelGroup layout="block" styleClass="container mt-5 pt-5">
-		<h3 class="display-3 font-weight-bold">Votre profile</h3>
-		<hr />
-		<h:panelGroup layout="block" styleClass="card  col-10">
+	<h:panelGroup layout="block" styleClass="container mt-5 ">
+	<hr/>
+			<h1 class="display-3 font-weight-bold text-center">Votre compte </h1>
+					<hr />
+					
+	<h:panelGroup layout="block" styleClass="container pull-left col-6 ">
+		<h4 class="display-4 font-weight-bold text-center">Votre profile</h4>
+		<h:panelGroup layout="block" styleClass="card bg-light ml-5 align-items-center col-10">
 			<h:panelGroup layout="block" styleClass="card-body ">
 				<h4>#{editProfilBean.user.lastname}
 					#{editProfilBean.user.firstname}</h4>
@@ -31,25 +35,34 @@
 			</h:panelGroup>
 		</h:panelGroup>
 
+		
+			
 		<h:messages globalOnly="true" infoClass="text-success" />
-		<h:panelGroup layout="block" styleClass="row mt-3">
-			<h:panelGroup layout="block" styleClass="col-2">
+		<h:panelGroup layout="block" styleClass="row ml-5 mt-3">
+			<h:panelGroup layout="block" styleClass="col-4">
 
 				<h:form>
 					<h:commandButton value="Mettre à jour vos données"
-						styleClass="btn btn-primary" action="#{editProfilBean.goToEdit}">
+						styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm" action="#{editProfilBean.goToEdit}">
 					</h:commandButton>
 				</h:form>
 			</h:panelGroup>
-			<h:form styleClass="col-2">
+			<h:form styleClass="col-4">
 				<h:commandButton value="Mettre à jour le mot de passe"
-					styleClass="btn btn-primary"
+					styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm"
 					action="#{editProfilBean.goToEditPassword}">
 				</h:commandButton>
 			</h:form>
 		</h:panelGroup>
 	</h:panelGroup>
-
+	<h:panelGroup layout="block" styleClass="container pull-left col-6 ">
+		<h4 class="display-4 font-weight-bold text-center">Vos comptes liés</h4>
+		<h:panelGroup layout="block" styleClass="card bg-light ml-5 align-items-center col-10">
+			<h:panelGroup layout="block" styleClass="card-body ">
+			</h:panelGroup>
+			</h:panelGroup>
+	</h:panelGroup>
+</h:panelGroup>
 	<ui:include src="/WEB-INF/footer.xhtml" />
 </h:body>
 </html>
