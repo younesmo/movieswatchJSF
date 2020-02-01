@@ -13,130 +13,131 @@
 		<ui:include src="/WEB-INF/navBar.xhtml" />
     </h:head>
     <h:body>
-        	<div class="container mt-5 pt-5">
-		<div class="row">
-			<!-- left column -->
-			<!-- edit form column -->
-			<div class="col-md-9 personal-info">
+        	<h:panelGroup layout="block" styleClass="container mt-5 pt-5">
+		<h:panelGroup layout="block" styleClass="row">
+			<h:panelGroup layout="block" styleClass="col-md-9 personal-info">
 				<h3>Mettez à jour les données de l'utilisateur</h3>
 
 				<h:form styleClass="form-horizontal">
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">Nom:</h:outputLabel>
-						<div class="col-lg-8">
+						<h:panelGroup layout="block" styleClass="col-lg-8">
 
 							<h:inputText id="lastname" styleClass="form-control"
 								value="#{updateMemberBean.user.lastname}" size="20" maxlength="20">
 								<f:ajax event="blur" render="lastnameMessage" />
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="lastnameMessage" for="lastname"
 							errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">Prénom:</h:outputLabel>
 
-						<div class="col-lg-8">
+						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="firstname" styleClass="form-control"
 								value="#{updateMemberBean.user.firstname}" size="20"
 								maxlength="20">
 								<f:ajax event="blur" render="firstnameMessage" />
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="firstnameMessage" for="firstname"
 							errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="street">Rue:</h:outputLabel>
-						<div class="col-lg-8">
+						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="street" styleClass="form-control"
 								value="#{updateMemberBean.user.streetName}">
 								<f:ajax event="blur" render="streetMessage" />
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="streetMessage" for="street"
 							errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">Code postal:</h:outputLabel>
-						<div class="col-lg-8">
+						<h:panelGroup layout="block" styleClass="col-lg-8">
 
-							<h:inputText id="cp" styleClass="form-control"
+							<h:inputText id="cp" required="true" requiredMessage="Veuillez introduire un code postal" styleClass="form-control"
 								value="#{updateMemberBean.cp.number}" size="20" maxlength="60">
 								<f:ajax event="blur" render="cpMessage" />
 								<f:validator validatorId="cpExistValidator" />
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="cpMessage" for="cp" errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="num">Numéro de téléphonne:</h:outputLabel>
 
-						<div class="col-lg-8">
+						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="num" styleClass="form-control"
 								value="#{updateMemberBean.user.mobileNumber}">
+							<f:ajax event="blur" render="numMessage" />														
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="numMessage" for="num" errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="email">Email:</h:outputLabel>
 
-						<div class="col-lg-8">
+						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="email" styleClass="form-control"
 								value="#{updateMemberBean.user.email}" size="20" maxlength="60">
 								<f:ajax event="blur" render="emailMessage" />
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="emailMessage" for="email" errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
 
-					<div class="form-group">				
+					<h:panelGroup layout="block" styleClass="form-group">				
 						<h:outputLabel styleClass="col-lg-3 control-label" for="role">Role:</h:outputLabel>
-						<div class="col-lg-8">						
+						<h:panelGroup layout="block" styleClass="col-lg-8">						
 						<h:selectOneMenu id="role" styleClass="form-control" value="#{updateMemberBean.idRole}">
 							<f:selectItem itemValue="1" itemLabel="Utilisateur" />
 							<f:selectItem itemValue="2" itemLabel="Administrateur" />
 							<f:selectItem itemValue="3" itemLabel="Comptable" />
 						</h:selectOneMenu>
-						</div>
-					</div>
+						</h:panelGroup>
+					</h:panelGroup>
 					
-					<div class="form-group">
+					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">Date de naissance:</h:outputLabel>
 
-						<div class="col-lg-8">
-							<h:inputText id="birth" styleClass="form-control datepicker"
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="birth" required="true" requiredMessage="Veuillez introduire une date de naissance" styleClass="form-control datepicker"
 								value="#{updateMemberBean.user.birthdate}">
 								<f:convertDateTime pattern="yyyy-MM-dd" />
-								<f:ajax event="blur" render="birthMessage"/>
+								<f:ajax event="change" render="birthMessage"/>
+								<f:ajax event="blur" render="birthMessage"/>								
+								<f:validator validatorId="ageValidator" />								
 							</h:inputText>
-						</div>
+						</h:panelGroup>
 						<h:message id="birthMessage" for="birth" errorClass="text-danger" />
-					</div>
+					</h:panelGroup>
 
 						<h:messages globalOnly="true" infoClass="text-success" />
 
-					<div class="form-group">
-						<label class="col-md-3 control-label"></label>
-						<div class="col-md-8">
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-md-3 control-label"></h:outputLabel>
+						<h:panelGroup layout="block" styleClass="col-md-8">
 							<h:commandButton value="Sauvegarder"
 								styleClass="btn btn-primary"
 								action="#{updateMemberBean.saveUser}">
 							</h:commandButton>
-						</div>
+						</h:panelGroup>
 						
-					</div>
+					</h:panelGroup>
 				</h:form>
-			</div>
-		</div>
-	</div>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
     </h:body>

@@ -12,10 +12,10 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<c:if test="#{sessionScope.currentUser.role.name == 'Admin' }">
+	<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
 
 		
-		<div class="container">
+		<h:panelGroup layout="block" styleClass="container">
 		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
 		<hr class="hr-light my-4 w-75" />
 		
@@ -39,12 +39,12 @@
 		</h:commandButton>
 		</h:form>
 		
-			<div class="table-wrapper">
+			<h:panelGroup layout="block" styleClass="table-wrapper">
 
 
-				<div class="col-sm-5">
+				<h:panelGroup layout="block" styleClass="col-sm-5">
 					<h2>Long metrage</h2>
-				</div>
+				</h:panelGroup>
 				<h:dataTable value="#{moviesBean.longMovies}" var="movie"
 					styleClass="table table-striped table-hover" headerClass=""
 					rowClasses="">
@@ -73,26 +73,28 @@
 							<f:facet name="header">Action</f:facet>
 							<h:form>
 							<h:commandLink value="" styleClass="btn btn-sm btn-info" 
-							action="#{movieBean.goToMovieDetails(movie.id)}">
+							action="#{movieBean.goToMovieDetails}">
+							<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />								
+							
 								<i class="fa fa-info-circle"></i>
 							</h:commandLink>
 							</h:form>
 						</h:column>
 				</h:dataTable>
 
-				<div class="col-sm-7">
+				<h:panelGroup layout="block" styleClass="col-sm-7">
 				<h:form>
 					<h:commandLink value="Ajouter un film"
 						styleClass="btn btn-primary" action="#{moviesBean.goToAddMovie}">
 					</h:commandLink>
 				</h:form>
-				</div>
+				</h:panelGroup>
 
 				<br />
 				<hr class="hr-light my-4 w-75"/>
-				<div class="col-sm-5">
+				<h:panelGroup layout="block" styleClass="col-sm-5">
 					<h2>Court metrage</h2>
-				</div>
+				</h:panelGroup>
 				<h:dataTable value="#{moviesBean.shortMovies}" var="movie"
 					styleClass="table table-striped table-hover" headerClass=""
 					rowClasses="">
@@ -123,20 +125,22 @@
 							<f:facet name="header">Action</f:facet>
 							<h:form>
 							<h:commandLink value="" styleClass="btn btn-sm btn-info"
-								action="#{movieBean.goToMovieDetails(movie.id)}">
+								action="#{movieBean.goToMovieDetails}">
+							<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />								
+								
 								<i class="fa fa-info-circle"></i>
 							</h:commandLink>
 							</h:form>
 						</h:column>
 				</h:dataTable>
 
-			</div>
-		</div>
-	</c:if>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
 
-<div class="container">
+<h:panelGroup layout="block" styleClass="container">
 
-	<c:if test="#{sessionScope.currentUser.role.name == 'User' }">
+	<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
 		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
 		<hr class="hr-light my-4 w-75" />
 
@@ -162,19 +166,19 @@
 
 
 		<h2>Long metrage</h2>
-		<div class="card-columns col-lg-7">
-			<c:forEach items="#{moviesBean.longMovies}" var="movie" varStatus="status">
+		<h:panelGroup layout="block" styleClass="card-columns col-lg-7">
+			<ui:repeat value="#{moviesBean.longMovies}" var="movie" varStatus="status">
 
-					<div class="card card-cascade wider mt-2 mb-2">
+					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
-						<div class="view view-cascade overlay">
+						<h:panelGroup layout="block" styleClass="view view-cascade overlay">
 							<h:graphicImage value="#{movie.posterUrl}"
 								style="min-height: 130px; max-height: 130px"
 								styleClass="card-img-top img-fluid" />
-							<div class="mask rgba-white-slight"></div>
-						</div>
+							<h:panelGroup layout="block" styleClass="mask rgba-white-slight"></h:panelGroup>
+						</h:panelGroup>
 						<!-- Card content -->
-						<div class="card-body card-body-cascade text-center">
+						<h:panelGroup layout="block" styleClass="card-body card-body-cascade text-center">
 							<!-- Title -->
 							<h4 class="card-title">
 								<strong>#{movie.title}</strong>
@@ -184,36 +188,37 @@
 								<strong>Année : #{movie.productionYear}</strong>
 							</h5>
 							<!-- Text -->
-							<div class="collapse-content">
+							<h:panelGroup layout="block" styleClass="collapse-content">
 								<p class="card-text collapse" id="collapseContent">#{movie.synopsis}</p>
 								<h:form>
 								<h:commandLink styleClass="nav-link"
-									action="#{movieBean.goToMovieDetails(movie.id)}">
+									action="#{movieBean.goToMovieDetails}">
+									<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />																	
 									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
 										data-toggle="tooltip" data-placement="top" title="Panier"></i>
 								</h:commandLink>
 							</h:form>
-							</div>
-						</div>
-					</div>
-			</c:forEach>
-		</div>
+							</h:panelGroup>
+						</h:panelGroup>
+					</h:panelGroup>
+			</ui:repeat>
+		</h:panelGroup>
 		<!-- Card package -->
 		<hr class="hr-light my-4 w-75" />
 		<h2>Court metrage</h2>
 
-		<div class="card-columns col-lg-7 ">
-			<c:forEach items="#{moviesBean.shortMovies}" var="movie" varStatus="status">
-					<div class="card card-cascade wider mt-2 mb-2">
+		<h:panelGroup layout="block" styleClass="card-columns col-lg-7 ">
+			<ui:repeat value="#{moviesBean.shortMovies}" var="movie" varStatus="status">
+					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
-						<div class="view view-cascade overlay">
+						<h:panelGroup layout="block" styleClass="view view-cascade overlay">
 							<h:graphicImage value="#{movie.posterUrl}"
 								style="min-height: 130px; max-height: 130px"
 								styleClass="card-img-top img-fluid" />
-							<div class="mask rgba-white-slight"></div>
-						</div>
+							<h:panelGroup layout="block" styleClass="mask rgba-white-slight"></h:panelGroup>
+						</h:panelGroup>
 						<!-- Card content -->
-						<div class="card-body card-body-cascade text-center">
+						<h:panelGroup layout="block" styleClass="card-body card-body-cascade text-center">
 							<!-- Title -->
 							<h4 class="card-title">
 								<strong>#{movie.title}</strong>
@@ -223,23 +228,24 @@
 								<strong>Année : #{movie.productionYear}</strong>
 							</h5>
 							<!-- Text -->
-							<div class="collapse-content">
+							<h:panelGroup layout="block" styleClass="collapse-content">
 								<p class="card-text collapse" id="collapseContent">#{movie.synopsis}</p>
 								<h:form>
-								<h:commandLink styleClass="nav-link" action="#{movieBean.goToMovieDetails(movie.id)}">
+								<h:commandLink styleClass="nav-link" action="#{movieBean.goToMovieDetails}">
+								<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />																
 									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
 										data-toggle="tooltip" data-placement="top" title="Panier"></i>
 								</h:commandLink>
 								</h:form>
-							</div>
-						</div>
-					</div>
-			</c:forEach>
-		</div>
+							</h:panelGroup>
+						</h:panelGroup>
+					</h:panelGroup>
+			</ui:repeat>
+		</h:panelGroup>
 
-	</c:if>
+	</h:panelGroup>
 
-</div>
+</h:panelGroup>
 	<ui:include src="/WEB-INF/footer.xhtml" />
 
 </h:body>

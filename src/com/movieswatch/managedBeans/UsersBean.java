@@ -26,6 +26,7 @@ public class UsersBean implements Serializable{
 	private List<User> admins= new ArrayList<User>();
 	private List<User> members= new ArrayList<User>();
 	private List<User> accounters= new ArrayList<User>();
+	private int idMember;
 	transient private UserService userService;
 	transient private Logger log= Logger.getLogger(UsersBean.class);
 	
@@ -51,8 +52,8 @@ public class UsersBean implements Serializable{
 		}
 	}
 	
-	public void deleteUser(String id) throws IOException {
-		boolean isDone= userService.deleteUser(Integer.valueOf(id));
+	public void deleteUser() throws IOException {
+		boolean isDone= userService.deleteUser(idMember);
 		if(!isDone)
 			log.debug("Remove user: error");
 		else {
@@ -96,6 +97,13 @@ public class UsersBean implements Serializable{
 	public void setAccounters(List<User> accounters) {
 		this.accounters = accounters;
 	}
-	
+
+	public int getIdMember() {
+		return idMember;
+	}
+
+	public void setIdMember(int idMember) {
+		this.idMember = idMember;
+	}
 	
 }

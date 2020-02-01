@@ -27,6 +27,7 @@ public class MovieBean implements Serializable {
 	private Movie movie;
 	private MoviesFormat movieFormat= new MoviesFormat();
 	private List<MoviesFormat> moviesFormat;
+	private int idMovie;
 	transient private MovieService movieService;
 	transient private OrderService orderService;
 	transient private static Logger logger = Logger.getLogger(MovieBean.class);
@@ -51,10 +52,10 @@ public class MovieBean implements Serializable {
 		}
 	}
 
-	public String goToMovieDetails(String id) {
-		logger.debug(id);
-		this.movie= movieService.getMovieById(Integer.valueOf(id));
-		this.moviesFormat= movieService.getMoviesFormat(Integer.valueOf(id));
+	public String goToMovieDetails() {
+		logger.debug(idMovie);
+		this.movie= movieService.getMovieById(idMovie);
+		this.moviesFormat= movieService.getMoviesFormat(idMovie);
 		return "movieDetails";
 	}
 	
@@ -86,8 +87,14 @@ public class MovieBean implements Serializable {
 	public void setMoviesFormat(List<MoviesFormat> moviesformat) {
 		this.moviesFormat = moviesformat;
 	}
-	
-	
+
+	public int getIdMovie() {
+		return idMovie;
+	}
+
+	public void setIdMovie(int idMovie) {
+		this.idMovie = idMovie;
+	}
 	
 	
 }

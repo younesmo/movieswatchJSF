@@ -13,10 +13,10 @@
 </h:head>
 <h:body>
 	<h1 class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">Vos commandes</h1>
-	<div class="container mb-4">
-		<div class="row">
-			<div class="col-12">
-				<div class="table-responsive">
+	<h:panelGroup layout="block" styleClass="container mb-4">
+		<h:panelGroup layout="block" styleClass="row">
+			<h:panelGroup layout="block" styleClass="col-12">
+				<h:panelGroup layout="block" styleClass="table-responsive">
 				<h:dataTable value="#{ordersBean.orders}"
 						var="order" styleClass="table table-striped "
 						headerClass="" rowClasses="">
@@ -37,16 +37,18 @@
 							<f:facet name="header"></f:facet>
 							<h:form>
 								<h:commandLink styleClass="btn btn-sm btn-info"
-									action="#{orderBean.getDetails(order.id)}">
+									action="#{orderBean.getDetails}">
+									<f:setPropertyActionListener target="#{orderBean.idOrder}" value="#{order.id}" />																	
+									
 										<i class="fa fa-info-circle"></i>
 								</h:commandLink>
 								</h:form>
 						</h:column>
 					</h:dataTable>
-				</div>
-			</div>
-		</div>
-	</div>
+				</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
 	<ui:include src="/WEB-INF/footer.xhtml" />
 </h:body>
 </html>

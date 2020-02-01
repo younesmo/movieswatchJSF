@@ -43,10 +43,11 @@ public class User implements Serializable {
 	private String email;
 
 	@Column(length=255)
-	@NotNull(message = "Veuillez saisir un lastname")
+	@NotNull(message = "Veuillez saisir un nom")
 	private String lastname;
 
 	@Column(name="mobile_number", length=45)
+	@Pattern( regexp = "\\d{10}|(?:\\d{3}-){2}\\d{4}", message = "Merci de saisir un numero de telephone valide (1234567890 ou 123-456-7890)" )
 	@NotNull(message = "Veuillez saisir un numero de telephone")
 	private String mobileNumber;
 
@@ -55,7 +56,7 @@ public class User implements Serializable {
 	private String password;
 
 	@Column(length=255)
-	@NotNull
+	@NotNull(message="Veuillez saisir un prénom")
 	private String firstname;
 
 	//bi-directional many-to-one association to Order

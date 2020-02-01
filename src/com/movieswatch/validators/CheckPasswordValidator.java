@@ -19,12 +19,18 @@ public class CheckPasswordValidator implements Validator {
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		String password= (String) value;
 		User user= SessionUtils.getCurrentUser();
+		
+		try {
 			if(!password.equals(user.getPassword())) {
-				/*FacesMessage message = new FacesMessage( FacesMessage.SEVERITY_ERROR, WRONG_PASSWORD, null );
-		         FacesContext facesContext = FacesContext.getCurrentInstance();
-		         facesContext.addMessage( component.getClientId( facesContext ), message );*/
 				throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, WRONG_PASSWORD, null));
 		}
+		}catch(Exception e) {
+			 FacesMessage message = new FacesMessage( FacesMessage.SEVERITY_ERROR, e.getMessage(), null );
+	         FacesContext facesContext = FacesContext.getCurrentInstance();
+	         facesContext.addMessage( component.getClientId( facesContext ), message );
+		}
+			
+			
 	}
 
 }

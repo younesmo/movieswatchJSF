@@ -26,9 +26,15 @@ public class CPExistValidator implements Validator{
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		String cp= (String)value;
+		try {
 			if(cpService.getByNumber(cp)==null) {
 				throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, CP_DOESNT_EXIST, null));
 			}
+		}catch(Exception e){ 
+			FacesMessage message = new FacesMessage( FacesMessage.SEVERITY_ERROR, e.getMessage(), null );
+	         FacesContext facesContext = FacesContext.getCurrentInstance();
+	         facesContext.addMessage( component.getClientId( facesContext ), message );
+		}
 		
 	}
 }

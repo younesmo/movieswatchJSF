@@ -1,6 +1,5 @@
 package com.movieswatch.managedBeans;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -29,6 +28,7 @@ import com.movieswatch.utils.SessionUtils;
 public class CartBean implements Serializable{
 	
 	private Order cart;
+	private int idMovie;
 	private int totalPrice;
 	transient private OrderService cartService;
 	transient private static Logger logger = Logger.getLogger(CartBean.class);
@@ -45,8 +45,8 @@ public class CartBean implements Serializable{
 		initTotalPrice();
 	}
 	
-	public void delete(String id) throws IOException {
-		boolean isMovieDeleted= cartService.deleteFromCart(Integer.valueOf(id), SessionUtils.getCurrentUser());
+	public void delete() throws IOException {
+		boolean isMovieDeleted= cartService.deleteFromCart(idMovie, SessionUtils.getCurrentUser());
 		if(isMovieDeleted) {
 			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		    ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
@@ -98,5 +98,15 @@ public class CartBean implements Serializable{
 	public int getTotalPrice() {
 		return totalPrice;
 	}
+
+	public int getIdMovie() {
+		return idMovie;
+	}
+
+	public void setIdMovie(int idMovie) {
+		this.idMovie = idMovie;
+	}
+	
+	
 				
 }

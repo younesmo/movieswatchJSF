@@ -19,6 +19,7 @@ public class OrderBean implements Serializable {
 
 	private Order order;
 	private int totalPrice;
+	private int idOrder;
 	transient private OrderService orderService;
 	transient private static Logger logger = Logger.getLogger(OrderBean.class);
 
@@ -27,8 +28,8 @@ public class OrderBean implements Serializable {
 		this.orderService= new OrderServiceImpl();
 	}
 	
-	public String getDetails(String id) {
-		order= orderService.getById(Integer.valueOf(id));
+	public String getDetails() {
+		order= orderService.getById(idOrder);
 		initTotalPrice();
 		return "order";
 	}
@@ -53,6 +54,14 @@ public class OrderBean implements Serializable {
 
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public int getIdOrder() {
+		return idOrder;
+	}
+
+	public void setIdOrder(int idOrder) {
+		this.idOrder = idOrder;
 	}
 	
 	
