@@ -11,9 +11,9 @@
 </h:head>
 <h:body>
 	<div class="container mt-5 pt-5">
-		<h3 class="display-3 font-weight-bold">Votre profile</h3>
+		<h3 class="display-3 font-weight-bold text-center">Votre profil</h3>
 		<hr />
-		<div class="card  col-10">
+		<div class="card bg-light mb-3  col-5">
 			<div class="card-body ">
 				<h4>#{editProfilBean.user.lastname}
 					#{editProfilBean.user.firstname}</h4>
@@ -37,13 +37,13 @@
 
 				<h:form>
 					<h:commandButton value="Mettre à jour vos données"
-						styleClass="btn btn-primary" action="#{editProfilBean.goToEdit}">
+						styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm" action="#{editProfilBean.goToEdit}">
 					</h:commandButton>
 				</h:form>
 			</div>
 			<h:form styleClass="col-2">
 				<h:commandButton value="Mettre à jour le mot de passe"
-					styleClass="btn btn-primary"
+					styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm"
 					action="#{editProfilBean.goToEditPassword}">
 				</h:commandButton>
 			</h:form>
