@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name="users")
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.findLinkedAccounts", query="SELECT u FROM User u where u.user.id= :refere"),
 	@NamedQuery(name="User.findById", query="SELECT u FROM User u WHERE u.id = :id"),
 	@NamedQuery(name="User.findByEmail", query="SELECT u FROM User u WHERE u.email = :email"),
 	@NamedQuery(name="User.connexion", query="SELECT u FROM User u where u.email = :email and u.password = :password ")})

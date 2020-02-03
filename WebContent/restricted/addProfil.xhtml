@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+    	<meta charset="utf-8" />
+        <title>Ajouter un profil</title>
+        <ui:include src="/WEB-INF/cssLoader.xhtml" />
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+    </h:head>
+    <h:body>
+        	<h:panelGroup layout="block" styleClass="container">
+		<h6 class=" display-3 font-weight-bold white-text mt-5 pt-5"></h6>
+
+		<h:panelGroup layout="block" styleClass="signup-form">
+			<h:form id="form">
+				<h2>Ajouter un profil</h2>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="email" styleClass="form-control"
+						value="#{registrationBean.user.email}" a:placeholder="Email"
+						size="20" maxlength="60">
+						<f:ajax event="blur" render="emailMessage" />
+						<f:validator validatorId="emailExistValidator" />
+					</h:inputText>
+					<h:message id="emailMessage" for="email" errorClass="text-danger" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="lastname" a:placeholder="Nom"
+						styleClass="form-control"
+						value="#{registrationBean.user.lastname}" size="20" maxlength="20">
+						<f:ajax event="blur" render="lastnameMessage" />
+					</h:inputText>
+					<h:message id="lastnameMessage" for="lastname"
+						errorClass="text-danger" />
+				</h:panelGroup>
+
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="firstname" a:placeholder="Prenom"
+						styleClass="form-control"
+						value="#{registrationBean.user.firstname}" size="20"
+						maxlength="20">
+						<f:ajax event="blur" render="firstnameMessage" />
+					</h:inputText>
+					<h:message id="firstnameMessage" for="firstname"
+						errorClass="text-danger" />
+				</h:panelGroup>
+
+			
+
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="birth" required="true" requiredMessage="Veuillez indiquer une date de naissance" styleClass="form-control datepicker"
+						value="#{registrationBean.user.birthdate}"
+						a:placeholder="Date de naissance">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
+					<h:message id="birthMessage" for="birth" errorClass="text-danger" />
+				</h:panelGroup>
+			
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputSecret id="password" a:placeholder="Mot de passe"
+						styleClass="form-control"
+						value="#{registrationBean.user.password}"
+						binding="#{passwordComponent}" size="20" maxlength="20">
+						<f:ajax event="blur" execute="password confirmation"
+							render="passwordMessage confirmationMessage" />
+					</h:inputSecret>
+					<h:message id="passwordMessage" for="password"
+						errorClass="text-danger" />
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputSecret id="confirmation" styleClass="form-control"
+						a:placeholder="Confirmation mot de passe"
+						value="#{registrationBean.user.password}" size="20" maxlength="20">
+						<f:ajax event="blur" execute="password confirmation"
+							render="passwordMessage confirmationMessage" />
+						<f:attribute name="passwordComponent" value="#{passwordComponent}" />
+						<f:validator validatorId="passwordConfirmationValidator" />
+					</h:inputSecret>
+					<h:message id="confirmationMessage" for="confirmation"
+						errorClass="text-danger" />
+				</h:panelGroup>
+
+
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:commandButton value="Valider"
+						styleClass="btn btn-primary btn-lg"
+						action="#{registrationBean.addProfil}">
+					</h:commandButton>
+				</h:panelGroup>
+
+			</h:form>
+		</h:panelGroup>
+	</h:panelGroup>
+	<hr class="hr-light my-4 w-75"></hr>
+
+	<ui:include src="/WEB-INF/footer.xhtml" />
+        
+    </h:body>
+</html>

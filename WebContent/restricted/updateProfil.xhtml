@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"    
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        	<meta charset="utf-8" />   
+        <title>Mise à jour du profil</title>       
+		<ui:include src="/WEB-INF/cssLoader.xhtml" />
+		<ui:include src="/WEB-INF/navBar.xhtml" />
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="container mt-5 pt-5">
+		<h:panelGroup layout="block" styleClass="row">
+			<h:panelGroup layout="block" styleClass="col-md-9 personal-info">
+				<h3>Mettez à jour le profil</h3>
+
+				<h:form styleClass="form-horizontal">
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">Nom:</h:outputLabel>
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+
+							<h:inputText id="lastname" styleClass="form-control"
+								value="#{updateMemberBean.user.lastname}" size="20" maxlength="20">
+								<f:ajax event="blur" render="lastnameMessage" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="lastnameMessage" for="lastname"
+							errorClass="text-danger" />
+					</h:panelGroup>
+
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">Prénom:</h:outputLabel>
+
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="firstname" styleClass="form-control"
+								value="#{updateMemberBean.user.firstname}" size="20"
+								maxlength="20">
+								<f:ajax event="blur" render="firstnameMessage" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="firstnameMessage" for="firstname"
+							errorClass="text-danger" />
+					</h:panelGroup>
+
+
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="email">Email:</h:outputLabel>
+
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="email" styleClass="form-control"
+								value="#{updateMemberBean.user.email}" size="20" maxlength="60">
+								<f:ajax event="blur" render="emailMessage" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="emailMessage" for="email" errorClass="text-danger" />
+					</h:panelGroup>
+
+					
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">Date de naissance:</h:outputLabel>
+
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="birth" required="true" requiredMessage="Veuillez introduire une date de naissance" styleClass="form-control datepicker"
+								value="#{updateMemberBean.user.birthdate}">
+								<f:convertDateTime pattern="yyyy-MM-dd" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="birthMessage" for="birth" errorClass="text-danger" />
+					</h:panelGroup>
+
+						<h:messages globalOnly="true" infoClass="text-success" />
+
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-md-3 control-label"></h:outputLabel>
+						<h:panelGroup layout="block" styleClass="col-md-8">
+							<h:commandButton value="Sauvegarder"
+								styleClass="btn btn-primary"
+								action="#{updateMemberBean.saveProfil}">
+							</h:commandButton>
+						</h:panelGroup>
+						
+					</h:panelGroup>
+				</h:form>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
+        
+    </h:body>
+</html>

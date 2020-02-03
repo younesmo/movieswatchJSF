@@ -33,8 +33,8 @@
 									value="Profil" action="#{navBean.goToProfil}" /></li>
 
 						</h:panelGroup>
-						<c:choose>
-							<c:when test="#{sessionScope.currentUser.role.name == 'User' }">
+						
+							<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
 
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Films" action="#{navBean.goToMovies}" /></li>
@@ -43,24 +43,21 @@
 
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Vos commandes" action="#{navBean.goToOrders}" /></li>
-							</c:when>
+							</h:panelGroup>
 
-							<c:when test="#{sessionScope.currentUser.role.name == 'Admin' }">
+							<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Films" action="#{navBean.goToMovies}" /></li>
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Membres" action="#{navBean.goToMembers}" /></li>
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Commandes" action="#{navBean.goToAllOrders}" /></li>
+							</h:panelGroup>
 
-							</c:when>
-
-							<c:when
-								test="#{sessionScope.currentUser.role.name == 'Accounting' }">
+								<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Accounting' }">
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Commandes" action="#{navBean.goToAllOrders}" /></li>
-							</c:when>
-						</c:choose>
+							</h:panelGroup>
 					</ul>
 
 					<h:panelGroup rendered="#{!empty sessionScope.currentUser}">

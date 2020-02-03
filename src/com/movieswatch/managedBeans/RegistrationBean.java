@@ -12,6 +12,7 @@ import com.movieswatch.entities.Role;
 import com.movieswatch.entities.User;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
+import com.movieswatch.utils.SessionUtils;
 
 @Named("registrationBean")
 @ViewScoped
@@ -64,6 +65,21 @@ public class RegistrationBean implements Serializable {
 		 FacesMessage message= new FacesMessage("Membres ajoutés");
 		 FacesContext.getCurrentInstance().addMessage(null, message);
 		 return "members";
+	}
+	
+	public String addProfil() {
+		User currentUser= SessionUtils.getCurrentUser();
+		Role role= new Role();
+		role.setId(1);
+		user.setRole(role);
+		user.setPostalcode(currentUser.getPostalcode());
+		user.setUser(currentUser);
+		user.setMobileNumber(currentUser.getMobileNumber());
+		user.setStreetName(currentUser.getStreetName());
+		userService.insertUser(user);
+		 FacesMessage message= new FacesMessage("Succés de l'ajout du profil");
+		 FacesContext.getCurrentInstance().addMessage(null, message);
+		 return "profil";
 	}
 	
 	public Postalcode getCp() {
