@@ -47,12 +47,12 @@ movies.push("#{item.date}");
 </ui:repeat>
 //<![CDATA[
 for(var i = 0; i < movies.length; ++i){
-    const words = movies[i].split(' ');
-    dateParse.push(words[1]);
+    const chars = movies[i].split('');
+    const chars = str.split('');
+    dateParse.push(chars[2]);
     
 }
-
-
+//alert(dateParse);
 for(var i = 0; i < dateParse.length; ++i){
 	switch (dateParse[i]) {
 	  case "Jan":
