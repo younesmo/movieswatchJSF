@@ -32,10 +32,10 @@
 							<li class="nav-item"><h:commandLink styleClass="nav-link"
 									value="Profil" action="#{navBean.goToProfil}" /></li>
 
-						</h:panelGroup>
-						
+						</h:panelGroup>						
 							<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
-
+									<h:panelGroup rendered="#{!navBean.isChild}">
+							
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Films" action="#{navBean.goToMovies}" /></li>
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
@@ -43,6 +43,7 @@
 
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
 										value="Vos commandes" action="#{navBean.goToOrders}" /></li>
+								</h:panelGroup>
 							</h:panelGroup>
 
 							<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
