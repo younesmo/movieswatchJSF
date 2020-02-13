@@ -10,13 +10,15 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
+    <f:view locale="#{languageBean.localeCode}">
+
 	<h:panelGroup layout="block" styleClass="container mt-5 ">
 		<hr />
-		<h1 class="display-3 font-weight-bold text-center">Votre compte</h1>
+		<h1 class="display-3 font-weight-bold text-center">#{msg['titleAccount']}</h1>
 		<hr />
 
 		<h:panelGroup layout="block" styleClass="container pull-left col-6 ">
-			<h3 class="font-weight-bold text-center">Votre profil principal</h3>
+			<h3 class="font-weight-bold text-center">#{msg['titleMainProfil']}</h3>
 			
 			<h:panelGroup layout="block"
 				styleClass="card bg-light ml-5 align-items-center col-10">
@@ -27,7 +29,7 @@
 				#{editProfilBean.cp.number} #{editProfilBean.cp.city_name}
 				<p>
 						<i class="fa fa-envelope"></i> #{editProfilBean.user.email}<br />
-						<i class="fa fa-birthday-cake"></i> Date de naissance:
+						<i class="fa fa-birthday-cake"></i> #{msg['birthdate']}:
 						<h:outputText value="#{editProfilBean.user.birthdate}">
 							<f:convertDateTime pattern="yyyy-MM-dd" />
 						</h:outputText>
@@ -44,14 +46,14 @@
 				<h:panelGroup layout="block" styleClass="col-4">
 
 					<h:form>
-						<h:commandButton value="Mettre à jour vos données"
+						<h:commandButton value="#{msg['updateData']}"
 							styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm"
 							action="#{editProfilBean.goToEdit}">
 						</h:commandButton>
 					</h:form>
 				</h:panelGroup>
 				<h:form styleClass="col-4">
-					<h:commandButton value="Mettre à jour le mot de passe"
+					<h:commandButton value="#{msg['updatePassword']}"
 						styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm"
 						action="#{editProfilBean.goToEditPassword}">
 					</h:commandButton>
@@ -60,8 +62,8 @@
 		</h:panelGroup>
 
 
-		<h:panelGroup layout="block" styleClass="container pull-left col-6 ">
-			<h3 class="font-weight-bold text-center">Vos profils liés</h3>
+		<h:panelGroup layout="block" styleClass="container pull-left col-6 " rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
+			<h3 class="font-weight-bold text-center">#{msg['linkedAccount']}</h3>
 			
 			<h:panelGroup layout="block" styleClass="table-responsive">
 				<h:panelGroup rendered="#{!empty editProfilBean.childAccounts}">
@@ -73,12 +75,12 @@
 
 
 						<h:column>
-							<f:facet name="header">Prenom</f:facet>
+							<f:facet name="header">#{msg['firstname']}</f:facet>
 							#{childAccount.firstname}
     					</h:column>
 
 						<h:column>
-							<f:facet name="header">Nom</f:facet>
+							<f:facet name="header">#{msg['lastname']}</f:facet>
 							#{childAccount.lastname} 
     					</h:column>
 						
@@ -102,7 +104,7 @@
 					</h:dataTable>
 					</h:panelGroup>
 					<h:panelGroup rendered="#{empty editProfilBean.childAccounts}">
-					Vous n'avez pas d'autre profil			
+					#{msg['noLinkedAccount']}			
 				</h:panelGroup>
 				
 		
@@ -110,7 +112,7 @@
 				<h:panelGroup layout="block" styleClass="col-4">
 
 					<h:form>
-						<h:commandButton value="Ajouter un profil"
+						<h:commandButton value="#{msg['addProfil']}"
 							styleClass="btn btn-outline-primary btn-rounded waves-effect btn-sm" action="#{editProfilBean.goToAddProfil}">
 						</h:commandButton>
 					</h:form>
@@ -123,8 +125,10 @@
 		
 	</h:panelGroup>
 	
-	
-	<ui:include src="/WEB-INF/footer.xhtml" />
+	<h:panelGroup layout="block" styleClass="fixed-bottom">
+		<ui:include src="/WEB-INF/footer.xhtml" />
 	</h:panelGroup>
+	</h:panelGroup>
+	</f:view>
 </h:body>
 </html>

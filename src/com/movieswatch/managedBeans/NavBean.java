@@ -18,9 +18,9 @@ public class NavBean implements Serializable {
 	
 	public NavBean() {
 		user= SessionUtils.getCurrentUser();
-
-		if(user.getUser()!=null) {
-			isChild=true;
+		if(user !=null) {
+			if(user.getUser()!=null)
+				isChild=true;
 		}
 	}
 	

@@ -12,15 +12,16 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
+        <f:view locale="#{languageBean.localeCode}">
 
 	<h:panelGroup layout="block" styleClass="container">
-	<h3 class="display-3 font-weight-bold  mt-5 pt-5 text-dark">Liste des membres</h3>
+	<h3 class="display-3 font-weight-bold  mt-5 pt-5 text-dark">#{msg['members']}</h3>
 	<hr class="hr-light my-4 w-75"/>
 	
 		<h:panelGroup layout="block" styleClass="table-wrapper">
 
 			<h:panelGroup layout="block" styleClass="col-sm-5">
-				<h2>Administrateur</h2>
+				<h2>#{msg['admin']}</h2>
 			</h:panelGroup>
 			<h:dataTable value="#{usersBean.admins}"
 						var="user" styleClass="table table-striped table-hover"
@@ -32,7 +33,7 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Nom</f:facet>
+							<f:facet name="header">#{msg['name']}</f:facet>
 							#{user.lastname} #{user.firstname}
     					</h:column>
 
@@ -66,7 +67,7 @@
 
 			<h:panelGroup layout="block" styleClass="col-sm-7">
 							<h:form>
-								<h:commandLink value="Ajouter un utilisateur" action="#{usersBean.addMember}"
+								<h:commandLink value="#{msg['addMember']}" action="#{usersBean.addMember}"
 								 styleClass="btn btn-info">
 								</h:commandLink>
 							</h:form>
@@ -76,7 +77,7 @@
 			<br/>
 			<hr class="hr-light my-4 w-75"/>
 			<h:panelGroup layout="block" styleClass="col-sm-5">
-				<h2>Comptables</h2>
+				<h2>#{msg['accounting']}</h2>
 			</h:panelGroup>
 			<h:dataTable value="#{usersBean.accounters}"
 						var="user" styleClass="table table-striped table-hover"
@@ -88,7 +89,7 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Nom</f:facet>
+							<f:facet name="header">#{msg['name']}</f:facet>
 							#{user.lastname} #{user.firstname}
     					</h:column>
 
@@ -124,7 +125,7 @@
 			<br/>
 			<hr class="hr-light my-4 w-75"/>
 			<h:panelGroup layout="block" styleClass="col-sm-5">
-				<h2>Utilisateur</h2>
+				<h2>#{msg['user']}</h2>
 			</h:panelGroup>
 			<h:dataTable value="#{usersBean.members}"
 						var="user" styleClass="table table-striped table-hover"
@@ -136,7 +137,7 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Nom</f:facet>
+							<f:facet name="header">#{msg['name']}</f:facet>
 							#{user.lastname} #{user.firstname}
     					</h:column>
 
@@ -169,9 +170,11 @@
 					</h:dataTable>
 					
 				<h:messages globalOnly="true" infoClass="text-success" />				
-				<ui:include src="/WEB-INF/footer.xhtml" />
 					
 		</h:panelGroup>
 	</h:panelGroup>
+<ui:include src="/WEB-INF/footer.xhtml" />
+	
+	</f:view>
 </h:body>
 </html>

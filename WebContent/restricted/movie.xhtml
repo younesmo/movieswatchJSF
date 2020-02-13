@@ -12,10 +12,9 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-
+    <f:view locale="#{languageBean.localeCode}">
 	<h:panelGroup layout="block" styleClass="container">
-		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-center text-dark">Détails
-			du film</h3>
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-center text-dark">#{msg['movieDetails']}</h3>
 		<h:panelGroup layout="block" styleClass="row justify-content-md-center">
 			<h:panelGroup layout="block" styleClass="row">
 				<h:panelGroup layout="block" styleClass="col">
@@ -35,7 +34,7 @@
 					<br /> <br />
 				</h:panelGroup> 
 				<h:panelGroup layout="block" styleClass="card bg-light mb-3 " style="max-width: 23rem;">
-					<h2>Infos Film</h2>
+					<h2>Information</h2>
 					<h:panelGroup layout="block" styleClass="card-deck">
 						<h:panelGroup layout="block" styleClass="card-body">
 							<h:panelGroup layout="block" styleClass="fond_utile ">
@@ -45,7 +44,7 @@
 									<h:panelGroup layout="block" styleClass="text-center"></h:panelGroup> 
 								</h:panelGroup> 
 								<h:panelGroup layout="block" styleClass="item-point-info">
-									<h3 class="card-title">Date de sortie</h3>
+									<h3 class="card-title">#{msg['release']}</h3>
 									<h:panelGroup layout="block">#{movieBean.movie.productionYear}</h:panelGroup> 
 									<p class="card-text" style=""></p>
 									<h:panelGroup layout="block" styleClass="text-center"></h:panelGroup> 
@@ -77,7 +76,7 @@
 				   						<h:message for="format" styleClass="text-danger"/>
 										<h:outputText id="priceMessage" value="#{movieBean.movieFormat.price} €"/>
 										<hr/>
-										<h:commandButton value="Ajouter au panier"
+										<h:commandButton value="#{msg['addToCart']}"
 											styleClass="btn btn-success" action="#{movieBean.addInCart}">
 										</h:commandButton>
 									</h:form>
@@ -91,6 +90,6 @@
 		</h:panelGroup> 
 	</h:panelGroup> 
 	<ui:include src="/WEB-INF/footer.xhtml" />
-
+</f:view>
 </h:body>
 </html>

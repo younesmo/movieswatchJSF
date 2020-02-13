@@ -13,6 +13,7 @@
 
 </h:head>
 <h:body>
+<f:view locale="#{languageBean.localeCode}">
 
 	<h:panelGroup layout="block" styleClass="view"
 		style="background-image: url('./resources/default/images/background/backgroundConnectionPage.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -27,13 +28,13 @@
 						<h:panelGroup layout="block" styleClass="col-md-12 mb-4 white-text text-center wow fadeIn">
 							<!-- Full Page Intro -->
 							<h6
-								class="deepshd display-3 font-weight-bold white-text mt-5 pt-5  ">Bienvenue
-								sur MoviesWatch</h6>
+								class="deepshd display-3 font-weight-bold white-text mt-5 pt-5 ">
+								<h:outputText value = "#{msg['welcome']}" />
+								</h6>
 							<hr class="hr-light my-4 w-75" />
 							<h:panelGroup layout="block" styleClass="signup-form">
 								<h:form>
-									<h2>Connexion</h2>
-									<p>Vous pouvez vous connecter via ce formulaire.</p>
+									<h2><h:outputText value="#{msg['login']}" ></h:outputText></h2>
 									<h:panelGroup layout="block" styleClass="form-group">
 										<h:inputText id="email" styleClass="form-control"
 											value="#{loginBean.user.email}" a:placeholder="Email"
@@ -45,7 +46,7 @@
 									</h:panelGroup>
 
 									<h:panelGroup layout="block" styleClass="form-group">
-										<h:inputSecret id="password" a:required="true" a:placeholder="Mot de passe"
+										<h:inputSecret id="password" a:required="true" a:placeholder="#{msg['password']}"
 											styleClass="form-control" value="#{loginBean.user.password}"
 											size="20" maxlength="20">
 										</h:inputSecret>
@@ -66,8 +67,7 @@
 								</h:form>
 							</h:panelGroup>
 							<hr class="hr-light my-4 w-75" />
-							<h4 class="subtext-header mt-2 mb-4">Un service de qualité
-								jamais égaler</h4>
+							<h4 class="subtext-header mt-2 mb-4"><h:outputText value="#{msg['loginPageFooter']}"> </h:outputText></h4>
 						</h:panelGroup>
 					</h:panelGroup>
 				</h:panelGroup>
@@ -76,6 +76,6 @@
 	</h:panelGroup>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
-
+</f:view>
 </h:body>
 </html>

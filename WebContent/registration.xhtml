@@ -14,13 +14,15 @@
 
 </h:head>
 <h:body>
+<f:view locale="#{languageBean.localeCode}">
+
 	<h:panelGroup layout="block" styleClass="view"
 		style="background-image: url('./resources/default/images/background/backgroundConnectionPage.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 		<h6 class=" display-3 font-weight-bold white-text mt-5 pt-5"></h6>
 
 		<h:panelGroup layout="block" styleClass="signup-form">
 			<h:form id="form">
-				<h2>Inscription</h2>
+				<h2><h:outputText value="#{msg['registration']}"></h:outputText></h2>
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="email" styleClass="form-control"
@@ -33,7 +35,7 @@
 				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="lastname" a:placeholder="Nom" styleClass="form-control"
+					<h:inputText id="lastname" a:placeholder="#{msg['lastname']}" styleClass="form-control"
 						value="#{registrationBean.user.lastname}" size="20" maxlength="20">
 						<f:ajax event="blur" render="lastnameMessage" />
 					</h:inputText>
@@ -42,7 +44,7 @@
 
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="firstname" a:placeholder="Prenom"
+					<h:inputText id="firstname" a:placeholder="#{msg['firstname']}"
 						styleClass="form-control" value="#{registrationBean.user.firstname}"
 						size="20" maxlength="20">
 						<f:ajax event="blur" render="firstnameMessage" />
@@ -51,7 +53,7 @@
 				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="street" a:placeholder="Rue"
+					<h:inputText id="street" a:placeholder="#{msg['street']}"
 						styleClass="form-control" value="#{registrationBean.user.streetName}">
 						<f:ajax event="blur" render="streetMessage" />
 					</h:inputText>
@@ -60,7 +62,7 @@
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="cp" styleClass="form-control"
-						value="#{registrationBean.cp.number}" required="true" requiredMessage="Veuillez introduire un code postal" a:placeholder="Code Postal"
+						value="#{registrationBean.cp.number}" required="true" requiredMessage="Veuillez introduire un code postal" a:placeholder="#{msg['postalcode']}"
 						size="20" maxlength="60">
 						<f:ajax event="blur" render="cpMessage" />
 						<f:validator validatorId="cpExistValidator" />
@@ -72,7 +74,7 @@
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="num" styleClass="form-control"
 						value="#{registrationBean.user.mobileNumber}"
-						a:placeholder="Telephone">
+						a:placeholder="#{msg['mobilePhone']}">
 						<f:ajax event="blur" render="numMessage" />						
 					</h:inputText>
 					<h:message id="numMessage" for="num" errorClass="text-danger" />
@@ -81,7 +83,7 @@
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="birth" required="true" requiredMessage="Veuillez indiquer une date de naissance" styleClass="form-control datepicker"
 						value="#{registrationBean.user.birthdate}"
-						a:placeholder="Date de naissance">
+						a:placeholder="#{msg['birthdate']}">
 						<f:convertDateTime pattern="yyyy-MM-dd" />
 						<f:ajax event="change" render="birthMessage" />
 						<f:ajax event="blur" render="birthMessage" />						
@@ -91,7 +93,7 @@
 				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputSecret id="password" a:placeholder="Mot de passe"
+					<h:inputSecret id="password" a:placeholder="#{msg['password']}"
 						styleClass="form-control" value="#{registrationBean.user.password}"
 						binding="#{passwordComponent}" size="20" maxlength="20">
 						<f:ajax event="blur" execute="password confirmation"
@@ -103,7 +105,7 @@
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputSecret id="confirmation" styleClass="form-control"
-						a:placeholder="Confirmation mot de passe"
+						a:placeholder="#{msg['confirmPassword']}"
 						value="#{registrationBean.user.password}" size="20" maxlength="20">
 						<f:ajax event="blur" execute="password confirmation"
 							render="passwordMessage confirmationMessage" />
@@ -119,7 +121,7 @@
 				<h:messages globalOnly="true" infoClass="text-danger" />
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:commandButton value="Inscription"
+					<h:commandButton value="#{msg['registration']}"
 						styleClass="btn btn-primary btn-lg"
 						action="#{registrationBean.registrateUser}">
 					</h:commandButton>
@@ -129,15 +131,17 @@
 			</h:form>
 
 			<h:panelGroup layout="block" styleClass="white-text text-center">
-				Déjà inscris ?
-				<h:link styleClass="white-text" value="Se connecter" outcome="login" />
+				<h:outputText value="#{msg['registrationMess']}"></h:outputText>
+				<h:link styleClass="white-text" value=" #{msg['login']}" outcome="login" />
 			</h:panelGroup>
 
 		</h:panelGroup>
 	</h:panelGroup>
 	<hr class="hr-light my-4 w-75"></hr>
 
+<h:panelGroup styleClass="fixed-bottom">
 	<ui:include src="/WEB-INF/footer.xhtml" />
-
+	</h:panelGroup>
+</f:view>
 </h:body>
 </html>

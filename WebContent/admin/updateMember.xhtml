@@ -13,14 +13,15 @@
 		<ui:include src="/WEB-INF/navBar.xhtml" />
     </h:head>
     <h:body>
+            <f:view locale="#{languageBean.localeCode}">
         	<h:panelGroup layout="block" styleClass="container mt-5 pt-5">
 		<h:panelGroup layout="block" styleClass="row">
 			<h:panelGroup layout="block" styleClass="col-md-9 personal-info">
-				<h3>Mettez à jour les données de l'utilisateur</h3>
+				<h3>#{msg['updateMember']}</h3>
 
 				<h:form styleClass="form-horizontal">
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">Nom:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">#{msg['lastname']}:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 
 							<h:inputText id="lastname" styleClass="form-control"
@@ -33,7 +34,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">Prénom:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">#{msg['firstname']}:</h:outputLabel>
 
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="firstname" styleClass="form-control"
@@ -47,7 +48,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="street">Rue:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="street">#{msg['street']}:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="street" styleClass="form-control"
 								value="#{updateMemberBean.user.streetName}">
@@ -59,7 +60,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">Code postal:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">#{msg['postalcode']}:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 
 							<h:inputText id="cp" required="true" requiredMessage="Veuillez introduire un code postal" styleClass="form-control"
@@ -72,7 +73,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="num">Numéro de téléphonne:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="num">#{msg['mobilePhone']}:</h:outputLabel>
 
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="num" styleClass="form-control"
@@ -100,15 +101,15 @@
 						<h:outputLabel styleClass="col-lg-3 control-label" for="role">Role:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">						
 						<h:selectOneMenu id="role" styleClass="form-control" value="#{updateMemberBean.idRole}">
-							<f:selectItem itemValue="1" itemLabel="Utilisateur" />
-							<f:selectItem itemValue="2" itemLabel="Administrateur" />
-							<f:selectItem itemValue="3" itemLabel="Comptable" />
+							<f:selectItem itemValue="1" itemLabel="#{msg['user']}" />
+							<f:selectItem itemValue="2" itemLabel="#{msg['admin']}" />
+							<f:selectItem itemValue="3" itemLabel="#{msg['accounting']}" />
 						</h:selectOneMenu>
 						</h:panelGroup>
 					</h:panelGroup>
 					
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">Date de naissance:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">#{msg['birthdate']}:</h:outputLabel>
 
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="birth" required="true" requiredMessage="Veuillez introduire une date de naissance" styleClass="form-control datepicker"
@@ -127,7 +128,7 @@
 					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-md-3 control-label"></h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-md-8">
-							<h:commandButton value="Sauvegarder"
+							<h:commandButton value="#{msg['save']}"
 								styleClass="btn btn-primary"
 								action="#{updateMemberBean.saveUser}">
 							</h:commandButton>
@@ -138,7 +139,8 @@
 			</h:panelGroup>
 		</h:panelGroup>
 	</h:panelGroup>
+<ui:include src="/WEB-INF/footer.xhtml" />
 
-	<ui:include src="/WEB-INF/footer.xhtml" />
+	</f:view>
     </h:body>
 </html>

@@ -12,12 +12,14 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
     </h:head>
     <h:body>
+        <f:view locale="#{languageBean.localeCode}">
+    
         	<h:panelGroup layout="block" styleClass="container">
 		<h6 class=" display-3 font-weight-bold white-text mt-5 pt-5"></h6>
 
 		<h:panelGroup layout="block" styleClass="signup-form">
 			<h:form id="form">
-				<h2>Ajouter un profil</h2>
+				<h2>#{msg['addProfil']}</h2>
 				
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="email" styleClass="form-control"
@@ -30,7 +32,7 @@
 				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="lastname" a:placeholder="Nom"
+					<h:inputText id="lastname" a:placeholder="#{msg['lastname']}"
 						styleClass="form-control"
 						value="#{registrationBean.user.lastname}" size="20" maxlength="20">
 						<f:ajax event="blur" render="lastnameMessage" />
@@ -41,7 +43,7 @@
 
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="firstname" a:placeholder="Prenom"
+					<h:inputText id="firstname" a:placeholder="#{msg['firstname']}"
 						styleClass="form-control"
 						value="#{registrationBean.user.firstname}" size="20"
 						maxlength="20">
@@ -57,7 +59,7 @@
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="birth" required="true" requiredMessage="Veuillez indiquer une date de naissance" styleClass="form-control datepicker"
 						value="#{registrationBean.user.birthdate}"
-						a:placeholder="Date de naissance">
+						a:placeholder="#{msg['birthdate']}">
 						<f:convertDateTime pattern="yyyy-MM-dd" />
 					</h:inputText>
 					<h:message id="birthMessage" for="birth" errorClass="text-danger" />
@@ -65,7 +67,7 @@
 			
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputSecret id="password" a:placeholder="Mot de passe"
+					<h:inputSecret id="password" a:placeholder="#{msg['password']}"
 						styleClass="form-control"
 						value="#{registrationBean.user.password}"
 						binding="#{passwordComponent}" size="20" maxlength="20">
@@ -78,7 +80,7 @@
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputSecret id="confirmation" styleClass="form-control"
-						a:placeholder="Confirmation mot de passe"
+						a:placeholder="#{msg['confirmPassword']}"
 						value="#{registrationBean.user.password}" size="20" maxlength="20">
 						<f:ajax event="blur" execute="password confirmation"
 							render="passwordMessage confirmationMessage" />
@@ -92,7 +94,7 @@
 
 
 				<h:panelGroup layout="block" styleClass="form-group">
-					<h:commandButton value="Valider"
+					<h:commandButton value="#{msg['validate']}"
 						styleClass="btn btn-primary btn-lg"
 						action="#{registrationBean.addProfil}">
 					</h:commandButton>
@@ -104,6 +106,6 @@
 	<hr class="hr-light my-4 w-75"></hr>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
-        
+        </f:view>
     </h:body>
 </html>

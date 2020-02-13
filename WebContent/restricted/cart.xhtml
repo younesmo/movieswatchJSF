@@ -12,9 +12,10 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
+    <f:view locale="#{languageBean.localeCode}">
 
 	<h1
-		class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">Panier</h1>
+		class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">#{msg['cart']}</h1>
 	<h:panelGroup layout="block" styleClass="container mb-4">
 		<h:panelGroup layout="block" styleClass="row">
 			<h:panelGroup layout="block" styleClass="col-12">
@@ -31,12 +32,12 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Titre</f:facet>
+							<f:facet name="header">#{msg['title']}</f:facet>
 							#{orderMovie.movie.movie.title}
     					</h:column>
 
 						<h:column>
-							<f:facet name="header">Prix</f:facet>
+							<f:facet name="header">#{msg['price']}</f:facet>
 							#{orderMovie.movie.price} €
     					</h:column>
 						
@@ -54,11 +55,11 @@
 					
 						<h:panelGroup rendered="#{!empty cartBean.cart.orderMovies}">
 						<hr/>
-					<h:panelGroup layout="block">Prix total: <h:outputText value="#{cartBean.totalPrice} €"/></h:panelGroup>
+					<h:panelGroup layout="block">#{msg['totalPrice']}: <h:outputText value="#{cartBean.totalPrice} €"/></h:panelGroup>
 					<hr/>
 						<h:form>
 						<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel for="payment" value="Selectionner un moyen de paiement"/>
+						<h:outputLabel for="payment" value="#{msg['payment']}"/>
 						<h:selectOneRadio id="payment" styleClass="col-sm-6 col-md-4" value="#{cartBean.cart.paymentMode}" required="true" requiredMessage="Vous devez choisir un moyen de payement">
    							<f:selectItem  itemValue="Paypal" itemLabel="Paypal" />
    							<f:selectItem itemValue="Visa" itemLabel="Visa" />
@@ -80,7 +81,7 @@
 						</h:panelGroup>
 
 						<h:panelGroup rendered="#{empty cartBean.cart.orderMovies}">
-							Votre panier est vide
+							#{msg['emptyCart']}
 			
 						</h:panelGroup>
 
@@ -89,8 +90,9 @@
 
 		</h:panelGroup>
 	</h:panelGroup>
-
+<h:panelGroup layout="block" styleClass="fixed-bottom">
 	<ui:include src="/WEB-INF/footer.xhtml" />
-
+	</h:panelGroup>
+</f:view>
 </h:body>
 </html>
