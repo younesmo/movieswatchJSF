@@ -1,0 +1,159 @@
+<ui:composition  
+	lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+
+	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/series-label.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+
+
+
+<h:panelGroup layout="block" styleClass="container">
+	<h:panelGroup layout="block" styleClass="mt-5" id="graphic"> 
+	
+	
+	</h:panelGroup>
+	</h:panelGroup>
+	
+<script type="text/javascript">
+var movies =[];
+var dateParse = [];
+var Jan = 0;
+var Feb = 0;
+var Mar = 0;
+var Apr = 0;
+var May = 0;
+var Jun = 0;
+var Jul = 0;
+var Aug = 0;
+var Sep = 0;
+var Oct = 0;
+var Nov = 0;
+var Dec = 0;
+<ui:repeat value="#{allOrdersBean.orders}" var="item">
+movies.push("#{item.date}");
+
+
+
+</ui:repeat>
+//<![CDATA[
+for(var i = 0; i < movies.length; ++i){
+    const words = movies[i].split(' ');
+    dateParse.push(words[1]);
+    
+}
+
+
+for(var i = 0; i < dateParse.length; ++i){
+	switch (dateParse[i]) {
+	  case "Jan":
+	    Jan++;
+	    break;
+	  case "Feb":
+	    Feb++;
+	    break;
+	  case "Mar":
+	    Mar++;
+	    break;
+	  case "Apr":
+	    Apr++;
+	    break;
+	  case "May":
+		    May++;
+		    break;
+	  case "Jun":
+		    Jun++;
+		    break;
+	  case "Jul":
+		    Jul++;
+		    break;
+	  case "Aug":
+		    Aug++;
+		    break;
+	  case "Sep":
+		    Sep++;
+		    break;
+	  case "Oct":
+		    Oct++;
+		    break;
+	  case "Nov":
+		    Nov++;
+		    break;
+	  case "Dec":
+		    Dec++;
+		    break;
+
+	}   
+    
+}
+//]]>
+alert(Feb);
+//alert("#{allOrdersBean.orders}");
+
+ 
+Highcharts.chart('graphic', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Moyenne de vente par mois pour 2020'
+    },
+    subtitle: {
+        text: ' '
+    },
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Ventes'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Films',
+      
+        data: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov , Dec]
+
+    }]
+});
+
+</script>
+</ui:composition>

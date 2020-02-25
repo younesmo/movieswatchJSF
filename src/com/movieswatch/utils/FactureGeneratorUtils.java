@@ -43,10 +43,16 @@ public class FactureGeneratorUtils {
             Font.BOLD);
     private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.NORMAL, BaseColor.RED);
-    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
+    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 14,
             Font.BOLD);
     private static Font smallItalic = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.ITALIC);
+    private static Font basicFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+            Font.NORMAL);
+    
+    private static Font boldFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+            Font.BOLD);
+    
     
     
     public static PdfPCell ParagraphCell(int alignment , String paragraph, int border , Font font)
@@ -96,20 +102,45 @@ public class FactureGeneratorUtils {
 			 tableInfoClient.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,"Adresse mail: " + user.getEmail(),PdfPCell.NO_BORDER,smallItalic));
 			 tableInfoClient.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,"Rue: " + user.getStreetName(),PdfPCell.NO_BORDER,smallItalic));
 			 tableInfoClient.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,"Code Postal :" + user.getPostalcode().getNumber() + " " + user.getPostalcode().getCity_name(),PdfPCell.NO_BORDER,smallItalic));
+			 
 			 tableInfoClient.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			 tableInfoClient.setWidthPercentage(50);
 			 
 			 document.add(tableInfoClient);
 			 document.add(new Paragraph(" "));
 			 
-			 PdfPTable tableFilm = new PdfPTable(2);
+			 PdfPTable tableFilmTitle = new PdfPTable(2);
 			 
+			 tableFilmTitle.addCell(ParagraphCell(PdfPCell.ALIGN_LEFT,"Nom des films ",PdfPCell.NO_BORDER,subFont));
+			 tableFilmTitle.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,"Prix",PdfPCell.NO_BORDER,subFont));
+			 //tableFilmTitle.addCell(ParagraphCell(PdfPCell.ALIGN_LEFT,"Moyen de paiement",PdfPCell.NO_BORDER,subFont));
+			 //tableFilmTitle.addCell(ParagraphCell(PdfPCell.ALIGN_LEFT,"Date de commande",PdfPCell.NO_BORDER,subFont));
+			 PdfPTable tableFilm = new PdfPTable(2);
+			 int moviesPriceCount = 0;
 				for(OrderMovie c: order.getOrderMovies()) {
-					document.add(new Paragraph(c.getMovie().getMovie().getTitle()));
-					document.add(new Paragraph(c.getMovie().getPrice() + "€",redFont) );
+					tableFilm.addCell(ParagraphCell(PdfPCell.ALIGN_LEFT,c.getMovie().getMovie().getTitle(),PdfPCell.NO_BORDER,basicFont));
+					tableFilm.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,c.getMovie().getPrice() + "€",PdfPCell.NO_BORDER,basicFont));
+					int resultPrice = Integer.parseInt(c.getMovie().getPrice()); 
+					moviesPriceCount = moviesPriceCount + resultPrice;
+					
+					
+					//document.add(new Paragraph(c.getMovie().getMovie().getTitle()));
+					//document.add(new Paragraph(c.getMovie().getPrice() + "€",redFont) );
 				}
-				document.add(new Paragraph("Moyen de paiement: "+ order.getPaymentMode()));
-				document.add(new Paragraph("Date de commande : "+ order.getDate().toString()));
+			PdfPTable TablePayment = new PdfPTable(1);	
+			String moviesWatchString = String.valueOf(moviesPriceCount);
+			TablePayment.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,"Total",PdfPCell.NO_BORDER,subFont));
+			TablePayment.addCell(ParagraphCell(PdfPCell.ALIGN_RIGHT,moviesWatchString + "€",PdfPCell.NO_BORDER,boldFont));
+			TablePayment.addCell("");
+			TablePayment.addCell(ParagraphCell(PdfPCell.ALIGN_LEFT,"Moyen de paiement : " + order.getPaymentMode(),PdfPCell.NO_BORDER,smallItalic));
+				document.add(tableFilmTitle);	
+				document.add(tableFilm);
+				
+				document.add(TablePayment);
+				
+				
+				//document.add(new Paragraph("Moyen de paiement: "+ order.getPaymentMode()));
+				//document.add(new Paragraph("Date de commande : "+ order.getDate().toString()));
 				
 
 				document.close();
