@@ -7,3 +7,5 @@ build/classes/com/movieswatch/entities/User.class
 build/classes/com/movieswatch/managedBeans/EditProfilBean.class
 build/classes/com/movieswatch/managedBeans/registrationBean.class
 build/classes/com/movieswatch/managedBeans/UpdateMemberBean.class
+build/classes/com/movieswatch/managedBeans/MoviesBean.class
+src/com/movieswatch/managedBeans/MoviesBean.java
