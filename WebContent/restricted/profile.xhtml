@@ -62,7 +62,7 @@
 		</h:panelGroup>
 
 
-		<h:panelGroup layout="block" styleClass="container pull-left col-6 " rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
+		<h:panelGroup layout="block" styleClass="container pull-left col-6 " rendered="#{!navBean.isChild}">
 			<h3 class="font-weight-bold text-center">#{msg['linkedAccount']}</h3>
 			
 			<h:panelGroup layout="block" styleClass="table-responsive">

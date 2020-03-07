@@ -3,17 +3,18 @@ package com.movieswatch.managedBeans;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.movieswatch.entities.User;
 import com.movieswatch.utils.SessionUtils;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class NavBean implements Serializable {
 
 	private User user;
-	private boolean isChild = false;
+	private boolean isChild;
 	
 	
 	public NavBean() {
