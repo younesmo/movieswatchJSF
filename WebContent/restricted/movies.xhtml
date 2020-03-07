@@ -12,6 +12,8 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
+    <f:view locale="#{languageBean.localeCode}">
+
 	<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
 
 		
@@ -165,6 +167,6 @@
 </h:panelGroup>
 <br/><br/><br/>
 	<ui:include src="/WEB-INF/footer.xhtml" />
-
+</f:view>
 </h:body>
 </html>
