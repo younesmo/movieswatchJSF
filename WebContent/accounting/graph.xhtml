@@ -46,57 +46,59 @@ movies.push("#{item.date}");
 
 </ui:repeat>
 //<![CDATA[
-for(var i = 0; i < movies.length; ++i){
-    const char = movies[i].split('');
-    dateParse.push(char[5] + char[6]);
+   
     
-}
-for(var i = 0; i < dateParse.length; ++i){
-	switch (dateParse[i]) {
-	  case "01":
-	    Jan++;
-	    break;
-	  case "02":
-	    Feb++;
-	    break;
-	  case "03":
-	    Mar++;
-	    break;
-	  case "04":
-	    Apr++;
-	    break;
-	  case "05":
-		    May++;
+	for(var i = 0; i < movies.length; ++i){
+	    const word = movies[i].split(' ');
+	    dateParse.push(word[1]);
+	  
+	}
+	
+	for(var i = 0; i < dateParse.length; ++i){
+		switch (dateParse[i]) {
+		  case "Jan":
+		    Jan++;
 		    break;
-	  case "06":
-		    Jun++;
+		  case "Feb":
+		    Feb++;
 		    break;
-	  case "07":
-		    Jul++;
+		  case "Mar":
+		    Mar++;
 		    break;
-	  case "08":
-		    Aug++;
+		  case "Apr":
+		    Apr++;
 		    break;
-	  case "09":
-		    Sep++;
-		    break;
-	  case "10":
-		    Oct++;
-		    break;
-	  case "11":
-		    Nov++;
-		    break;
-	  case "12":
-		    Dec++;
-		    break;
+		  case "May":
+			    May++;
+			    break;
+		  case "Jun":
+			    Jun++;
+			    break;
+		  case "Jul":
+			    Jul++;
+			    break;
+		  case "Aug":
+			    Aug++;
+			    break;
+		  case "Sep":
+			    Sep++;
+			    break;
+		  case "Oct":
+			    Oct++;
+			    break;
+		  case "Nov":
+			    Nov++;
+			    break;
+		  case "Dec":
+			    Dec++;
+			    break;
 
-	}   
-    
+		}   
 }
 //]]>
 //alert("#{allOrdersBean.orders}");
 
- 
+alert()
 Highcharts.chart('graphic', {
     chart: {
         type: 'column'
