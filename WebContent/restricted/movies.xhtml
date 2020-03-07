@@ -207,7 +207,7 @@
 		<hr class="hr-light my-4 w-75" />
 		<h2>Court metrage</h2>
 
-		<h:panelGroup layout="block" styleClass="card-columns col-lg-7 ">
+		<h:panelGroup layout="block" styleClass="card-columns col-lg-7">
 			<ui:repeat value="#{moviesBean.shortMovies}" var="movie" varStatus="status">
 					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
@@ -246,6 +246,7 @@
 	</h:panelGroup>
 
 </h:panelGroup>
+<br/><br/><br/>
 	<ui:include src="/WEB-INF/footer.xhtml" />
 
 </h:body>

@@ -13,7 +13,9 @@
 	
 </h:head>
 <h:body>
-	<h1 class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">Vos commandes</h1>
+    <f:view locale="#{languageBean.localeCode}">
+
+	<h1 class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">#{msg['orders']}</h1>
 	<h:panelGroup layout="block" styleClass="container mb-4">
 		<h:panelGroup layout="block" styleClass="row">
 			<h:panelGroup layout="block" styleClass="col-12">
@@ -23,7 +25,7 @@
 						headerClass="" rowClasses="">
 
 						<h:column>
-							<f:facet name="header">Numéro de commande</f:facet>
+							<f:facet name="header">#{msg['numOrder']}</f:facet>
 							#{order.id}
 						</h:column>
 
@@ -50,6 +52,9 @@
 			</h:panelGroup>
 		</h:panelGroup>
 	</h:panelGroup>
+	<h:panelGroup layout="block" styleClass="fixed-bottom">
 	<ui:include src="/WEB-INF/footer.xhtml" />
+	</h:panelGroup>
+	</f:view>
 </h:body>
 </html>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-	<meta charset="utf-8" />
-	<title>Ajouter un membre</title>
-	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+    	<meta charset="utf-8" />
+        <title>Ajouter un profil</title>
+        <ui:include src="/WEB-INF/cssLoader.xhtml" />
 	<ui:include src="/WEB-INF/navBar.xhtml" />
-</h:head>
-<h:body>
+    </h:head>
+    <h:body>
         <f:view locale="#{languageBean.localeCode}">
-
-	<h:panelGroup layout="block" styleClass="container">
+    
+        	<h:panelGroup layout="block" styleClass="container">
 		<h6 class=" display-3 font-weight-bold white-text mt-5 pt-5"></h6>
 
 		<h:panelGroup layout="block" styleClass="signup-form">
 			<h:form id="form">
-				<h2>#{msg['addMember']}</h2>
+				<h2>#{msg['addProfil']}</h2>
 				
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="email" styleClass="form-control"
@@ -53,55 +53,19 @@
 						errorClass="text-danger" />
 				</h:panelGroup>
 
-				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="street" a:placeholder="#{msg['street']}"
-						styleClass="form-control"
-						value="#{registrationBean.user.streetName}">
-						<f:ajax event="blur" render="streetMessage" />
-					</h:inputText>
-					<h:message id="streetMessage" for="street" errorClass="text-danger" />
-				</h:panelGroup>
+			
 
-				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="cp" required="true" requiredMessage="Veuillez introduire un code postal" styleClass="form-control"
-						value="#{registrationBean.cp.number}" a:placeholder="#{msg['postalcode']}"
-						size="20" maxlength="60">
-						<f:ajax event="blur" render="cpMessage" />
-						<f:validator validatorId="cpExistValidator" />
-					</h:inputText>
-					<h:message id="cpMessage" for="cp" errorClass="text-danger" />
-				</h:panelGroup>
-
-
-				<h:panelGroup layout="block" styleClass="form-group">
-					<h:inputText id="num" styleClass="form-control"
-						value="#{registrationBean.user.mobileNumber}"
-						a:placeholder="#{msg['mobilePhone']}">
-						<f:ajax event="blur" render="numMessage" />																				
-					</h:inputText>
-					<h:message id="numMessage" for="num" errorClass="text-danger" />
-				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="birth" required="true" requiredMessage="Veuillez indiquer une date de naissance" styleClass="form-control datepicker"
 						value="#{registrationBean.user.birthdate}"
 						a:placeholder="#{msg['birthdate']}">
 						<f:convertDateTime pattern="yyyy-MM-dd" />
-						<f:ajax event="change" render="birthMessage" />
-						<f:ajax event="blur" render="birthMessage" />						
-						<f:validator validatorId="ageValidator" />
 					</h:inputText>
 					<h:message id="birthMessage" for="birth" errorClass="text-danger" />
 				</h:panelGroup>
 			
 
-			<h:panelGroup layout="block" styleClass="form-group">				
-				<h:selectOneMenu styleClass="form-control" value="#{registrationBean.idRole}">
-					<f:selectItem itemValue="1" itemLabel="#{msg['user']}" />
-					<f:selectItem itemValue="2" itemLabel="#{msg['admin']}" />
-					<f:selectItem itemValue="3" itemLabel="#{msg['accounting']}" />
-				</h:selectOneMenu>
-			</h:panelGroup>
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputSecret id="password" a:placeholder="#{msg['password']}"
 						styleClass="form-control"
@@ -128,12 +92,11 @@
 				</h:panelGroup>
 
 
-				<h:messages globalOnly="true" infoClass="text-danger" />
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:commandButton value="#{msg['validate']}"
 						styleClass="btn btn-primary btn-lg"
-						action="#{registrationBean.insertUser}">
+						action="#{registrationBean.addProfil}">
 					</h:commandButton>
 				</h:panelGroup>
 
@@ -143,6 +106,6 @@
 	<hr class="hr-light my-4 w-75"></hr>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
-	</f:view>
-</h:body>
+        </f:view>
+    </h:body>
 </html>

@@ -12,19 +12,19 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-
+    <f:view locale="#{languageBean.localeCode}">
 	<h:panelGroup layout="block" styleClass="container mt-5 pt-5">
-		<h3 class="display-3 font-weight-bold">Vos informations</h3>
+		<h3 class="display-3 font-weight-bold">#{msg['information']}</h3>
 		<hr />
 		<h:panelGroup layout="block" styleClass="row">
 			<!-- left column -->
 			<!-- edit form column -->
 			<h:panelGroup layout="block" styleClass="col-md-9 personal-info">
-				<h3>Mettez à jour vos données</h3>
+				<h3>#{msg['updateData']}</h3>
 
 				<h:form styleClass="form-horizontal">
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">Nom:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">#{msg['lastname']}:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 
 							<h:inputText id="lastname" styleClass="form-control"
@@ -37,7 +37,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">Prénom:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">#{msg['firstname']}:</h:outputLabel>
 
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="firstname" styleClass="form-control"
@@ -51,7 +51,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="street">Rue:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="street">#{msg['street']}:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="street" styleClass="form-control"
 								value="#{editProfilBean.user.streetName}">
@@ -63,7 +63,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">Code postal:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">#{msg['postalcode']}:</h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="cp" a:required="true" requiredMessage="Veuillez introduire un code postal" styleClass="form-control"
 								value="#{editProfilBean.cp.number}" size="20" maxlength="60">
@@ -75,7 +75,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="num">Numéro de téléphonne:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="num">#{msg['mobilePhone']}:</h:outputLabel>
 
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="num" styleClass="form-control"
@@ -99,7 +99,7 @@
 					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">Date de naissance:</h:outputLabel>
+						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">#{msg['birthdate']}:</h:outputLabel>
 
 						<h:panelGroup layout="block" styleClass="col-lg-8">
 							<h:inputText id="birth" required="true" requiredMessage="Veuillez indiquer une date de naissance" styleClass="form-control datepicker"
@@ -118,7 +118,7 @@
 					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-md-3 control-label"></h:outputLabel>
 						<h:panelGroup layout="block" styleClass="col-md-8">
-							<h:commandButton value="Sauvegarder"
+							<h:commandButton value="#{msg['save']}"
 								styleClass="btn btn-primary"
 								action="#{editProfilBean.saveUser}">
 							</h:commandButton>
@@ -131,5 +131,6 @@
 	</h:panelGroup>
 
 	<ui:include src="/WEB-INF/footer.xhtml" />
+	</f:view>
 </h:body>
 </html>

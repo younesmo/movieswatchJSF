@@ -4,6 +4,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
+    
+  	<application>
+ 		<locale-config>
+   		   <default-locale>fr</default-locale>
+  		   <supported-locale>en</supported-locale>
+  		</locale-config>
+   
+   		<resource-bundle>
+     	 <base-name>com.movieswatch.resources.messages</base-name>
+    	  <var>msg</var>
+   		</resource-bundle>
+	</application>
 
 	<navigation-rule> 
 	   		<from-view-id>/*</from-view-id>  
@@ -91,20 +103,28 @@
  	 <navigation-rule>
 		 <from-view-id>/restricted/profile.xhtml</from-view-id>  
 		<navigation-case> 
+    			 <from-outcome>updateProfil</from-outcome> 
+    		 	<to-view-id>/restricted/updateProfil.xhtml</to-view-id>
+ 	 	</navigation-case>
+		<navigation-case> 
     			 <from-outcome>editProfil</from-outcome> 
-    		 	<to-view-id>/restricted/editProfil.xhtml</to-view-id> 
+    		 	<to-view-id>/restricted/editMainProfil.xhtml</to-view-id>
  	 	</navigation-case>
  	 	<navigation-case> 
     			 <from-outcome>editPassword</from-outcome> 
-    		 	<to-view-id>/restricted/editPassword.xhtml</to-view-id> 
+    		 	<to-view-id>/restricted/editPassword.xhtml</to-view-id>
+ 	 	</navigation-case>
+ 	 	<navigation-case> 
+    			 <from-outcome>addProfil</from-outcome> 
+    		 	<to-view-id>/restricted/addProfil.xhtml</to-view-id> 
  	 	</navigation-case>
  	 </navigation-rule>
  	 
  	 <navigation-rule>
-		 <from-view-id>/restricted/editProfil.xhtml</from-view-id>  
+		 <from-view-id>/restricted/editMainProfil.xhtml</from-view-id>  
 		<navigation-case> 
     			 <from-outcome>profil</from-outcome> 
-    		 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
+    		 	<to-view-id>/restricted/profile.xhtml</to-view-id>
  	 	</navigation-case>
  	 </navigation-rule>
  	 
@@ -112,8 +132,17 @@
 		 <from-view-id>/restricted/editPassword.xhtml</from-view-id>  
 		<navigation-case> 
     			 <from-outcome>profil</from-outcome> 
-    		 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
+    		 	<to-view-id>/restricted/profile.xhtml</to-view-id>
  	 	</navigation-case>
+ 	 </navigation-rule>
+ 	 
+ 	  	 <navigation-rule>
+		 <from-view-id>/restricted/addProfil.xhtml</from-view-id>  
+		<navigation-case> 
+    			 <from-outcome>profil</from-outcome> 
+    		 	<to-view-id>/restricted/profile.xhtml</to-view-id> 
+    		 	  <redirect/>  		 	
+ 	 	</navigation-case> 	 	
  	 </navigation-rule>
  	 
  	 	<navigation-rule> 

@@ -14,7 +14,9 @@
         
     </h:head>
     <h:body>
-    <h1 class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark ">Bienvenue #{sessionScope.currentUser.firstname }</h1><br/>
+    <f:view locale="#{languageBean.localeCode}">
+    
+    <h1 class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark "><h:outputText value="#{msg['welcome']}"></h:outputText> #{sessionScope.currentUser.firstname }</h1><br/>
 
 <h:panelGroup layout="block" styleClass="carousel slide" data-ride="carousel">
   <h:panelGroup layout="block" styleClass="carousel-inner">
@@ -35,6 +37,6 @@
 <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
         
  <ui:include src="/WEB-INF/footer.xhtml" />
-    	
+    	</f:view>
     </h:body>
 </html>

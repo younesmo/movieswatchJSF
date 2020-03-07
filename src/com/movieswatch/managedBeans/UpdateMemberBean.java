@@ -34,7 +34,12 @@ public class UpdateMemberBean implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		
+	}
+	
+	public String goToUpdateProfil() {
+		log.debug("id membre: "+ idMember);
+		user= userService.getById(idMember);
+		return "updateProfil";		
 	}
 	
 	public String goToUpdate() {
@@ -88,6 +93,16 @@ public class UpdateMemberBean implements Serializable {
 			return "members";
 		}
 		return "";
-	
 	}
+	
+	public String saveProfil() throws IOException {		
+		if(userService.updateUser(user)) {
+			FacesMessage message= new FacesMessage("Mise à jour effectué avec succés");
+			 FacesContext.getCurrentInstance().addMessage(null, message);
+			return "profil";
+		}
+		return "";
+	}
+	
+	
 }

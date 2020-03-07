@@ -12,11 +12,12 @@
 	<ui:include src="/WEB-INF/navBar.xhtml" />
 </h:head>
 <h:body>
-	<h:panelGroup layout="block" styleClass="container">
+    <f:view locale="#{languageBean.localeCode}">
 
+	<h:panelGroup layout="block" styleClass="container">
+<hr/>
 		<h2
-			class="h1-responsive font-weight-bold text-center mt-5 pt-5text-dark">Vos
-			Achats</h2>
+			class="h1-responsive font-weight-bold text-center mt-5 pt-5text-dark">#{msg['purchases']}</h2>
 
 		<ui:repeat var="orderMovie" value="#{orderBean.order.orderMovies}">
 
@@ -51,12 +52,11 @@
 						<p class="dark-grey-text">#{orderMovie.movie.movie.synopsis}</p>
 						<!-- Post data -->
 						<p>
-							by <a class="font-weight-bold">Jessica Clark</a>,
 							#{orderMovie.movie.movie.productionYear}
 						</p>
 
 						<p>
-							<h:outputText value="Prix: #{orderMovie.movie.price} €" />
+							<h:outputText value="#{msg['price']}: #{orderMovie.movie.price} €" />
 						</p>
 
 					</h:panelGroup>
@@ -71,13 +71,17 @@
 		</ui:repeat>
 
 		<h:panelGroup>
-			<h:outputText value="Prix total: #{orderBean.totalPrice} €" />
+			<h:outputText value="#{msg['price']}: #{orderBean.totalPrice} €" />
 			<br />
 			<h:outputText
-				value="Moyen de paiement: #{orderBean.order.paymentMode}" />
+				value="#{msg['payment']}: #{orderBean.order.paymentMode}" />
 		</h:panelGroup>
 	</h:panelGroup>
+	<hr/><br/><br/>
+	<h:panelGroup layout="block" styleClass="fixed-bottom">
 	<ui:include src="/WEB-INF/footer.xhtml" />
-
+	</h:panelGroup>
+	
+</f:view>
 </h:body>
 </html>

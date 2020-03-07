@@ -2,12 +2,17 @@ package com.movieswatch.managedBeans;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
 
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.User;
@@ -20,9 +25,12 @@ import com.movieswatch.utils.SessionUtils;
 public class EditProfilBean implements Serializable{
 	
 	private User user;
+	private int idProfil;
+	private List<User> childAccounts;
 	private Postalcode cp;
 	transient private UserService userService;
-	
+	transient private Logger log= Logger.getLogger(EditProfilBean.class);
+
 	public EditProfilBean() {
 		this.userService= new UserServiceImpl();
 	}
@@ -31,6 +39,7 @@ public class EditProfilBean implements Serializable{
 	public void init() {
 		user= SessionUtils.getCurrentUser();
 		cp= user.getPostalcode();
+		childAccounts= userService.getLinkedAccounts(user);
 	}
 
 	public User getUser() {
@@ -59,12 +68,48 @@ public class EditProfilBean implements Serializable{
 		return "";
 	}
 	
+	public void deleteProfil() throws IOException {
+		boolean isDone= userService.deleteUser(idProfil);
+		if(!isDone)
+			log.debug("Remove profil: error");
+		else {
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+		}
+	}
+	
 	public String goToEdit() {
 		return "editProfil";
+	}
+	
+	public String goToUpdateProfil() {
+		return "updateProfil";		
+	}
+	
+	public String goToAddProfil(){
+		return "addProfil";
 	}
 	
 	public String goToEditPassword() {
 		return "editPassword";
 	}
+
+	public List<User> getChildAccounts() {
+		return childAccounts;
+	}
+
+	public void setChildAccounts(List<User> childAccounts) {
+		this.childAccounts = childAccounts;
+	}
+
+	public int getIdProfil() {
+		return idProfil;
+	}
+
+	public void setIdProfil(int idProfil) {
+		this.idProfil = idProfil;
+	}
+
+	
 	
 }

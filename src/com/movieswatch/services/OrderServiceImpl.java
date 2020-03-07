@@ -5,9 +5,13 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.RollbackException;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import org.apache.log4j.Logger;
 
@@ -16,7 +20,6 @@ import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Order;
 import com.movieswatch.entities.OrderMovie;
-import com.movieswatch.entities.Movie;
 import com.movieswatch.entities.MoviesFormat;
 import com.movieswatch.entities.User;
 
@@ -24,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 
     private EntityFinder<Order> orderFinder;
     private Logger log= Logger.getLogger(OrderServiceImpl.class);
-
+    
     public OrderServiceImpl() {
     	this.orderFinder= new EntityFinderImpl<Order>();
     }
@@ -58,12 +61,15 @@ public class OrderServiceImpl implements OrderService {
 	}
 	@Override
 	public boolean addMovieInCart(User currentUser, MoviesFormat movie) {
+	
+	 
 		EntityManager em= EMF.getEM();
 		boolean movieAdded= false;
 		OrderMovie om= new OrderMovie();
 		Order cart= getCart(currentUser);
 		om.setOrder(cart);
 		om.setMovie(movie);
+			
 		EntityTransaction transac= em.getTransaction();
 		try {
 			transac.begin();
@@ -79,6 +85,7 @@ public class OrderServiceImpl implements OrderService {
 			em.close();
 			}	
 		return movieAdded;
+	    
 		}
 	
 	

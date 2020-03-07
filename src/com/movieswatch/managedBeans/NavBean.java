@@ -3,12 +3,28 @@ package com.movieswatch.managedBeans;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import com.movieswatch.entities.User;
+import com.movieswatch.utils.SessionUtils;
+
 @Named
-@RequestScoped
+@SessionScoped
 public class NavBean implements Serializable {
 
+	private User user;
+	private boolean isChild;
+	
+	
+	public NavBean() {
+		user= SessionUtils.getCurrentUser();
+		if(user !=null) {
+			if(user.getUser()!=null)
+				isChild=true;
+		}
+	}
+	
 	public String goToLogin() {
 		return "login";
 	}
@@ -44,5 +60,22 @@ public class NavBean implements Serializable {
 	public String goToAllOrders() {
 		return "allOrders";
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setIsChild(boolean isChild) {
+		this.isChild = isChild;
+	}
+
+	public boolean getIsChild() {
+		return isChild;
+	}	
+	
 	
 }

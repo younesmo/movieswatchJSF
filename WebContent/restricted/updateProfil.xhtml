@@ -3,21 +3,21 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"    
+    xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-    	<meta charset="utf-8" />   
-        <title>Mettre à jour un utilisateur</title>
+        	<meta charset="utf-8" />   
+        <title>Mise à jour du profil</title>       
 		<ui:include src="/WEB-INF/cssLoader.xhtml" />
 		<ui:include src="/WEB-INF/navBar.xhtml" />
     </h:head>
     <h:body>
-            <f:view locale="#{languageBean.localeCode}">
-        	<h:panelGroup layout="block" styleClass="container mt-5 pt-5">
+       <f:view locale="#{languageBean.localeCode}">
+    
+        <h:panelGroup layout="block" styleClass="container mt-5 pt-5">
 		<h:panelGroup layout="block" styleClass="row">
 			<h:panelGroup layout="block" styleClass="col-md-9 personal-info">
-				<h3>#{msg['updateMember']}</h3>
+				<h3><h:outputText value="#{msg['titleEditProfil']}"></h:outputText></h3>
 
 				<h:form styleClass="form-horizontal">
 					<h:panelGroup layout="block" styleClass="form-group">
@@ -47,42 +47,6 @@
 							errorClass="text-danger" />
 					</h:panelGroup>
 
-					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="street">#{msg['street']}:</h:outputLabel>
-						<h:panelGroup layout="block" styleClass="col-lg-8">
-							<h:inputText id="street" styleClass="form-control"
-								value="#{updateMemberBean.user.streetName}">
-								<f:ajax event="blur" render="streetMessage" />
-							</h:inputText>
-						</h:panelGroup>
-						<h:message id="streetMessage" for="street"
-							errorClass="text-danger" />
-					</h:panelGroup>
-
-					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="cp">#{msg['postalcode']}:</h:outputLabel>
-						<h:panelGroup layout="block" styleClass="col-lg-8">
-
-							<h:inputText id="cp" required="true" requiredMessage="Veuillez introduire un code postal" styleClass="form-control"
-								value="#{updateMemberBean.cp.number}" size="20" maxlength="60">
-								<f:ajax event="blur" render="cpMessage" />
-								<f:validator validatorId="cpExistValidator" />
-							</h:inputText>
-						</h:panelGroup>
-						<h:message id="cpMessage" for="cp" errorClass="text-danger" />
-					</h:panelGroup>
-
-					<h:panelGroup layout="block" styleClass="form-group">
-						<h:outputLabel styleClass="col-lg-3 control-label" for="num">#{msg['mobilePhone']}:</h:outputLabel>
-
-						<h:panelGroup layout="block" styleClass="col-lg-8">
-							<h:inputText id="num" styleClass="form-control"
-								value="#{updateMemberBean.user.mobileNumber}">
-							<f:ajax event="blur" render="numMessage" />														
-							</h:inputText>
-						</h:panelGroup>
-						<h:message id="numMessage" for="num" errorClass="text-danger" />
-					</h:panelGroup>
 
 					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="email">Email:</h:outputLabel>
@@ -96,17 +60,6 @@
 						<h:message id="emailMessage" for="email" errorClass="text-danger" />
 					</h:panelGroup>
 
-
-					<h:panelGroup layout="block" styleClass="form-group">				
-						<h:outputLabel styleClass="col-lg-3 control-label" for="role">Role:</h:outputLabel>
-						<h:panelGroup layout="block" styleClass="col-lg-8">						
-						<h:selectOneMenu id="role" styleClass="form-control" value="#{updateMemberBean.idRole}">
-							<f:selectItem itemValue="1" itemLabel="#{msg['user']}" />
-							<f:selectItem itemValue="2" itemLabel="#{msg['admin']}" />
-							<f:selectItem itemValue="3" itemLabel="#{msg['accounting']}" />
-						</h:selectOneMenu>
-						</h:panelGroup>
-					</h:panelGroup>
 					
 					<h:panelGroup layout="block" styleClass="form-group">
 						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">#{msg['birthdate']}:</h:outputLabel>
@@ -115,9 +68,6 @@
 							<h:inputText id="birth" required="true" requiredMessage="Veuillez introduire une date de naissance" styleClass="form-control datepicker"
 								value="#{updateMemberBean.user.birthdate}">
 								<f:convertDateTime pattern="yyyy-MM-dd" />
-								<f:ajax event="change" render="birthMessage"/>
-								<f:ajax event="blur" render="birthMessage"/>								
-								<f:validator validatorId="ageValidator" />								
 							</h:inputText>
 						</h:panelGroup>
 						<h:message id="birthMessage" for="birth" errorClass="text-danger" />
@@ -130,7 +80,7 @@
 						<h:panelGroup layout="block" styleClass="col-md-8">
 							<h:commandButton value="#{msg['save']}"
 								styleClass="btn btn-primary"
-								action="#{updateMemberBean.saveUser}">
+								action="#{updateMemberBean.saveProfil}">
 							</h:commandButton>
 						</h:panelGroup>
 						
@@ -139,8 +89,6 @@
 			</h:panelGroup>
 		</h:panelGroup>
 	</h:panelGroup>
-<ui:include src="/WEB-INF/footer.xhtml" />
-
-	</f:view>
+        </f:view>
     </h:body>
 </html>

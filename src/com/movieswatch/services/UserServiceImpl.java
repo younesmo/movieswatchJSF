@@ -3,9 +3,15 @@ package com.movieswatch.services;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import com.movieswatch.dao.EMF;
 import com.movieswatch.dao.EntityFinder;
@@ -31,13 +37,21 @@ public class UserServiceImpl implements UserService {
 		this.manager= EMF.getEM();
 		Postalcode cp= cpService.getByNumber(user.getPostalcode().getNumber());
 		user.setPostalcode(cp);
+		
 		EntityTransaction transac= manager.getTransaction();
 		 try {
 			 transac.begin();
 			 manager.persist(user);
 			 transac.commit();
 			 
-		 }finally {
+		 }catch (ConstraintViolationException e) {
+			    Set<ConstraintViolation<?>> embeddedConstraintViolations = e.getConstraintViolations();
+			    for (ConstraintViolation details : embeddedConstraintViolations) {
+			        String message = details.getMessage();
+			        System.err.println(message);
+			    }
+		 }
+		 finally {
 			 if(transac.isActive())
 				 transac.rollback();
 			 manager.clear();
@@ -110,6 +124,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getById(int id) {
 		return finder.findOne(new User(), id);
+	}
+
+	@Override
+	public List<User> getLinkedAccounts(User mainAccount) {
+		Map<String, Integer> param= new HashMap<String, Integer>();
+		param.put("refere", mainAccount.getId());
+		return finder.findByNamedQuery("User.findLinkedAccounts", new User(), param);
 	}
 
 }

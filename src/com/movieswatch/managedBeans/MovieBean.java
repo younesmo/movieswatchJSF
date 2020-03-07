@@ -43,6 +43,7 @@ public class MovieBean implements Serializable {
 	
 	public String addInCart() {
 		User currentUser= SessionUtils.getCurrentUser();
+		logger.debug("movieFormat: " + movieFormat);
 		boolean isMovieAdded= orderService.addMovieInCart(currentUser, movieFormat);
 		if(isMovieAdded)
 			return "cart";

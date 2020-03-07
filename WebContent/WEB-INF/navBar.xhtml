@@ -4,7 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-
+<f:view locale="#{languageBean.localeCode}">
 	<h:form>
 		<nav
 			class="op navbar navbar-expand-lg fixed-top navbar-dark elegant-color scrolling-navbar">
@@ -17,51 +17,61 @@
 						<h:panelGroup rendered="#{empty sessionScope.currentUser}">
 							<li class="nav-item">
 								<h:commandLink styleClass="nav-link"
-									value="Se connecter" action="#{navBean.goToLogin}">
+									value="#{msg['login']}" action="#{navBean.goToLogin}">
 									<h:outputText styleClass="sr-only">(current)</h:outputText>
 								</h:commandLink>
 							</li>
 
 							<li class="nav-item"><h:commandLink styleClass="nav-link"
-									value="Inscription" action="#{navBean.goToRegistration}" /></li>
+									value="#{msg['registration']}" action="#{navBean.goToRegistration}" /></li>
 						</h:panelGroup>
 
 						<h:panelGroup rendered="#{!empty sessionScope.currentUser}">
 							<li class="nav-item"><h:commandLink styleClass="nav-link"
-									value="Accueil" action="#{navBean.goToWelcome}" /></li>
+									value="#{msg['home']}" action="#{navBean.goToWelcome}" /></li>
 							<li class="nav-item"><h:commandLink styleClass="nav-link"
-									value="Profil" action="#{navBean.goToProfil}" /></li>
+									value="#{msg['account']}" action="#{navBean.goToProfil}" /></li>
 
-						</h:panelGroup>
-						<c:choose>
-							<c:when test="#{sessionScope.currentUser.role.name == 'User' }">
+						</h:panelGroup>						
+							<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
+									<h:panelGroup rendered="#{!navBean.isChild}">
+							
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="#{msg['movies']}" action="#{navBean.goToMovies}" /></li>
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="#{msg['cart']}" action="#{navBean.goToCart}" /></li>
 
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Films" action="#{navBean.goToMovies}" /></li>
-								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Panier" action="#{navBean.goToCart}" /></li>
+										value="#{msg['orders']}" action="#{navBean.goToOrders}" /></li>
+								</h:panelGroup>
+							</h:panelGroup>
 
+							<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Vos commandes" action="#{navBean.goToOrders}" /></li>
-							</c:when>
+										value="#{msg['movies']}" action="#{navBean.goToMovies}" /></li>
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="#{msg['members']}" action="#{navBean.goToMembers}" /></li>
+								<li class="nav-item"><h:commandLink styleClass="nav-link"
+										value="#{msg['orders']}" action="#{navBean.goToAllOrders}" /></li>
+							</h:panelGroup>
 
-							<c:when test="#{sessionScope.currentUser.role.name == 'Admin' }">
+								<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Accounting' }">
 								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Films" action="#{navBean.goToMovies}" /></li>
-								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Membres" action="#{navBean.goToMembers}" /></li>
-								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Commandes" action="#{navBean.goToAllOrders}" /></li>
-
-							</c:when>
-
-							<c:when
-								test="#{sessionScope.currentUser.role.name == 'Accounting' }">
-								<li class="nav-item"><h:commandLink styleClass="nav-link"
-										value="Commandes" action="#{navBean.goToAllOrders}" /></li>
-							</c:when>
-						</c:choose>
+										value="#{msg['orders']}" action="#{navBean.goToAllOrders}" /></li>
+							</h:panelGroup>
 					</ul>
+					
+					<h:panelGroup>
+						<ul class="navbar-nav nav-flex-icons">
+
+							<li class="nav-item">
+							<h:selectOneMenu styleClass="mdb-select mr-3 elegant-color text-white" value="#{languageBean.localeCode}" onchange="submit()"
+								valueChangeListener="#{languageBean.countryLocaleCodeChanged}">
+   								<f:selectItems value="#{languageBean.countriesInMap}" /> 
+   							</h:selectOneMenu>
+							</li>
+						</ul>
+					</h:panelGroup>
 
 					<h:panelGroup rendered="#{!empty sessionScope.currentUser}">
 						<ul class="navbar-nav nav-flex-icons">
@@ -76,6 +86,6 @@
 			</h:panelGroup>
 		</nav>
 	</h:form>
-
+</f:view>
 
 </ui:composition>
