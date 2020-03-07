@@ -148,6 +148,7 @@ public class MoviesBean implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 
 	public String getKeyword() {
 		return keyword;
