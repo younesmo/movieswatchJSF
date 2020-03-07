@@ -24,110 +24,104 @@ import com.movieswatch.services.MovieServiceImpl;
 public class MoviesBean implements Serializable{
 	
 	private List<Movie> movies;
-	private List<Movie> longMovies= new ArrayList<Movie>();
-	private List<Movie> shortMovies= new ArrayList<Movie>();
+	private String pays;
+	private String genre;
+	private String title;
+	private String keyword;
+	private String type;
+	private List<Movie> listFilmTrie;
+	private Movie filmTrie;
 	transient private MovieService movieService;
 	transient private static Logger logger = Logger.getLogger(MoviesBean.class);
 	private int idMovie;
-	private String type;
-	private String keyword;
+	
+	public void updateList()
+	{
+		
+		//TITRE
+		
+		if( !title.equals("") && !pays.equals("") && !genre.equals("") )
+		{
+			movies=movieService.getMoviesByTitlePaysGenre(title,pays,genre);
+		}
+		
+		else if(!title.equals("") && !pays.equals(""))
+		{
+			movies=movieService.getMoviesByTitlePays(title,pays);
+		}
+		
+		else if(!title.equals(""))
+		{
+			movies=movieService.getMoviesByTitle(title);
+		}
+		
+		//Pays
+		else if(!pays.equals("") && !genre.equals(""))
+		{
+			movies=movieService.getMoviesByPaysGenre(pays,genre);
+		}
+		
+		else if(!pays.equals("") && !title.equals(""))
+		{
+			movies=movieService.getMoviesByPaysTitle(pays,title);
+		}
+		
+		else if(!pays.equals(""))
+		{
+			movies=movieService.getMoviesByPays(pays);
+		}
+		
+		//Genre
+		
+		else if(!genre.equals("") && !title.equals("") )
+		{
+			movies=movieService.getMoviesByGenreTitle(genre,title);
+		}
+		
+		else if(!genre.equals("") && !pays.equals(""))
+		{
+			movies=movieService.getMoviesByGenrePays(genre,pays);
+		}
+		
+		else if(!genre.equals(""))
+		{
+			movies=movieService.getMoviesByGenre(genre);
+		}
+		
+	}
+	
 	
 	public MoviesBean() {
 		this.movieService= new MovieServiceImpl();
+	
 	}
+	
+
 	
 	@PostConstruct
 	public void init() {
 		movies= movieService.getMovies();
-		sortMovies();
+		listFilmTrie = new ArrayList<Movie>();
+		filmTrie = new Movie();
+		
 	}
 	
-	public void sortMovies() {
-		longMovies= new ArrayList<Movie>();
-		shortMovies= new ArrayList<Movie>();
-		for(Movie movie: movies) {
-			if(movie.getMetrage().equals("long"))
-				longMovies.add(movie);
-			else
-				shortMovies.add(movie);
+	public void tri()
+	{
+		for (Movie m : movies) 
+		{ 
+		    if(m.equals(filmTrie))
+		    {
+		    	listFilmTrie.add(m);
+		    	
+		    }
+		    
 		}
-	}
-	
-	public void updateList() {
-		List<Movie> moviesToSend= new ArrayList<>();
-
-		switch(type) {
 		
-		case "all" : 
-			moviesToSend = movieService.getMovies();
-			break;
-	
-		case "personne": 
-			for(Movie movie: movies) {
-				for(MoviePerson fp : movie.getMoviePersons()) {
-					if(fp.getPerson().getLastname().toLowerCase().contains(keyword.toLowerCase()) 
-							|| fp.getPerson().getFirstname().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
-		
-		case "titre" : 
-			for(Movie movie: movies) {
-				if(movie.getTitle().toLowerCase().contains(keyword.toLowerCase()))
-					moviesToSend.add(movie);
-			}
-			break;
-		
-		case "annee" : 
-			for(Movie movie: movies) {
-				if(movie.getProductionYear().toLowerCase().contains(keyword.toLowerCase()))
-					moviesToSend.add(movie);
-			}
-			break;
+		movies=listFilmTrie;
 			
-		case "genre" :
-			for(Movie movie: movies) {
-				for(MovieGenre fg: movie.getMovieGenres()) {
-					if(fg.getGenre().getName().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
-		
-		case "pays":
-			for(Movie movie: movies) {
-				for(MovieCountry fp: movie.getMovieCountries()) {
-					if(fp.getCountry().getShortName().toLowerCase().contains(keyword.toLowerCase()) 
-							|| fp.getCountry().getCountryCode().toLowerCase().contains(keyword.toLowerCase())
-							|| fp.getCountry().getNationality().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
-			
-		case "csa" : 
-			for(Movie movie: movies) {
-				if(movie.getCsa().getAgeMin().toLowerCase().contains(keyword.toLowerCase()))
-					moviesToSend.add(movie);
-			}
-			break;
-		
-		case "personnage":
-			for(Movie movie: movies) {
-				for(MovieCharacter fp : movie.getMovieCharacters()) {
-					if(fp.getCharacter().getLastname().toLowerCase().contains(keyword.toLowerCase()) 
-							|| fp.getCharacter().getFirstname().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
 	}
-
-		movies= moviesToSend;
-		sortMovies();
-	}
-	
+		
 	public String goToAddMovie() {
 		return "addMovie";
 	}
@@ -141,22 +135,7 @@ public class MoviesBean implements Serializable{
 		this.movies = movies;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
+	
 	public int getIdMovie() {
 		return idMovie;
 	}
@@ -164,21 +143,59 @@ public class MoviesBean implements Serializable{
 	public void setIdMovie(int idMovie) {
 		this.idMovie = idMovie;
 	}
-
-	public List<Movie> getLongMovies() {
-		return longMovies;
+	
+	public String getPays() {
+		return pays;
 	}
 
-	public void setLongMovies(List<Movie> longMovies) {
-		this.longMovies = longMovies;
+
+
+	public void setPays(String pays) {
+		this.pays = pays;
 	}
 
-	public List<Movie> getShortMovies() {
-		return shortMovies;
+
+
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setShortMovies(List<Movie> shortMovies) {
-		this.shortMovies = shortMovies;
-	}	
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+    
 	
 }

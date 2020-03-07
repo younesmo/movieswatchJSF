@@ -18,7 +18,7 @@ public class Character implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id", unique=true, nullable=false)
-	private int id;
+	private int id; 
 
 	@Column(length=255)
 	private String lastname;

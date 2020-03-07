@@ -20,7 +20,7 @@ import com.movieswatch.entities.User;
 /**
  * Servlet Filter implementation class AccesAdmin
  */
-@WebFilter("/admin/*")
+@WebFilter("/admin/*") 
 public class AccesAdmin implements Filter {
 	private static Logger log = Logger.getLogger(AccesAdmin.class);
 
