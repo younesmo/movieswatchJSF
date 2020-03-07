@@ -47,48 +47,46 @@ movies.push("#{item.date}");
 </ui:repeat>
 //<![CDATA[
 for(var i = 0; i < movies.length; ++i){
-    const chars = movies[i].split('');
-    const chars = str.split('');
-    dateParse.push(chars[2]);
+    const char = movies[i].split('');
+    dateParse.push(char[5] + char[6]);
     
 }
-//alert(dateParse);
 for(var i = 0; i < dateParse.length; ++i){
 	switch (dateParse[i]) {
-	  case "Jan":
+	  case "01":
 	    Jan++;
 	    break;
-	  case "Feb":
+	  case "02":
 	    Feb++;
 	    break;
-	  case "Mar":
+	  case "03":
 	    Mar++;
 	    break;
-	  case "Apr":
+	  case "04":
 	    Apr++;
 	    break;
-	  case "May":
+	  case "05":
 		    May++;
 		    break;
-	  case "Jun":
+	  case "06":
 		    Jun++;
 		    break;
-	  case "Jul":
+	  case "07":
 		    Jul++;
 		    break;
-	  case "Aug":
+	  case "08":
 		    Aug++;
 		    break;
-	  case "Sep":
+	  case "09":
 		    Sep++;
 		    break;
-	  case "Oct":
+	  case "10":
 		    Oct++;
 		    break;
-	  case "Nov":
+	  case "11":
 		    Nov++;
 		    break;
-	  case "Dec":
+	  case "12":
 		    Dec++;
 		    break;
 
