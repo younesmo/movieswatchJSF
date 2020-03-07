@@ -22,15 +22,18 @@
 
 
 <h:body>
+
+    <f:view locale="#{languageBean.localeCode}">
+
 	<h:panelGroup layout="block" styleClass="container pt-5" data-ride="carousel">
-	<h1 class="h1-responsive font-weight-bold text-center mt-1 pt-5 text-dark">Graphique des ventes</h1>
+	<h1 class="h1-responsive font-weight-bold text-center mt-1 pt-5 text-dark">#{msg['graphic']}</h1>
 	<hr />	
 <ui:include src="/accounting/graph.xhtml" />
     </h:panelGroup>
 	<h:panelGroup layout="block" styleClass="container mt-1 pt-5" data-ride="carousel">	
 		
 	
-		<h1 class="h1-responsive font-weight-bold text-center mt-1 text-dark">Liste des commandes</h1>
+		<h1 class="h1-responsive font-weight-bold text-center mt-1 text-dark">#{msg['orders']}</h1>
 		<hr />
 		<h:panelGroup layout="block" styleClass="row">
 			<h:panelGroup layout="block" styleClass="col-12">
@@ -65,5 +68,6 @@
 		</h:panelGroup>
 		</h:panelGroup>
 	<ui:include src="/WEB-INF/footer.xhtml" />
+	</f:view>
 </h:body>
 </html>

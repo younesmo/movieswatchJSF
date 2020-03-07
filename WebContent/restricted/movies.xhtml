@@ -16,7 +16,7 @@
 
 		
 		<h:panelGroup layout="block" styleClass="container">
-		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">#{msg['movies']}</h3>
 		<hr class="hr-light my-4 w-75" />
 		
 		<h:form >
@@ -42,10 +42,7 @@
 			<h:panelGroup layout="block" styleClass="table-wrapper">
 
 
-				<h:panelGroup layout="block" styleClass="col-sm-5">
-					<h2>Long metrage</h2>
-				</h:panelGroup>
-				<h:dataTable value="#{moviesBean.longMovies}" var="movie"
+				<h:dataTable value="#{moviesBean.movies}" var="movie"
 					styleClass="table table-striped table-hover" headerClass=""
 					rowClasses="">
 
@@ -60,12 +57,12 @@
     					</h:column>
 
 						<h:column>
-							<f:facet name="header">Titre</f:facet>
+							<f:facet name="header">#{msg['title']}</f:facet>
     					#{movie.title}
     					</h:column>
 
 						<h:column>
-							<f:facet name="header">Annee</f:facet>
+							<f:facet name="header">#{msg['year']}</f:facet>
     					#{movie.productionYear}
     					</h:column>
 
@@ -84,7 +81,7 @@
 
 				<h:panelGroup layout="block" styleClass="col-sm-7">
 				<h:form>
-					<h:commandLink value="Ajouter un film"
+					<h:commandLink value="#{msg['addMovie']}"
 						styleClass="btn btn-primary" action="#{moviesBean.goToAddMovie}">
 					</h:commandLink>
 				</h:form>
@@ -92,48 +89,6 @@
 
 				<br />
 				<hr class="hr-light my-4 w-75"/>
-				<h:panelGroup layout="block" styleClass="col-sm-5">
-					<h2>Court metrage</h2>
-				</h:panelGroup>
-				<h:dataTable value="#{moviesBean.shortMovies}" var="movie"
-					styleClass="table table-striped table-hover" headerClass=""
-					rowClasses="">
-
-						<h:column>
-							<!-- column header -->
-							<f:facet name="header">#</f:facet>
-							<!-- row record -->
-    					#{movie.id}
-    					</h:column>
-
-						<h:column>
-							<f:facet name="header">Isan</f:facet>
-    					#{movie.numIsan}
-    					</h:column>
-
-						<h:column>
-							<f:facet name="header">Titre</f:facet>
-    					#{movie.title}
-    					</h:column>
-
-						<h:column>
-							<f:facet name="header">Annee</f:facet>
-    					#{movie.productionYear}
-    					</h:column>
-
-						<h:column>
-							<f:facet name="header">Action</f:facet>
-							<h:form>
-							<h:commandLink value="" styleClass="btn btn-sm btn-info"
-								action="#{movieBean.goToMovieDetails}">
-							<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />								
-								
-								<i class="fa fa-info-circle"></i>
-							</h:commandLink>
-							</h:form>
-						</h:column>
-				</h:dataTable>
-
 			</h:panelGroup>
 		</h:panelGroup>
 	</h:panelGroup>
@@ -141,7 +96,7 @@
 <h:panelGroup layout="block" styleClass="container">
 
 	<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
-		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">Liste des films</h3>
+		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">#{msg['movies']}</h3>
 		<hr class="hr-light my-4 w-75" />
 
 		<h:form>
@@ -165,9 +120,8 @@
 		</h:form>
 
 
-		<h2>Long metrage</h2>
 		<h:panelGroup layout="block" styleClass="card-columns col-lg-7">
-			<ui:repeat value="#{moviesBean.longMovies}" var="movie" varStatus="status">
+			<ui:repeat value="#{moviesBean.movies}" var="movie" varStatus="status">
 
 					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
 						<!-- Card image -->
@@ -185,7 +139,7 @@
 							</h4>
 							<!-- Subtitle -->
 							<h5 class="blue-text pb-2">
-								<strong>Année : #{movie.productionYear}</strong>
+								<strong>#{msg['year']} : #{movie.productionYear}</strong>
 							</h5>
 							<!-- Text -->
 							<h:panelGroup layout="block" styleClass="collapse-content">
@@ -205,43 +159,6 @@
 		</h:panelGroup>
 		<!-- Card package -->
 		<hr class="hr-light my-4 w-75" />
-		<h2>Court metrage</h2>
-
-		<h:panelGroup layout="block" styleClass="card-columns col-lg-7">
-			<ui:repeat value="#{moviesBean.shortMovies}" var="movie" varStatus="status">
-					<h:panelGroup layout="block" styleClass="card card-cascade wider mt-2 mb-2">
-						<!-- Card image -->
-						<h:panelGroup layout="block" styleClass="view view-cascade overlay">
-							<h:graphicImage value="#{movie.posterUrl}"
-								style="min-height: 130px; max-height: 130px"
-								styleClass="card-img-top img-fluid" />
-							<h:panelGroup layout="block" styleClass="mask rgba-white-slight"></h:panelGroup>
-						</h:panelGroup>
-						<!-- Card content -->
-						<h:panelGroup layout="block" styleClass="card-body card-body-cascade text-center">
-							<!-- Title -->
-							<h4 class="card-title">
-								<strong>#{movie.title}</strong>
-							</h4>
-							<!-- Subtitle -->
-							<h5 class="blue-text pb-2">
-								<strong>Année : #{movie.productionYear}</strong>
-							</h5>
-							<!-- Text -->
-							<h:panelGroup layout="block" styleClass="collapse-content">
-								<p class="card-text collapse" id="collapseContent">#{movie.synopsis}</p>
-								<h:form>
-								<h:commandLink styleClass="nav-link" action="#{movieBean.goToMovieDetails}">
-								<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />																
-									<i class="fa fa-cart-plus text-muted float-right p-1 my-1 mr-3"
-										data-toggle="tooltip" data-placement="top" title="Panier"></i>
-								</h:commandLink>
-								</h:form>
-							</h:panelGroup>
-						</h:panelGroup>
-					</h:panelGroup>
-			</ui:repeat>
-		</h:panelGroup>
 
 	</h:panelGroup>
 
