@@ -24,8 +24,6 @@ import com.movieswatch.services.MovieServiceImpl;
 public class MoviesBean implements Serializable{
 	
 	private List<Movie> movies;
-	private List<Movie> longMovies= new ArrayList<Movie>();
-	private List<Movie> shortMovies= new ArrayList<Movie>();
 	transient private MovieService movieService;
 	transient private static Logger logger = Logger.getLogger(MoviesBean.class);
 	private int idMovie;
@@ -39,19 +37,8 @@ public class MoviesBean implements Serializable{
 	@PostConstruct
 	public void init() {
 		movies= movieService.getMovies();
-		sortMovies();
 	}
 	
-	public void sortMovies() {
-		longMovies= new ArrayList<Movie>();
-		shortMovies= new ArrayList<Movie>();
-		for(Movie movie: movies) {
-			if(movie.getMetrage().equals("long"))
-				longMovies.add(movie);
-			else
-				shortMovies.add(movie);
-		}
-	}
 	
 	public void updateList() {
 		List<Movie> moviesToSend= new ArrayList<>();
@@ -125,7 +112,6 @@ public class MoviesBean implements Serializable{
 	}
 
 		movies= moviesToSend;
-		sortMovies();
 	}
 	
 	public String goToAddMovie() {
@@ -165,21 +151,5 @@ public class MoviesBean implements Serializable{
 	public void setIdMovie(int idMovie) {
 		this.idMovie = idMovie;
 	}
-
-	public List<Movie> getLongMovies() {
-		return longMovies;
-	}
-
-	public void setLongMovies(List<Movie> longMovies) {
-		this.longMovies = longMovies;
-	}
-
-	public List<Movie> getShortMovies() {
-		return shortMovies;
-	}
-
-	public void setShortMovies(List<Movie> shortMovies) {
-		this.shortMovies = shortMovies;
-	}	
 	
 }
