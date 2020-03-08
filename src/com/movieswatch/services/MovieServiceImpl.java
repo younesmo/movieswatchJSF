@@ -1,5 +1,6 @@
 package com.movieswatch.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,13 +11,17 @@ import javax.persistence.EntityTransaction;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import org.apache.log4j.Logger;
+
 import com.movieswatch.dao.EMF;
 import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
+import com.movieswatch.entities.Format;
 import com.movieswatch.entities.Movie;
 import com.movieswatch.entities.MoviesFormat;
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.User;
+import com.movieswatch.managedBeans.EditProfilBean;
 
 /**
  * 
@@ -28,6 +33,9 @@ import com.movieswatch.entities.User;
 public class MovieServiceImpl implements MovieService{
 
 	private EntityFinder<Movie> movieFinder;
+	transient private Logger log= Logger.getLogger(MovieServiceImpl.class);
+
+	private EntityFinder<Format> formatFinder;
 	private EntityFinder<MoviesFormat> movieFormatFinder;
 	private EntityManager manager;
 
@@ -36,6 +44,7 @@ public class MovieServiceImpl implements MovieService{
 	{
 		this.movieFinder= new EntityFinderImpl<Movie>();
 		this.movieFormatFinder= new EntityFinderImpl<MoviesFormat>();
+		this.formatFinder= new EntityFinderImpl<Format>();
 	}
 
 	@Override
@@ -61,13 +70,27 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public void addMovie(Movie movie) {
+	public void addMovie(Movie movie, List<MoviesFormat> formats) {
 		this.manager= EMF.getEM();
 		
 		EntityTransaction transac= manager.getTransaction();
 		 try {
 			 transac.begin();
+			 
 			 manager.persist(movie);
+			 manager.flush();
+
+			 for(MoviesFormat mf: formats) {
+				 log.debug(mf.getFormat().getId());
+				 Format f= formatFinder.findOne(new Format(), mf.getFormat().getId());
+				 mf.setFormat(f);
+				 mf.setMovie(movie);;
+
+				 movie.addMoviesFormat(mf);
+				 f.addMoviesFormat(mf);
+				 
+				 manager.persist(mf);
+			 }
 			 transac.commit();
 			 
 		 }catch (ConstraintViolationException e) {

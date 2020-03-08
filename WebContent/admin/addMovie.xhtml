@@ -69,7 +69,29 @@
 					</h:inputText>
 				</h:panelGroup>
 
-
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="price" a:placeholder="#{msg['price']}"
+						styleClass="form-control"
+						value="#{addMovieBean.sd.price}"
+						maxlength="20">
+					</h:inputText>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="pricehd" a:placeholder="#{msg['price']} HD"
+						styleClass="form-control"
+						value="#{addMovieBean.hd.price}"
+						maxlength="20">
+					</h:inputText>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="price4k" a:placeholder="#{msg['price']} 4K"
+						styleClass="form-control"
+						value="#{addMovieBean.fork.price}"
+						maxlength="20">
+					</h:inputText>
+				</h:panelGroup>
 			
 				<h:panelGroup layout="block" styleClass="form-group">				
 				<h:selectOneMenu styleClass="form-control" value="#{addMovieBean.csa.idCsa}">

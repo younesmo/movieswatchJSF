@@ -24,7 +24,7 @@ public class Format implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to MoviesFormat
-	@OneToMany(mappedBy="format")
+	@OneToMany(mappedBy="format", cascade = CascadeType.ALL)
 	private List<MoviesFormat> moviesFormats;
 
 	public Format() {

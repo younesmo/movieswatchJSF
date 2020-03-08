@@ -38,7 +38,7 @@ public class MoviesFormat implements Serializable {
 	private Movie movie;
 
 	//bi-directional many-to-one association to OrderMovie
-	@OneToMany(mappedBy="movie")
+	@OneToMany(mappedBy="movie", cascade= CascadeType.REMOVE)
 	private List<OrderMovie> orderMovies;
 		
 	public MoviesFormat() {
