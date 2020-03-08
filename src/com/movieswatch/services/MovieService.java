@@ -13,4 +13,16 @@ public interface MovieService {
 	MoviesFormat getMovieFormat(int id);
 	void addMovie(Movie movie, List<MoviesFormat> formats);
 	boolean deleteMovie(int id);
+	//TITRE
+	List<Movie> getMoviesByTitlePaysGenre(String title,String pays, String genre);
+	List<Movie> getMoviesByTitlePays(String title,String pays);
+	List<Movie> getMoviesByTitle(String title);
+	//Pays
+	List<Movie> getMoviesByPaysGenre(String pays,String genre);
+	List<Movie> getMoviesByPaysTitle(String pays,String title);
+	List<Movie> getMoviesByPays(String pays);
+	//Genre
+	List<Movie> getMoviesByGenreTitle(String genre,String title);
+	List<Movie> getMoviesByGenrePays(String genre,String pays);
+	List<Movie> getMoviesByGenre(String genre);
 }

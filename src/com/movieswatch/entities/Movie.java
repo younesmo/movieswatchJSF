@@ -13,7 +13,20 @@ import java.util.List;
  */
 @Entity
 @Table(name="movies")
-@NamedQuery(name="Movie.findAll", query="SELECT m FROM Movie m")
+@NamedQueries({
+	@NamedQuery(name="Movie.findAll", query="SELECT m FROM Movie m"),
+	@NamedQuery(name="Movie.findByCriteriaTitlePaysGenre", query="SELECT m FROM Movie m where m.title= :title AND m.genre = :genre AND m.pays = :pays"),
+	@NamedQuery(name="Movie.findByCriteriaTitlePays", query="SELECT m FROM Movie m where m.title= :title AND m.pays = :pays"),
+	@NamedQuery(name="Movie.findByCriteriaTitle", query="SELECT m FROM Movie m where m.title= :title"),
+	
+	@NamedQuery(name="Movie.findByCriteriaPaysGenre", query="SELECT m FROM Movie m where m.genre= :genre AND m.pays = :pays"),
+	@NamedQuery(name="Movie.findByCriteriaPaysTitle", query="SELECT m FROM Movie m where m.title= :title AND m.pays = :pays"),
+	@NamedQuery(name="Movie.findByCriteriaPays", query="SELECT m FROM Movie m where m.pays = :pays"),	
+	
+	@NamedQuery(name="Movie.findByCriteriaGenreTitle", query="SELECT m FROM Movie m where m.title= :title AND m.genre = :genre"),
+	@NamedQuery(name="Movie.findByCriteriaGenrePays", query="SELECT m FROM Movie m where m.pays= :pays AND m.genre = :genre"),
+	@NamedQuery(name="Movie.findByCriteriaGenre", query="SELECT m FROM Movie m where m.genre = :genre")
+	})
 public class Movie implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +53,12 @@ public class Movie implements Serializable {
 	@Column(name="production_year", length=45)
 	private String productionYear;
 
+	@Column(name="genre", length=255)
+	private String genre;
+	
+	@Column(name="pays", length=255)
+	private String pays;
+	
 	@Lob
 	private String synopsis;
 
@@ -253,5 +272,23 @@ public class Movie implements Serializable {
 
 		return moviesFormat;
 	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+	
+	
 	
 }

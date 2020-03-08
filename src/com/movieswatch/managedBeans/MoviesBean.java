@@ -31,6 +31,9 @@ public class MoviesBean implements Serializable{
 	transient private MovieService movieService;
 	transient private static Logger logger = Logger.getLogger(MoviesBean.class);
 	private int idMovie;
+	private String pays;
+	private String genre;
+	private String title;
 	private String type;
 	private String keyword;
 	
@@ -41,6 +44,61 @@ public class MoviesBean implements Serializable{
 	@PostConstruct
 	public void init() {
 		movies= movieService.getMovies();
+	}
+	
+	public void updateList()
+	{
+		
+		//TITRE
+		
+		if( !title.equals("") && !pays.equals("") && !genre.equals("") )
+		{
+			movies=movieService.getMoviesByTitlePaysGenre(title,pays,genre);
+		}
+		
+		else if(!title.equals("") && !pays.equals(""))
+		{
+			movies=movieService.getMoviesByTitlePays(title,pays);
+		}
+		
+		else if(!title.equals(""))
+		{
+			movies=movieService.getMoviesByTitle(title);
+		}
+		
+		//Pays
+		else if(!pays.equals("") && !genre.equals(""))
+		{
+			movies=movieService.getMoviesByPaysGenre(pays,genre);
+		}
+		
+		else if(!pays.equals("") && !title.equals(""))
+		{
+			movies=movieService.getMoviesByPaysTitle(pays,title);
+		}
+		
+		else if(!pays.equals(""))
+		{
+			movies=movieService.getMoviesByPays(pays);
+		}
+		
+		//Genre
+		
+		else if(!genre.equals("") && !title.equals("") )
+		{
+			movies=movieService.getMoviesByGenreTitle(genre,title);
+		}
+		
+		else if(!genre.equals("") && !pays.equals(""))
+		{
+			movies=movieService.getMoviesByGenrePays(genre,pays);
+		}
+		
+		else if(!genre.equals(""))
+		{
+			movies=movieService.getMoviesByGenre(genre);
+		}
+		
 	}
 	
 	public void deleteMovie() throws IOException {
@@ -89,5 +147,31 @@ public class MoviesBean implements Serializable{
 	public void setIdMovie(int idMovie) {
 		this.idMovie = idMovie;
 	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 	
 }

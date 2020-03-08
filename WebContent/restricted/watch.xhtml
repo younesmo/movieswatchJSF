@@ -38,7 +38,7 @@
 							<f:facet name="header"></f:facet>
 								<h:form>
 								<h:commandLink styleClass="btn btn-sm btn-primary"
-									action="#{watchingBean.goToPlay}" value="Regarder">
+									action="#{watchingBean.goToPlay}" value="#{msg['watch']}">
 									<f:setPropertyActionListener target="#{playBean.title}" value="#{movie.title.replaceAll('\\s+', '').toLowerCase()}"/>
 									<f:setPropertyActionListener target="#{playBean.titleMovie}" value="#{movie.title}"/>
 																							
