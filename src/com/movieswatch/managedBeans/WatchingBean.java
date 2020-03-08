@@ -20,7 +20,7 @@ import com.movieswatch.utils.SessionUtils;
 @Named
 @RequestScoped
 public class WatchingBean implements Serializable{
-	private List<Movie> movies= new ArrayList();
+	private List<Movie> movies= new ArrayList<Movie>();
 	private transient OrderService orderService;
 	private List<Order> orders;
 	
