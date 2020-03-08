@@ -23,6 +23,12 @@ import com.movieswatch.utils.FactureGeneratorUtils;
 import com.movieswatch.utils.JavaMailUtil;
 import com.movieswatch.utils.SessionUtils;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
 @Named
 @RequestScoped
 public class CartBean implements Serializable{
@@ -61,6 +67,7 @@ public class CartBean implements Serializable{
 			totalPrice += Integer.valueOf(orderMovies.getMovie().getPrice());
 		}		
 	}
+	
 	
 	public String pay() throws IOException {
 		ServletContext servletContext = (ServletContext) FacesContext

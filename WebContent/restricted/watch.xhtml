@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Visionnage</title>
+	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+    </h:head>
+    <h:body>
+    <f:view locale="#{languageBean.localeCode}">
+    
+        <h1
+		class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">#{msg['purchases']}</h1>
+	<h:panelGroup layout="block" styleClass="container mb-4">
+		<h:panelGroup layout="block" styleClass="row">
+			<h:panelGroup layout="block" styleClass="col-12">
+				<h:panelGroup layout="block" styleClass="table-responsive">
+
+					<h:dataTable value="#{watchingBean.movies}"
+						var="movie" styleClass="table table-striped "
+						headerClass="" rowClasses="">
+
+						<h:column>
+							<f:facet name="header"></f:facet>
+							<h:graphicImage value="#{movie.posterUrl}"
+								width="50" height="50" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Title</f:facet>
+							#{movie.title}
+    					</h:column>
+    					
+    					<h:column styleClass="text-right">
+							<f:facet name="header"></f:facet>
+								<h:form>
+								<h:commandLink styleClass="btn btn-sm btn-primary"
+									action="#{watchingBean.goToPlay}" value="Regarder">
+									<f:setPropertyActionListener target="#{playBean.title}" value="#{movie.title.replaceAll('\\s+', '').toLowerCase()}"/>
+									<f:setPropertyActionListener target="#{playBean.titleMovie}" value="#{movie.title}"/>
+																							
+								</h:commandLink>
+								</h:form>
+						</h:column>
+					</h:dataTable>
+					
+						
+				</h:panelGroup>
+			</h:panelGroup>
+
+		</h:panelGroup>
+	</h:panelGroup>
+<h:panelGroup layout="block" styleClass="fixed-bottom">
+	<ui:include src="/WEB-INF/footer.xhtml" />
+	</h:panelGroup>
+	</f:view>
+    </h:body>
+</html>

@@ -19,6 +19,13 @@ import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Postalcode;
 import com.movieswatch.entities.User;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 public class UserServiceImpl implements UserService {
 
 	private EntityManager manager;

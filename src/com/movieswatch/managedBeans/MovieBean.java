@@ -20,6 +20,13 @@ import com.movieswatch.services.MovieService;
 import com.movieswatch.services.MovieServiceImpl;
 import com.movieswatch.utils.SessionUtils;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @Named
 @SessionScoped
 public class MovieBean implements Serializable {

@@ -18,7 +18,9 @@ import com.movieswatch.entities.User;
 
 
 /**
- * Servlet Filter implementation class AccesAdmin
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
  */
 @WebFilter("/admin/*")
 public class AccesAdmin implements Filter {

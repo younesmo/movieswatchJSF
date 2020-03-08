@@ -13,7 +13,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="orders")
-@NamedQueries({@NamedQuery(name="Order.findAll", query="SELECT c FROM Order c"),
+@NamedQueries({
+	@NamedQuery(name="Order.findAll", query="SELECT c FROM Order c"),
 	@NamedQuery(name="Order.getCart", query="select c from Order c where c.user.id = :id and c.status =:status"),
 	@NamedQuery(name="Order.getPaidOrders", query="select c from Order c where c.status= 'paye'")
 })

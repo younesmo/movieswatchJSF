@@ -1,5 +1,6 @@
 package com.movieswatch.managedBeans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
@@ -39,81 +43,16 @@ public class MoviesBean implements Serializable{
 		movies= movieService.getMovies();
 	}
 	
-	
-	public void updateList() {
-		List<Movie> moviesToSend= new ArrayList<>();
-
-		switch(type) {
-		
-		case "all" : 
-			moviesToSend = movieService.getMovies();
-			break;
-	
-		case "personne": 
-			for(Movie movie: movies) {
-				for(MoviePerson fp : movie.getMoviePersons()) {
-					if(fp.getPerson().getLastname().toLowerCase().contains(keyword.toLowerCase()) 
-							|| fp.getPerson().getFirstname().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
-		
-		case "titre" : 
-			for(Movie movie: movies) {
-				if(movie.getTitle().toLowerCase().contains(keyword.toLowerCase()))
-					moviesToSend.add(movie);
-			}
-			break;
-		
-		case "annee" : 
-			for(Movie movie: movies) {
-				if(movie.getProductionYear().toLowerCase().contains(keyword.toLowerCase()))
-					moviesToSend.add(movie);
-			}
-			break;
-			
-		case "genre" :
-			for(Movie movie: movies) {
-				for(MovieGenre fg: movie.getMovieGenres()) {
-					if(fg.getGenre().getName().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
-		
-		case "pays":
-			for(Movie movie: movies) {
-				for(MovieCountry fp: movie.getMovieCountries()) {
-					if(fp.getCountry().getShortName().toLowerCase().contains(keyword.toLowerCase()) 
-							|| fp.getCountry().getCountryCode().toLowerCase().contains(keyword.toLowerCase())
-							|| fp.getCountry().getNationality().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
-			
-		case "csa" : 
-			for(Movie movie: movies) {
-				if(movie.getCsa().getAgeMin().toLowerCase().contains(keyword.toLowerCase()))
-					moviesToSend.add(movie);
-			}
-			break;
-		
-		case "personnage":
-			for(Movie movie: movies) {
-				for(MovieCharacter fp : movie.getMovieCharacters()) {
-					if(fp.getCharacter().getLastname().toLowerCase().contains(keyword.toLowerCase()) 
-							|| fp.getCharacter().getFirstname().toLowerCase().contains(keyword.toLowerCase()))
-						moviesToSend.add(movie);
-				}
-			}
-			break;
+	public void deleteMovie() throws IOException {
+		boolean isMovieDeleted=movieService.deleteMovie(idMovie);
+		if(isMovieDeleted) {
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		    ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+		}
+		else
+			logger.debug("error");
 	}
-
-		movies= moviesToSend;
-	}
-	
+		
 	public String goToAddMovie() {
 		return "addMovie";
 	}

@@ -9,6 +9,13 @@ import javax.inject.Named;
 import com.movieswatch.entities.User;
 import com.movieswatch.utils.SessionUtils;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @Named
 @SessionScoped
 public class NavBean implements Serializable {
@@ -61,6 +68,10 @@ public class NavBean implements Serializable {
 		return "allOrders";
 	}
 
+	public String goToWatch() {
+		return "watch";
+	}
+	
 	public User getUser() {
 		return user;
 	}

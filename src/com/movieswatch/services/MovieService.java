@@ -11,4 +11,6 @@ public interface MovieService {
 	Movie getMovieById(int id);
 	List<MoviesFormat> getMoviesFormat(int id);
 	MoviesFormat getMovieFormat(int id);
+	void addMovie(Movie movie);
+	boolean deleteMovie(int id);
 }

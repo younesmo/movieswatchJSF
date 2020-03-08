@@ -16,7 +16,11 @@ import com.movieswatch.entities.User;
 
 /**
  * Servlet Filter implementation class AccountingFilter
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
  */
+
 @WebFilter("/accounting/*")
 public class AccountingFilter implements Filter {
 

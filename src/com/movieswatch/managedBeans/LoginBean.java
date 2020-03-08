@@ -17,6 +17,13 @@ import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 import com.movieswatch.utils.SessionUtils;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @Named
 @SessionScoped
 public class LoginBean implements Serializable {

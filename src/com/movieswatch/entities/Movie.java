@@ -2,6 +2,7 @@ package com.movieswatch.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class Movie implements Serializable {
 	private String synopsis;
 
 	@Column(length=255)
+	@NotNull
 	private String title;
 
 	//bi-directional many-to-one association to MoviesFormat

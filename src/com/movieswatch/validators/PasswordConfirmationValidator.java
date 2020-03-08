@@ -8,6 +8,13 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @FacesValidator(value = "passwordConfirmationValidator")
 public class PasswordConfirmationValidator implements Validator {
 

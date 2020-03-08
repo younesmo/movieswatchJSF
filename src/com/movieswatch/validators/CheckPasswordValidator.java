@@ -10,6 +10,13 @@ import javax.faces.validator.ValidatorException;
 import com.movieswatch.entities.User;
 import com.movieswatch.utils.SessionUtils;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @FacesValidator(value="checkPasswordValidator")
 public class CheckPasswordValidator implements Validator {
 

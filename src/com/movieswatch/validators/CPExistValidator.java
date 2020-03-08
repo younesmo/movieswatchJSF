@@ -11,6 +11,13 @@ import javax.inject.Inject;
 import com.movieswatch.services.PostalCodeService;
 import com.movieswatch.services.PostalCodeServiceImpl;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @FacesValidator(value="cpExistValidator")
 public class CPExistValidator implements Validator{
 

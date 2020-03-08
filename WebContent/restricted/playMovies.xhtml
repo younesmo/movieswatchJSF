@@ -27,7 +27,7 @@
 <h:body>
 
 <h:panelGroup layout="block" styleClass="container mt-5 pt-5" data-ride="carousel">
-	<h3 class="display-3 font-weight-bold text-center"></h3>
+	<h3 class="display-3 font-weight-bold text-center">#{playBean.titleMovie}</h3>
 		<hr />
   <h:panelGroup layout="block" styleClass="mr-10">
     <h:panelGroup layout="block" styleClass="mr-10">
@@ -39,21 +39,22 @@
     width="640"
     height="364"
 
-    poster="../resources/default/images/movies/starwars.jpg"
+    poster="../resources/default/images/movies/#{playBean.title}.jpg"
     data-setup="{}"
   >
-    <source src="../resources/default/videos/StarWars.mp4" type="video/mp4" />
+    <source src="../resources/default/videos/#{playBean.title}.mp4" type="video/mp4" />
     
- 
+    
       
-  
   </video>
 </h:panelGroup>
   </h:panelGroup>
   </h:panelGroup>
   <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
         
+   <h:panelGroup layout="block" styleClass="fixed-bottom">     
   <ui:include src="/WEB-INF/footer.xhtml" />
+  </h:panelGroup>
 </h:body>
 
 

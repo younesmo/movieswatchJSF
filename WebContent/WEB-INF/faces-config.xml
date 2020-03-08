@@ -35,6 +35,11 @@
     	 	<redirect/>
  	  	</navigation-case>
  	  	<navigation-case> 
+    		 <from-outcome>watch</from-outcome> 
+    	 	<to-view-id>/restricted/watch.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+ 	  	<navigation-case> 
     		 <from-outcome>movies</from-outcome> 
     	 	<to-view-id>/restricted/movies.xhtml</to-view-id> 
     	 	<redirect/>
@@ -73,6 +78,11 @@
     	 	<to-view-id>/restricted/movie.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
+ 	  	<navigation-case> 
+    		 <from-outcome>addMovie</from-outcome> 
+    	 	<to-view-id>/admin/addMovie.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
 	</navigation-rule>
 	
 	<navigation-rule> 
@@ -80,6 +90,15 @@
  	  	<navigation-case> 
     		 <from-outcome>orders</from-outcome> 
     	 	<to-view-id>/restricted/orders.xhtml</to-view-id> 
+    	 	<redirect/>
+ 	  	</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule> 
+   		<from-view-id>/admin/addMovie.xhtml</from-view-id>  
+ 	  	<navigation-case> 
+    		 <from-outcome>movies</from-outcome> 
+    	 	<to-view-id>/restricted/movies.xhtml</to-view-id> 
     	 	<redirect/>
  	  	</navigation-case>
 	</navigation-rule>
@@ -144,6 +163,16 @@
     		 	  <redirect/>  		 	
  	 	</navigation-case> 	 	
  	 </navigation-rule>
+ 	 
+ 	 <navigation-rule>
+		 <from-view-id>/restricted/watch.xhtml</from-view-id>  
+		<navigation-case> 
+    			 <from-outcome>playMovie</from-outcome> 
+    		 	<to-view-id>/restricted/playMovies.xhtml</to-view-id> 
+    		 	  <redirect/>  		 	
+ 	 	</navigation-case> 	 	
+ 	 </navigation-rule>
+ 	 
  	 
  	 	<navigation-rule> 
    		<from-view-id>/admin/members.xhtml</from-view-id>  

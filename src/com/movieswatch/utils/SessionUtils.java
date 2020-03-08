@@ -5,6 +5,13 @@ import javax.servlet.http.HttpSession;
 
 import com.movieswatch.entities.User;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 public class SessionUtils {
 
 	public static HttpSession getSession() {

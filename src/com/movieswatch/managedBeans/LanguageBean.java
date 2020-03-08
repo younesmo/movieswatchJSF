@@ -9,7 +9,14 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
+
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
  
+
 @Named
 @SessionScoped
 public class LanguageBean implements Serializable{

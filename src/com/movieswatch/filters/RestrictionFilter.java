@@ -13,6 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+/**
+ * Servlet Filter implementation class AccountingFilter
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
 @WebFilter("/restricted/*")
 public class RestrictionFilter implements Filter {
 

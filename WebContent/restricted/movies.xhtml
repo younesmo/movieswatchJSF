@@ -21,26 +21,6 @@
 		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-dark">#{msg['movies']}</h3>
 		<hr class="hr-light my-4 w-75" />
 		
-		<h:form >
-		<h:inputText value="#{moviesBean.keyword}" a:placeholder="Search"
-			size="50">
-		</h:inputText>
-
-		<h:selectOneMenu value="#{moviesBean.type}">
-			<f:selectItem itemValue="all" itemLabel="Selection filtre" />
-			<f:selectItem itemValue="titre" itemLabel="Titre" />
-			<f:selectItem itemValue="genre" itemLabel="Genre" />
-			<f:selectItem itemValue="personne" itemLabel="Acteur/Realisateur" />
-			<f:selectItem itemValue="csa" itemLabel="CSA" />
-			<f:selectItem itemValue="annee" itemLabel="Année" />
-			<f:selectItem itemValue="personnage" itemLabel="Personnage" />
-			<f:selectItem itemValue="pays" itemLabel="Pays" />
-		</h:selectOneMenu>
-		<h:commandButton value="Search" styleClass="btn btn-primary btn-lg"
-			action="#{moviesBean.updateList}">
-		</h:commandButton>
-		</h:form>
-		
 			<h:panelGroup layout="block" styleClass="table-wrapper">
 
 
@@ -76,6 +56,13 @@
 							<f:setPropertyActionListener target="#{movieBean.idMovie}" value="#{movie.id}" />								
 							
 								<i class="fa fa-info-circle"></i>
+							</h:commandLink>
+							
+							<h:commandLink value="" styleClass="btn btn-sm btn-danger" 
+							action="#{moviesBean.deleteMovie}">
+							<f:setPropertyActionListener target="#{moviesBean.idMovie}" value="#{movie.id}" />								
+							
+								<i class="fa fa-trash"></i>
 							</h:commandLink>
 							</h:form>
 						</h:column>

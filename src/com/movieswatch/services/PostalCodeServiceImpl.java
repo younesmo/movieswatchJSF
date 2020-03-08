@@ -9,6 +9,13 @@ import com.movieswatch.dao.EntityFinder;
 import com.movieswatch.dao.EntityFinderImpl;
 import com.movieswatch.entities.Postalcode;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 public class PostalCodeServiceImpl implements PostalCodeService{
 
 	//@Inject

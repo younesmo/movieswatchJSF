@@ -16,6 +16,13 @@ import javax.inject.Named;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @FacesValidator(value= "emailExistValidator")
 public class EmailExistValidator implements Validator {
 	

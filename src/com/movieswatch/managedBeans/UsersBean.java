@@ -18,6 +18,13 @@ import com.movieswatch.entities.User;
 import com.movieswatch.services.UserService;
 import com.movieswatch.services.UserServiceImpl;
 
+/**
+ * 
+ * @author Younes Moumtaz
+ * @version 1.0
+ */
+
+
 @RequestScoped
 @Named
 public class UsersBean implements Serializable{

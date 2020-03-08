@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:t="http://myfaces.apache.org/tomahawk">
+
+    <h:head>
+    	<meta charset="utf-8" />
+        <title>Ajout de film</title>
+	<ui:include src="/WEB-INF/cssLoader.xhtml" />
+	<ui:include src="/WEB-INF/navBar.xhtml" />
+    </h:head>
+    <h:body>
+        <f:view locale="#{languageBean.localeCode}">
+    
+        <h:panelGroup layout="block" styleClass="container">
+
+		<h:panelGroup layout="block" styleClass="signup-form">
+			<h:form id="form" enctype="multipart/form-data">
+				<h2>#{msg['addMovie']}</h2>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="title" styleClass="form-control"
+						value="#{addMovieBean.movie.title}" a:placeholder="#{msg['title']}"
+						size="20" maxlength="60">
+						</h:inputText>
+				</h:panelGroup>
+
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="isan" styleClass="form-control"
+						value="#{addMovieBean.movie.numIsan}" a:placeholder="ISAN"
+						size="20" maxlength="60">
+						</h:inputText>
+				</h:panelGroup>
+				
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="budget" styleClass="form-control"
+						value="#{addMovieBean.movie.budget}" a:placeholder="Budget"
+						size="20" maxlength="60">
+						</h:inputText>
+				</h:panelGroup>
+				
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="year" styleClass="form-control"
+						value="#{addMovieBean.movie.productionYear}" a:placeholder="#{msg['year']}"
+						size="20" maxlength="60">
+						</h:inputText>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="picture" a:placeholder="Url Poster"
+						styleClass="form-control"
+						value="#{addMovieBean.movie.posterUrl}" maxlength="255">
+					</h:inputText>
+				</h:panelGroup>
+
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="synopsis" a:placeholder="Synopsis"
+						styleClass="form-control"
+						value="#{addMovieBean.movie.synopsis}"
+						maxlength="20">
+					</h:inputText>
+				</h:panelGroup>
+
+
+			
+				<h:panelGroup layout="block" styleClass="form-group">				
+				<h:selectOneMenu styleClass="form-control" value="#{addMovieBean.csa.idCsa}">
+					<f:selectItem itemValue="1" itemLabel="10" />
+					<f:selectItem itemValue="2" itemLabel="12" />
+					<f:selectItem itemValue="3" itemLabel="16" />
+					<f:selectItem itemValue="4" itemLabel="18" />			
+				</h:selectOneMenu>
+			</h:panelGroup>
+				
+				<h:outputLabel for="file">#{msg['file']} </h:outputLabel>
+                <t:inputFileUpload id="file" required="true" value="#{addMovieBean.videoFile}" />
+                <br />
+                
+
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:commandButton value="#{msg['validate']}"
+						styleClass="btn btn-primary btn-lg"
+						action="#{addMovieBean.addMovie}">
+					</h:commandButton>
+				</h:panelGroup>
+
+			</h:form>
+		</h:panelGroup>
+	</h:panelGroup>
+	<hr class="hr-light my-4 w-75"></hr>
+
+	<ui:include src="/WEB-INF/footer.xhtml" />
+        </f:view>
+    </h:body>
+</html>
