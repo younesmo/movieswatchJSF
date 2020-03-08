@@ -68,6 +68,22 @@
 						maxlength="20">
 					</h:inputText>
 				</h:panelGroup>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="genre" a:placeholder="Genre"
+						styleClass="form-control"
+						value="#{addMovieBean.movie.genre}"
+						maxlength="20">
+					</h:inputText>
+				</h:panelGroup>
+				
+				<h:panelGroup layout="block" styleClass="form-group">
+					<h:inputText id="pays" a:placeholder="#{msg['country']}"
+						styleClass="form-control"
+						value="#{addMovieBean.movie.pays}"
+						maxlength="20">
+					</h:inputText>
+				</h:panelGroup>
 
 				<h:panelGroup layout="block" styleClass="form-group">
 					<h:inputText id="price" a:placeholder="#{msg['price']}"
