@@ -27,6 +27,7 @@
 <script type="text/javascript">
 var movies =[];
 var dateParse = [];
+var dateParseVerification = [];
 var Jan = 0;
 var Feb = 0;
 var Mar = 0;
@@ -47,6 +48,13 @@ movies.push("#{item.date}");
 </ui:repeat>
 //<![CDATA[
    
+    for(var i = 0; i < movies.length; ++i){
+    	
+    const chars = movies[i].split('');
+    dateParseVerification.push(chars[5] + chars[6]);
+    
+    
+}
     
 	for(var i = 0; i < movies.length; ++i){
 	    const word = movies[i].split(' ');
@@ -95,14 +103,57 @@ movies.push("#{item.date}");
 
 		}   
 }
-//]]>
+	
+	for(var i = 0; i < dateParseVerification.length; ++i){
+		switch (dateParseVerification[i]) {
+		  case "01":
+		    Jan++;
+		    break;
+		  case "02":
+		    Feb++;
+		    break;
+		  case "03":
+		    Mar++;
+		    break;
+		  case "04":
+		    Apr++;
+		    break;
+		  case "05":
+			    May++;
+			    break;
+		  case "06":
+			    Jun++;
+			    break;
+		  case "07":
+			    Jul++;
+			    break;
+		  case "08":
+			    Aug++;
+			    break;
+		  case "09":
+			    Sep++;
+			    break;
+		  case "10":
+			    Oct++;
+			    break;
+		  case "11":
+			    Nov++;
+			    break;
+		  case "12":
+			    Dec++;
+			    break;
 
+		}   
+}
+	
+//]]>
+	
 Highcharts.chart('graphic', {
     chart: {
         type: 'column'
     },
     title: {
-        text: 'Moyenne de vente par mois pour 2020'
+        text: '#{msg['averageSales']}'
     },
     subtitle: {
         text: ' '
@@ -110,13 +161,13 @@ Highcharts.chart('graphic', {
     xAxis: {
         categories: [
             'Jan',
-            'Feb',
+            '#{msg['Feb']}',
             'Mar',
-            'Apr',
-            'May',
+            '#{msg['Apr']}',
+            '#{msg['May']}',
             'Jun',
             'Jul',
-            'Aug',
+            '#{msg['Aug']}',
             'Sep',
             'Oct',
             'Nov',
@@ -127,7 +178,7 @@ Highcharts.chart('graphic', {
     yAxis: {
         min: 0,
         title: {
-            text: 'Ventes'
+            text: '#{msg['sales']}'
         }
     },
     tooltip: {
@@ -145,7 +196,7 @@ Highcharts.chart('graphic', {
         }
     },
     series: [{
-        name: 'Films',
+        name: '#{msg['movies']}',
       
         data: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov , Dec]
 
