@@ -47,7 +47,10 @@
 						</h:column>
 					</h:dataTable>
 					
-						
+						<h:panelGroup rendered="#{empty watchingBean.movies}">
+							#{msg['emptyPurchase']}
+			
+						</h:panelGroup>
 				</h:panelGroup>
 			</h:panelGroup>
 
