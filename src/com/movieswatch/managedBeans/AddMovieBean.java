@@ -55,7 +55,7 @@ public class AddMovieBean implements Serializable {
 		    Files.copy(input, file, StandardCopyOption.REPLACE_EXISTING);
 		}
 		Path PathRename = Paths.get(file.toString());
-		Files.move(PathRename  , PathRename.resolveSibling(movie.getTitle() + extension));
+		Files.move(PathRename  , PathRename.resolveSibling(movie.getTitle().toLowerCase().replaceAll(" ", "") +"."  + extension));
 		sd.setFormat(new Format());
 		hd.setFormat(new Format());
 		fork.setFormat(new Format());

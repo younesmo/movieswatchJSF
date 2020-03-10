@@ -36,7 +36,7 @@ public class Postalcode implements Serializable {
 	private Country country;
 
 	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="postalcode")
+	@OneToMany(mappedBy="postalcode") 
 	private List<User> users;
 
 	public Postalcode() {

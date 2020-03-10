@@ -34,7 +34,7 @@ public class Country implements Serializable {
 	private List<Postalcode> postalcodes;
 
 	//bi-directional many-to-one association to MovieCountry
-	@OneToMany(mappedBy="country")
+	@OneToMany(mappedBy="country") 
 	private List<MovieCountry> filmsPays;
 
 	public Country() {
