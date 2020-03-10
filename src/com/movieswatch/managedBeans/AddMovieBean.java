@@ -47,14 +47,15 @@ public class AddMovieBean implements Serializable {
 	public String addMovie() throws IOException {
 		ServletContext servletContext= (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 		Path folder = Paths.get(servletContext.getRealPath("/")+"/resources/default/videos");
-		String filename = FilenameUtils.getBaseName(videoFile.getName()); 
+		String filename = FilenameUtils.getBaseName(videoFile.getName()+ "."); 
 		String extension = FilenameUtils.getExtension(videoFile.getName());
 		Path file = Files.createTempFile(folder, filename, extension);
 		
 		try (InputStream input = videoFile.getInputStream()) {
 		    Files.copy(input, file, StandardCopyOption.REPLACE_EXISTING);
 		}
-		
+		Path PathRename = Paths.get(file.toString());
+		Files.move(PathRename  , PathRename.resolveSibling(movie.getTitle() + extension));
 		sd.setFormat(new Format());
 		hd.setFormat(new Format());
 		fork.setFormat(new Format());
