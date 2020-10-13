@@ -1,0 +1,86 @@
+  .assistantdpo-round-red-button,
+  .assistantdpo-round-blue-button,
+  .assistantdpo-round-green-button
+   {
+		display: inline-block;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		border-radius: 50%;
+		text-align:center;
+		text-decoration:none;
+		box-shadow: 0 0 3px gray;
+		font-size:15px;
+		font-weight:bold;
+		margin-right: 5px;
+	}
+	.assistantdpo-round-red-button {
+	    color:#FF0000;
+	}
+	.assistantdpo-round-red-button:hover {
+	    background: #FF0000;
+	    color:#f5f5f5;
+	}
+	
+	.assistantdpo-round-blue-button {
+	    color:#1E90FF;
+	}
+	.assistantdpo-round-blue-button:hover {
+	    background: #1E90FF;
+	    color:#f5f5f5;
+	}
+	
+	.assistantdpo-round-green-button {
+	    color:#32CD32;
+	}
+	.assistantdpo-round-green-button:hover {
+	    background: #32CD32;
+	    color:#f5f5f5;
+	}
+	
+	.assistantdpo-title-project-name {
+		color:#317eac;
+		font-size:45px !important;
+		margin-bottom: 5px !important;
+	}
+	
+	.assistantdpo-title-project-description {
+		color:#317eac;
+		font-size:28px !important;
+		margin-bottom: 5px !important;
+	}
+	.assistantdpo-text-description {
+		margin-left: 20px;
+		text-align: justify;
+	}
+	
+	.assistantdpo-title-assign-task {
+		color:#317eac;
+		font-size:28px !important;
+		text-align: center;
+		margin-top: 5px !important;
+		margin-bottom: 3px !important;
+	}
+	
+	.assistantdpo-sub-title-assign-task {
+		color:#317eac;
+		font-size:18px !important;
+		margin-top: 5px !important;
+		margin-bottom: 3px !important;
+	}	
+	
+	.assistantdpo-text,
+	.assistantdpo-text-bold,
+	.assistantdpo-text-description
+	{
+		margin-bottom: 5px;
+		color:#555555;
+		font-size:14px !important;
+	}
+	.assistantdpo-text-bold{
+		font-weight: bold;
+	}
+	
+	.ui-selectonemenu-panel.hideDisabled .ui-selectonemenu-item.ui-state-disabled {
+	    display: none;
+	}

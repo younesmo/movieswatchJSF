@@ -1,0 +1,105 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="title">Login</ui:define>
+
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-selectoneradio.ui-grid-responsive .ui-grid-col-4,
+			.ui-selectmanycheckbox.ui-grid-responsive .ui-grid-col-4 {
+				padding-bottom: 10px;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+		 <h:body>
+       <f:view locale="#{languageBean.localeCode}">
+    
+        <h:panelGroup layout="block" styleClass="container mt-5 pt-5">
+		<h:panelGroup layout="block" styleClass="row">
+			<h:panelGroup layout="block" styleClass="col-md-9 personal-info">
+				<h3><h:outputText value="#{msg['titleEditProfil']}"></h:outputText></h3>
+
+				<h:form styleClass="form-horizontal">
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="lastname">#{msg['lastname']}:</h:outputLabel>
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+
+							<h:inputText id="lastname" styleClass="form-control"
+								value="#{updateMemberBean.user.lastname}" size="20" maxlength="20">
+								<f:ajax event="blur" render="lastnameMessage" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="lastnameMessage" for="lastname"
+							errorClass="text-danger" />
+					</h:panelGroup>
+
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="firstname">#{msg['firstname']}:</h:outputLabel>
+
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="firstname" styleClass="form-control"
+								value="#{updateMemberBean.user.firstname}" size="20"
+								maxlength="20">
+								<f:ajax event="blur" render="firstnameMessage" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="firstnameMessage" for="firstname"
+							errorClass="text-danger" />
+					</h:panelGroup>
+
+
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="email">Email:</h:outputLabel>
+
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="email" styleClass="form-control"
+								value="#{updateMemberBean.user.email}" size="20" maxlength="60">
+								<f:ajax event="blur" render="emailMessage" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="emailMessage" for="email" errorClass="text-danger" />
+					</h:panelGroup>
+
+					
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-lg-3 control-label" for="birth">#{msg['birthdate']}:</h:outputLabel>
+
+						<h:panelGroup layout="block" styleClass="col-lg-8">
+							<h:inputText id="birth" required="true" requiredMessage="Veuillez introduire une date de naissance" styleClass="form-control datepicker"
+								value="#{updateMemberBean.user.birthdate}">
+								<f:convertDateTime pattern="yyyy-MM-dd" />
+							</h:inputText>
+						</h:panelGroup>
+						<h:message id="birthMessage" for="birth" errorClass="text-danger" />
+					</h:panelGroup>
+
+						<h:messages globalOnly="true" infoClass="text-success" />
+
+					<h:panelGroup layout="block" styleClass="form-group">
+						<h:outputLabel styleClass="col-md-3 control-label"></h:outputLabel>
+						<h:panelGroup layout="block" styleClass="col-md-8">
+							<h:commandButton value="#{msg['save']}"
+								styleClass="btn btn-primary"
+								action="#{updateMemberBean.saveProfil}">
+							</h:commandButton>
+						</h:panelGroup>
+						
+					</h:panelGroup>
+				</h:form>
+			</h:panelGroup>
+		</h:panelGroup>
+	</h:panelGroup>
+        </f:view>
+    </h:body>
+		<h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css"
+			library="barcelona-layout" />
+		<h:outputStylesheet name="css/ripple.css" library="barcelona-layout" />
+	</ui:define>
+
+</ui:composition>

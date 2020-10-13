@@ -68,7 +68,7 @@ public class EditProfilBean implements Serializable{
 	public String saveUser() throws IOException {
 		if(userService.updateUser(user)) {
 			SessionUtils.setCurrentUser(user);
-			FacesMessage message= new FacesMessage("Mise Ã  jour effectuÃ© avec succÃ©s");
+			FacesMessage message= new FacesMessage("Mise à  jour effectuée avec succés");
 			 FacesContext.getCurrentInstance().addMessage(null, message);
 			return "profil";
 		}

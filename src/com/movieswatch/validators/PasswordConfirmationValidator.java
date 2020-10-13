@@ -18,7 +18,7 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator(value = "passwordConfirmationValidator")
 public class PasswordConfirmationValidator implements Validator {
 
-	private static final String PASSWORD_DIFFERENT  = "Le mot de passe et la confirmation doivent être identiques.";
+	private static final String PASSWORD_DIFFERENT  = "Le mot de passe et la confirmation doivent etre identiques.";
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {

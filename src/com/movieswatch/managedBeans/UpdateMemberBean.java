@@ -95,7 +95,7 @@ public class UpdateMemberBean implements Serializable {
 		role.setId(idRole);
 		user.setRole(role);
 		if(userService.updateUser(user)) {
-			FacesMessage message= new FacesMessage("Mise Ã  jour effectuÃ© avec succÃ©s");
+			FacesMessage message= new FacesMessage("Mise à  jour effectuée avec succès");
 			 FacesContext.getCurrentInstance().addMessage(null, message);
 			return "members";
 		}
@@ -104,7 +104,7 @@ public class UpdateMemberBean implements Serializable {
 	
 	public String saveProfil() throws IOException {		
 		if(userService.updateUser(user)) {
-			FacesMessage message= new FacesMessage("Mise Ã  jour effectuÃ© avec succÃ©s");
+			FacesMessage message= new FacesMessage("Mise à  jour effectuée avec succès");
 			 FacesContext.getCurrentInstance().addMessage(null, message);
 			return "profil";
 		}

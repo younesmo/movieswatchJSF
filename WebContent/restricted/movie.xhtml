@@ -1,70 +1,56 @@
-<!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-	<meta charset="utf-8" />
-	<title>Details film</title>
-	<ui:include src="/WEB-INF/cssLoader.xhtml" />
-	<ui:include src="/WEB-INF/navBar.xhtml" />
-</h:head>
-<h:body>
-    <f:view locale="#{languageBean.localeCode}">
-	<h:panelGroup layout="block" styleClass="container">
-		<h3 class="display-3 font-weight-bold mt-5 pt-5 text-center text-dark">#{msg['movieDetails']}</h3>
-		<h:panelGroup layout="block" styleClass="row justify-content-md-center">
-			<h:panelGroup layout="block" styleClass="row">
-				<h:panelGroup layout="block" styleClass="col">
-					<h:panelGroup layout="block" styleClass="card-deck">
-						<h:panelGroup layout="block" styleClass="card mb-4">
-							<h:panelGroup layout="block" styleClass="view overlay">
-								<h:graphicImage value="#{movieBean.movie.posterUrl}"
-									styleClass="card-img-top " />
-								<h:panelGroup layout="block" styleClass="mask rgba-white-slight"></h:panelGroup> 
-							</h:panelGroup> 
-							<h:panelGroup layout="block" styleClass="card-body">
-								<h4 class="card-title">#{movieBean.movie.title}</h4>
-								<p class="card-text">#{movieBean.movie.productionYear}</p>
-							</h:panelGroup> 
-						</h:panelGroup> 
-					</h:panelGroup> 
-					<br /> <br />
-				</h:panelGroup> 
-				<h:panelGroup layout="block" styleClass="card bg-light mb-3 " style="max-width: 23rem;">
-					<h2>Information</h2>
-					<h:panelGroup layout="block" styleClass="card-deck">
-						<h:panelGroup layout="block" styleClass="card-body">
-							<h:panelGroup layout="block" styleClass="fond_utile ">
-								<h:panelGroup layout="block" styleClass="item-point-info">
-									<h3 class="card-title">Synopsys</h3>
-									<p class="card-text" style="">#{movieBean.movie.synopsis}.</p>
-									<h:panelGroup layout="block" styleClass="text-center"></h:panelGroup> 
-								</h:panelGroup> 
-								<h:panelGroup layout="block" styleClass="item-point-info">
-									<h3 class="card-title">#{msg['release']}</h3>
-									<h:panelGroup layout="block">#{movieBean.movie.productionYear}</h:panelGroup> 
-									<p class="card-text" style=""></p>
-									<h:panelGroup layout="block" styleClass="text-center"></h:panelGroup> 
-								</h:panelGroup> 
-								<h:panelGroup layout="block" styleClass="item-point-info">
-									<h3 class="card-title">Budget</h3>
-									<h:panelGroup layout="block">#{movieBean.movie.budget}</h:panelGroup> 
-									<h:panelGroup layout="block" styleClass="text-center"></h:panelGroup> 
-								</h:panelGroup> 
-							</h:panelGroup> 
-							<h:panelGroup layout="block" styleClass="row">
-								<h:panelGroup layout="block" styleClass="col-lg-12 text-right"></h:panelGroup> 
-							</h:panelGroup> 
-							<h:panelGroup layout="block" styleClass="text-right blanc visible-lg">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template.xhtml">
 
+	<ui:define name="title">Details film</ui:define>
 
-								<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
-									<h:form>
+	<ui:define name="head">
+		<style type="text/css">
+     .value {
+        font-weight: bold;
+    }
+     
+    .ui-carousel {
+        margin-bottom: 20px;
+    }
+</style>
+	</ui:define>
+
+	<ui:define name="content">
+		
+		
+		<h:form id="form">
+    <p:carousel numVisible="1" effect="easeInStrong" headerText="#{movieBean.movie.title}" style="margin-bottom:0">
+        <p:tab title="#{movieBean.movie.title}">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage value="#{movieBean.movie.posterUrl}" />
+                <h:form>
 									<hr/>
-									<h:outputLabel for="format" value="Format"/>
+									 <h:panelGrid>
+                    <h:outputText value="#{msg['title']} :" />
+                    <h:outputText value="#{movieBean.movie.title}" style="font-weight: bold"/>
+                    <h:outputText value="#{msg['year']} :" />
+                    <h:outputText value="#{movieBean.movie.productionYear}" style="font-weight: bold"/>
+			
+                </h:panelGrid>
+               
+									
+									</h:form>
+									
+									
+                <h:outputText
+                    value="#{movieBean.movie.synopsis}" />
+            </h:panelGrid>
+        </p:tab>
+    </p:carousel>
+    </h:form>
+  
+    <h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
+    <h:form>
+    <h:outputLabel for="format" value="Format"/>
 										<h:selectOneRadio id="format" styleClass="col-sm-6 col-md-5"
 											value="#{movieBean.movieFormat.id}" required="true"
 											requiredMessage="Vous devez choisir un format">
@@ -77,19 +63,15 @@
 										<h:outputText id="priceMessage" value="#{movieBean.movieFormat.price} €"/>
 										<hr/>
 										<h:commandButton value="#{msg['addToCart']}"
-											styleClass="btn btn-success" action="#{movieBean.addInCart}">
+											 action="#{movieBean.addInCart}">
 										</h:commandButton>
-									</h:form>
-								</h:panelGroup>
+										 </h:form>
+										  </h:panelGroup>
+										  
+										   
+		<h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css"
+			library="barcelona-layout" />
+		<h:outputStylesheet name="css/ripple.css" library="barcelona-layout" />
+	</ui:define>
 
-							</h:panelGroup> 
-						</h:panelGroup> 
-					</h:panelGroup> 
-				</h:panelGroup> 
-			</h:panelGroup> 
-		</h:panelGroup> 
-	</h:panelGroup> 
-	<ui:include src="/WEB-INF/footer.xhtml" />
-</f:view>
-</h:body>
-</html>
+</ui:composition>

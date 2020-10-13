@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="fr"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"    
-    xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        	<meta charset="utf-8" />   
-        <title>Mise à jour du profil</title>       
-		<ui:include src="/WEB-INF/cssLoader.xhtml" />
-		<ui:include src="/WEB-INF/navBar.xhtml" />
-    </h:head>
-    <h:body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="title">Mise à jour profil</ui:define>
+
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-selectoneradio.ui-grid-responsive .ui-grid-col-4,
+			.ui-selectmanycheckbox.ui-grid-responsive .ui-grid-col-4 {
+				padding-bottom: 10px;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+		 <h:body>
        <f:view locale="#{languageBean.localeCode}">
     
         <h:panelGroup layout="block" styleClass="container mt-5 pt-5">
@@ -91,4 +97,9 @@
 	</h:panelGroup>
         </f:view>
     </h:body>
-</html>
+		<h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css"
+			library="barcelona-layout" />
+		<h:outputStylesheet name="css/ripple.css" library="barcelona-layout" />
+	</ui:define>
+
+</ui:composition>

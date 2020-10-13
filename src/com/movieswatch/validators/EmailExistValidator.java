@@ -26,7 +26,7 @@ import com.movieswatch.services.UserServiceImpl;
 @FacesValidator(value= "emailExistValidator")
 public class EmailExistValidator implements Validator {
 	
-    private static final String EMAIL_EXIST = "Cette adresse email est déjà utilisée";
+    private static final String EMAIL_EXIST = "Cette adresse email est deja� utiliser";
     
     //@Inject
     private UserService userService;

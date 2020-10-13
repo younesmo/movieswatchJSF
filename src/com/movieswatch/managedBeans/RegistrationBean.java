@@ -51,7 +51,7 @@ public class RegistrationBean implements Serializable {
 		user.setRole(role);
 		user.setPostalcode(cp);
 		userService.insertUser(user);
-		 FacesMessage message= new FacesMessage("SuccÃ©s de l'inscription");
+		 FacesMessage message= new FacesMessage("Succès de l'inscription");
 		 FacesContext.getCurrentInstance().addMessage(null, message);
 		 return "login";
 	}
@@ -62,7 +62,7 @@ public class RegistrationBean implements Serializable {
 		user.setRole(role);
 		user.setPostalcode(cp);
 		userService.insertUser(user);
-		 FacesMessage message= new FacesMessage("Membres ajoutÃ©s");
+		 FacesMessage message= new FacesMessage("Membres ajoutés");
 		 FacesContext.getCurrentInstance().addMessage(null, message);
 		 return "members";
 	}
@@ -77,7 +77,7 @@ public class RegistrationBean implements Serializable {
 		user.setMobileNumber(currentUser.getMobileNumber());
 		user.setStreetName(currentUser.getStreetName());
 		userService.insertUser(user);
-		 FacesMessage message= new FacesMessage("SuccÃ©s de l'ajout du profil");
+		 FacesMessage message= new FacesMessage("Succès de l'ajout du profil");
 		 FacesContext.getCurrentInstance().addMessage(null, message);
 		 return "profil";
 	}

@@ -1,0 +1,32 @@
+.tableUpdated {
+	            width: 90% !important;
+	            margin: 17px 58px 0 !important;
+}
+.btnSpace {
+    margin: 17px;
+}
+.flag {
+   display: block;
+   text-indent: 25px;
+}
+.be {
+    background: url('../img/icon/be.png') no-repeat 0;
+}
+.us {
+    background: url('../img/icon/us.png') no-repeat 0;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #4e73df;
+  color: white;
+  text-align: center;
+  font-size:9px;
+}
+
+.force-height{
+	height: 125px;
+}

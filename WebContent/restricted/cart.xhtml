@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	>
-<h:head>
-	<meta charset="utf-8" />
-	<title>Panier</title>
-	<ui:include src="/WEB-INF/cssLoader.xhtml" />
-	<ui:include src="/WEB-INF/navBar.xhtml" />
-</h:head>
-<h:body>
-    <f:view locale="#{languageBean.localeCode}">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="title">Panier</ui:define>
+
+	<ui:define name="head">
+		<style type="text/css">
+			.ui-selectoneradio.ui-grid-responsive .ui-grid-col-4,
+			.ui-selectmanycheckbox.ui-grid-responsive .ui-grid-col-4 {
+				padding-bottom: 10px;
+			}
+		</style>
+	</ui:define>
+
+	<ui:define name="content">
+<f:view locale="#{languageBean.localeCode}">
 
 	<h1
 		class="h1-responsive font-weight-bold text-center mt-5 pt-5 text-dark">#{msg['cart']}</h1>
@@ -90,9 +95,11 @@
 
 		</h:panelGroup>
 	</h:panelGroup>
-<h:panelGroup layout="block" styleClass="fixed-bottom">
-	<ui:include src="/WEB-INF/footer.xhtml" />
-	</h:panelGroup>
-</f:view>
-</h:body>
-</html>
+			</f:view>
+		
+		<h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css"
+			library="barcelona-layout" />
+		<h:outputStylesheet name="css/ripple.css" library="barcelona-layout" />
+	</ui:define>
+
+</ui:composition>

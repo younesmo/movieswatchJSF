@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pa="http://primefaces.org/barcelona">
+
+	<h:panelGroup layout="block" styleClass="topbar">
+		<h:panelGroup layout="block" styleClass="logo">
+			<h:link>
+				<p:graphicImage name="images/movieswatchlogo2.png" library="barcelona-layout" />
+			</h:link>
+		</h:panelGroup>
+
+		<span
+			style="font-size: 25px; margin-left: 10px; font-weight: bold; color: white">MoviesWatch</span>
+
+
+		<ul class="topbar-menu fadeInDown animated">
+		
+			
+			<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'User' }">
+
+				<li class="profile-item"><h:panelGroup>
+					<h:form> 
+    					<p:growl id="growl" life="2000" /> 	
+    					<p:commandButton value="#{msg['home']}" action="#{navBean.goToWelcome}" style="margin-right:20px;" ajax="false" />
+							<p:commandButton value="#{msg['account']}"  action="#{navBean.goToProfil}" style="margin-right:20px;" ajax="false" />					
+   					 		<p:commandButton value="#{msg['movies']}" action="#{navBean.goToMovies}" style="margin-right:20px;" ajax="false" />
+    						<p:commandButton value="#{msg['cart']}" action="#{navBean.goToCart}" style="margin-right:20px;" ajax="false" />
+   							<p:commandButton value="#{msg['orders']}" action="#{navBean.goToOrders}" style="margin-right:20px;" ajax="false" /> 
+   							<p:commandButton value="#{msg['watch']}" action="#{navBean.goToWatch}" style="margin-right:20px;" ajax="false" /> 
+   							<p:commandButton value="Logout" id="withIcon" action="#{loginBean.logout}" update="growl" style="margin-right:20px;" icon="pi pi-save" />
+					</h:form>
+						</h:panelGroup> 
+				</li>
+
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Admin' }">
+
+				<li class="profile-item"><h:panelGroup>
+					<h:form> 
+    					<p:growl id="growl" life="2000" /> 	
+    					<p:commandButton value="#{msg['home']}" action="#{navBean.goToWelcome}" style="margin-right:20px;" ajax="false" />
+							<p:commandButton value="#{msg['account']}"  action="#{navBean.goToProfil}" style="margin-right:20px;" ajax="false" />					
+   					 		<p:commandButton value="#{msg['movies']}" action="#{navBean.goToMovies}" style="margin-right:20px;" ajax="false" />
+   							<p:commandButton value="#{msg['members']}" action="#{navBean.goToMembers}" style="margin-right:20px;" ajax="false" />
+   							<p:commandButton value="#{msg['orders']}" action="#{navBean.goToAllOrders}" style="margin-right:20px;" ajax="false" /> 
+   							<p:commandButton value="Logout" id="withIcon" action="#{loginBean.logout}" update="growl" style="margin-right:20px;" icon="pi pi-save" /> 
+					</h:form>
+						</h:panelGroup> 
+				</li>
+
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{sessionScope.currentUser.role.name == 'Accounting' }">
+				<li class="profile-item"><h:panelGroup>
+					<h:form> 
+    					<p:growl id="growl" life="2000" /> 	
+    					<p:commandButton value="#{msg['home']}" action="#{navBean.goToWelcome}" style="margin-right:20px;" ajax="false" />
+						<p:commandButton value="#{msg['account']}"  action="#{navBean.goToProfil}" style="margin-right:20px;" ajax="false" />					
+   					 	<p:commandButton value="#{msg['orders']}" action="#{navBean.goToAllOrders}" style="margin-right:20px;" ajax="false" />
+   					 	  <p:commandButton value="Logout" id="withIcon" action="#{loginBean.logout}" update="growl" style="margin-right:20px;" icon="pi pi-save" />  	 
+					</h:form>
+						</h:panelGroup> 
+				</li>
+			</h:panelGroup>
+			
+			
+			<h:panelGroup rendered="#{empty sessionScope.currentUser}">
+				<li><h:form styleClass=""
+						style="color:white; border-style: inset">
+						<p:selectOneMenu value="#{languageBean.localeCode}"
+							onchange="submit()"
+							valueChangeListener="#{languageBean.countryLocaleCodeChanged}">
+							<f:selectItems value="#{languageBean.countriesInMap}" />
+						</p:selectOneMenu>
+					</h:form></li>
+
+			</h:panelGroup>
+
+		</ul>
+
+
+	</h:panelGroup>
+</ui:composition>
